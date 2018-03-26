@@ -1,0 +1,45 @@
+BackendBundle\Entity\Searchhistory:
+    type: entity
+    table: searchhistory
+    indexes:
+        UserFK_idx:
+            columns:
+                - userId
+    id:
+        searchhistoryid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: searchHistoryId
+            generator:
+                strategy: IDENTITY
+    fields:
+        moment:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+        searchedtext:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: searchedText
+        active:
+            type: boolean
+            nullable: true
+    manyToOne:
+        userid:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                userId:
+                    referencedColumnName: userId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

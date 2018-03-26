@@ -1,0 +1,35 @@
+BackendBundle\Entity\Country:
+    type: entity
+    table: country
+    id:
+        countryid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: countryId
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        noc:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: Abreviación
+            column: NOC
+        flag:
+            type: blob
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

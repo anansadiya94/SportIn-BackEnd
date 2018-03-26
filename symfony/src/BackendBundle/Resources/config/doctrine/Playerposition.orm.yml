@@ -1,0 +1,48 @@
+BackendBundle\Entity\Playerposition:
+    type: entity
+    table: playerposition
+    id:
+        playerpositionid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: playerPositionId
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        abbrev:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        active:
+            type: boolean
+            nullable: true
+    manyToMany:
+        userid:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: playerpositionid
+            joinTable:
+                name: playerpositionperuser
+                joinColumns:
+                    -
+                        name: playerPositionId
+                        referencedColumnName: playerPositionId
+                inverseJoinColumns:
+                    -
+                        name: userId
+                        referencedColumnName: userId
+            orderBy: null
+    lifecycleCallbacks: {  }

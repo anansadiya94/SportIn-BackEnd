@@ -1,0 +1,54 @@
+BackendBundle\Entity\Requestedannouncement:
+    type: entity
+    table: requestedannouncement
+    indexes:
+        UserFK_idx:
+            columns:
+                - userId
+        AnnouncementFK_idx:
+            columns:
+                - announcementId
+    id:
+        requestedannouncementid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: requestedAnnouncementId
+            generator:
+                strategy: IDENTITY
+    fields:
+        requested:
+            type: boolean
+            nullable: true
+        moment:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+        active:
+            type: boolean
+            nullable: true
+    manyToOne:
+        announcementid:
+            targetEntity: Announcement
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                announcementId:
+                    referencedColumnName: announcementId
+            orphanRemoval: false
+        userid:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                userId:
+                    referencedColumnName: userId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,24 @@
+BackendBundle\Entity\Category:
+    type: entity
+    table: category
+    id:
+        categoryid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: categoryId
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        active:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

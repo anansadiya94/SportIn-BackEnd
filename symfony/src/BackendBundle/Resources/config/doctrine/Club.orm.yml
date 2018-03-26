@@ -1,0 +1,43 @@
+BackendBundle\Entity\Club:
+    type: entity
+    table: club
+    id:
+        clubid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: clubId
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        shield:
+            type: blob
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        initials:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 'Siglas del club'
+    manyToMany:
+        userid:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: clubid
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

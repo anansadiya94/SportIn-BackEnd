@@ -1,0 +1,148 @@
+BackendBundle\Entity\User:
+    type: entity
+    table: user
+    indexes:
+        CountryFK_idx:
+            columns:
+                - countryId
+        Population_idx:
+            columns:
+                - populationId
+        RoleFK_idx:
+            columns:
+                - roleId
+    id:
+        userid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: userId
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: userName
+        surname1:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        surname2:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        active:
+            type: boolean
+            nullable: true
+        birthdate:
+            type: date
+            nullable: true
+            column: birthDate
+        age:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        profilephoto:
+            type: blob
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: profilePhoto
+        height:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+        weight:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+        bio:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        countryid:
+            targetEntity: Country
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                countryId:
+                    referencedColumnName: countryId
+            orphanRemoval: false
+        populationid:
+            targetEntity: Population
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                populationId:
+                    referencedColumnName: populationId
+            orphanRemoval: false
+        roleid:
+            targetEntity: Role
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                roleId:
+                    referencedColumnName: roleId
+            orphanRemoval: false
+    manyToMany:
+        clubid:
+            targetEntity: Club
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: userid
+            joinTable:
+                name: clubhistoryperuser
+                joinColumns:
+                    -
+                        name: userId
+                        referencedColumnName: userId
+                inverseJoinColumns:
+                    -
+                        name: clubId
+                        referencedColumnName: clubId
+            orderBy: null
+        playerpositionid:
+            targetEntity: Playerposition
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: userid
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -1,0 +1,229 @@
+<?php
+
+namespace BackendBundle\Entity;
+
+/**
+ * Announcement
+ */
+class Announcement
+{
+    /**
+     * @var integer
+     */
+    private $announcementid;
+
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var string
+     */
+    private $userid;
+
+    /**
+     * @var \DateTime
+     */
+    private $publicationdate = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var boolean
+     */
+    private $active = '1';
+
+    /**
+     * @var boolean
+     */
+    private $modified = '0';
+
+    /**
+     * @var \BackendBundle\Entity\Category
+     */
+    private $categoryid;
+
+
+    /**
+     * Get announcementid
+     *
+     * @return integer
+     */
+    public function getAnnouncementid()
+    {
+        return $this->announcementid;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Announcement
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Announcement
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set userid
+     *
+     * @param string $userid
+     *
+     * @return Announcement
+     */
+    public function setUserid($userid)
+    {
+        $this->userid = $userid;
+
+        return $this;
+    }
+
+    /**
+     * Get userid
+     *
+     * @return string
+     */
+    public function getUserid()
+    {
+        return $this->userid;
+    }
+
+    /**
+     * Set publicationdate
+     *
+     * @param \DateTime $publicationdate
+     *
+     * @return Announcement
+     */
+    public function setPublicationdate($publicationdate)
+    {
+        $this->publicationdate = $publicationdate;
+
+        return $this;
+    }
+
+    /**
+     * Get publicationdate
+     *
+     * @return \DateTime
+     */
+    public function getPublicationdate()
+    {
+        return $this->publicationdate;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return Announcement
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set modified
+     *
+     * @param boolean $modified
+     *
+     * @return Announcement
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+
+        return $this;
+    }
+
+    /**
+     * Get modified
+     *
+     * @return boolean
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * Set categoryid
+     *
+     * @param \BackendBundle\Entity\Category $categoryid
+     *
+     * @return Announcement
+     */
+    public function setCategoryid(\BackendBundle\Entity\Category $categoryid = null)
+    {
+        $this->categoryid = $categoryid;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryid
+     *
+     * @return \BackendBundle\Entity\Category
+     */
+    public function getCategoryid()
+    {
+        return $this->categoryid;
+    }
+}
+

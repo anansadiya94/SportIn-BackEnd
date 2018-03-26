@@ -1,0 +1,65 @@
+BackendBundle\Entity\Announcement:
+    type: entity
+    table: announcement
+    indexes:
+        CategoryFK_idx:
+            columns:
+                - categoryId
+    id:
+        announcementid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: announcementId
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        description:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        userid:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: userId
+        publicationdate:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: publicationDate
+        active:
+            type: boolean
+            nullable: true
+            options:
+                default: '1'
+        modified:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+    manyToOne:
+        categoryid:
+            targetEntity: Category
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                categoryId:
+                    referencedColumnName: categoryId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,34 @@
+BackendBundle\Entity\Population:
+    type: entity
+    table: population
+    id:
+        populationid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: populationId
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        province:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        postalcode:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: postalCode
+    lifecycleCallbacks: {  }
