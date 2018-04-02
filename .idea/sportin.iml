@@ -16,8 +16,11 @@
       <excludeFolder url="file://$MODULE_DIR$/symfony/vendor/doctrine/instantiator" />
       <excludeFolder url="file://$MODULE_DIR$/symfony/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/symfony/vendor/doctrine/orm" />
+      <excludeFolder url="file://$MODULE_DIR$/symfony/vendor/firebase/php-jwt" />
       <excludeFolder url="file://$MODULE_DIR$/symfony/vendor/incenteev/composer-parameter-handler" />
       <excludeFolder url="file://$MODULE_DIR$/symfony/vendor/jdorn/sql-formatter" />
+      <excludeFolder url="file://$MODULE_DIR$/symfony/vendor/knplabs/knp-components" />
+      <excludeFolder url="file://$MODULE_DIR$/symfony/vendor/knplabs/knp-paginator-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/symfony/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/symfony/vendor/paragonie/random_compat" />
       <excludeFolder url="file://$MODULE_DIR$/symfony/vendor/psr/log" />

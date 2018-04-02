@@ -34,6 +34,9 @@
       <path value="$PROJECT_DIR$/symfony/vendor/doctrine/orm" />
       <path value="$PROJECT_DIR$/symfony/vendor/symfony/polyfill-intl-icu" />
       <path value="$PROJECT_DIR$/symfony/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/symfony/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/symfony/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/symfony/vendor/knplabs/knp-paginator-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />
