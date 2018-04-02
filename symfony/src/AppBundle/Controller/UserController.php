@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use BackendBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,6 +48,21 @@ class UserController extends Controller
         }
     }
 
+    public function createUserAction($request){
+
+        /* No ACABADO AÚN */
+        $helpers = $this->get("app.helpers");
+        $json_params = $request->get("json", null);
+
+        $user = new User();
+
+        $user->setEmail($json_params->get("email"));
+        $manager = $this->manager->getRepository("BackendBundle:User");
+
+        $manager->persist($user);
+        $manager->flush();
+
+    }
     private function validateEmail($email){
         $email_constraint = new Email();
         $email_constraint->message = "The email is not valid!";
