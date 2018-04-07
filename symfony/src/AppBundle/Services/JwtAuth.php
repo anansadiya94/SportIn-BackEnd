@@ -20,6 +20,7 @@ class JwtAuth
     public function singin($email, $password, $getHash = true){
         $key = 'sportin_2018';
         $singin = false;
+
         $user = $this->manager->getRepository("BackendBundle:User")->findOneBy(
             array(
                 "email" => $email,

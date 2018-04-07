@@ -48,19 +48,35 @@ class UserController extends Controller
         }
     }
 
-    public function createUserAction($request){
+    public function userAction(Request $request){
 
         /* No ACABADO AÚN */
         $helpers = $this->get("app.helpers");
         $json_params = $request->get("json", null);
+        var_dump($json_params);
 
         $user = new User();
+        die();
 
         $user->setEmail($json_params->get("email"));
+
+
         $manager = $this->manager->getRepository("BackendBundle:User");
 
         $manager->persist($user);
         $manager->flush();
+
+    }
+
+    public function showAction($id){
+        $helpers = $this->get("app.helpers");
+        $user = new User();
+        $user->setEmail("diee.roman@gmail.com");
+        $user->setAge("27");
+        $user->setBio("Jugador de fútbol");
+        $user->setBirthdate("1999-03-07");
+        $user->setPassword("12345");
+        return $helpers->json($user);
 
     }
     private function validateEmail($email){
