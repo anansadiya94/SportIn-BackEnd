@@ -32,9 +32,9 @@ class JwtAuth
         }
         if($singin){
             $token = array(
-                "sub" => $user->getId(),
+                "sub" => $user->getUserId(),
                 "email" => $user->getEmail(),
-                "name" => $user->getName(),
+                "name" => $user->getUserName(),
                 "password" => $user->getPassword(),
                 "iat" => time(),
                 "exp" => time() + (7 * 24 * 60 * 60)
