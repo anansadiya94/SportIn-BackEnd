@@ -22,3 +22,13 @@ user_show:
   path: /user/{id}
   defaults: { _controller: "AppBundle:User:show", id : 1}
   methods: GET
+
+announcement_show:
+  path: /announcement/{id}
+  defaults: { _controller: "AppBundle:Announcement:show", id : null}
+  methods: GET
+
+default_announcement:
+  path: /announcement
+  defaults: { _controller: "AppBundle:Announcement:announcement"}
+  methods: GET
