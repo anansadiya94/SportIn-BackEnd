@@ -121,18 +121,15 @@ class UserController extends Controller
 
     }
     // USER/ GET
-    public function showAction($id){
+    public function showAction(Request $request, $id){
         $helpers = $this->get("app.helpers");
-        $user = new User();
-        $user->setEmail("diee.roman@gmail.com");
-        $user->setAge("27");
-        $user->setBio("Jugador de fútbol");
-        $user->setBirthdate("1999-03-07");
-        $user->setPassword("javi1234");
-
-        $user = $this->getDoctrine()->getRepository("BackendBundle:User")->findOneBy(
-            array("userid" => $id)
-        );
+        if($id == null){
+            $user = $this->getDoctrine()->getRepository("BackendBundle:User")->findAll();
+        }else{
+            $user = $this->getDoctrine()->getRepository("BackendBundle:User")->findOneBy(
+                array("userid" => $id)
+            );
+        }
         return $helpers->json($user);
 
     }
