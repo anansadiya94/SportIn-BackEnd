@@ -78,8 +78,8 @@ class UserController extends Controller
         //ADD CONSTRAINT fk_fav_food_person_id FOREIGN KEY (person_id) REFERENCES person (person_id);
         json_decode($json_params);
         $user->setUsername(json_decode($json_params)->{"username"},null);
-        $user->setSurname1(json_decode($json_params)->{"surname1"},null);
-        $user->setSurname2(json_decode($json_params)->{"surname2"},null);
+        $user->setSurname(json_decode($json_params)->{"surname"},null);
+        //$user->setSurname2(json_decode($json_params)->{"surname2"},null);
         $user->setEmail(json_decode($json_params)->{"email"},null);
         $user->setPassword(json_decode($json_params)->{"password"},null); //cifrar
         $user->setActive(json_decode($json_params)->{"active"},null);
