@@ -103,8 +103,8 @@ class UserController extends Controller
 
         $populationId = json_decode($json_params)->{"populationId"};
         //$population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
-            array("populationid" => $populationId)
-        );
+            //array("populationid" => $populationId)
+        //);
         $user->setPopulationid($population);
         //$user->addClubid($json_params->get("clubid"));
         //$user->addPlayerpositionid($json_params->get("playerpositionid"));
