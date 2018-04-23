@@ -1,0 +1,39 @@
+BackendBundle\Entity\Playerpositionperuser:
+    type: entity
+    table: playerpositionperuser
+    indexes:
+        PlayerPositionPerUser_UserFK:
+            columns:
+                - userId
+        IDX_1785682E46DCA1B3:
+            columns:
+                - playerPositionId
+    id:
+        userid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: userId
+    fields:
+        prefered:
+            type: boolean
+            nullable: true
+        active:
+            type: boolean
+            nullable: true
+            options:
+                default: '1'
+    oneToOne:
+        playerpositionid:
+            targetEntity: Playerposition
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                playerPositionId:
+                    referencedColumnName: playerPositionId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

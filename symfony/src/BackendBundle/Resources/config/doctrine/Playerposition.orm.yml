@@ -27,22 +27,4 @@ BackendBundle\Entity\Playerposition:
         active:
             type: boolean
             nullable: true
-    manyToMany:
-        userid:
-            targetEntity: User
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: playerpositionid
-            joinTable:
-                name: playerpositionperuser
-                joinColumns:
-                    -
-                        name: playerPositionId
-                        referencedColumnName: playerPositionId
-                inverseJoinColumns:
-                    -
-                        name: userId
-                        referencedColumnName: userId
-            orderBy: null
     lifecycleCallbacks: {  }

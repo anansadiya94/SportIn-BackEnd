@@ -31,13 +31,4 @@ BackendBundle\Entity\Club:
             options:
                 fixed: false
                 comment: 'Siglas del club'
-    manyToMany:
-        userid:
-            targetEntity: User
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: clubid
-            inversedBy: null
-            joinTable: null
-            orderBy: null
     lifecycleCallbacks: {  }

@@ -29,13 +29,7 @@ BackendBundle\Entity\User:
             options:
                 fixed: false
             column: userName
-        surname1:
-            type: string
-            nullable: true
-            length: 45
-            options:
-                fixed: false
-        surname2:
+        surname:
             type: string
             nullable: true
             length: 45
@@ -88,6 +82,24 @@ BackendBundle\Entity\User:
             length: 65535
             options:
                 fixed: false
+        sex:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+        position:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+        historial:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
     manyToOne:
         countryid:
             targetEntity: Country
@@ -119,30 +131,4 @@ BackendBundle\Entity\User:
                 roleId:
                     referencedColumnName: roleId
             orphanRemoval: false
-    manyToMany:
-        clubid:
-            targetEntity: Club
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: userid
-            joinTable:
-                name: clubhistoryperuser
-                joinColumns:
-                    -
-                        name: userId
-                        referencedColumnName: userId
-                inverseJoinColumns:
-                    -
-                        name: clubId
-                        referencedColumnName: clubId
-            orderBy: null
-        playerpositionid:
-            targetEntity: Playerposition
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: userid
-            inversedBy: null
-            joinTable: null
-            orderBy: null
     lifecycleCallbacks: {  }

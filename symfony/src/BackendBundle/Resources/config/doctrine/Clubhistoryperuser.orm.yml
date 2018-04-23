@@ -1,0 +1,48 @@
+BackendBundle\Entity\Clubhistoryperuser:
+    type: entity
+    table: clubhistoryperuser
+    indexes:
+        ClubFK_idx:
+            columns:
+                - clubId
+    id:
+        userid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: userId
+    fields:
+        bio:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+        startdate:
+            type: date
+            nullable: true
+            column: startDate
+        enddate:
+            type: date
+            nullable: true
+            column: endDate
+        active:
+            type: boolean
+            nullable: true
+        current:
+            type: boolean
+            nullable: true
+    oneToOne:
+        clubid:
+            targetEntity: Club
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                clubId:
+                    referencedColumnName: clubId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

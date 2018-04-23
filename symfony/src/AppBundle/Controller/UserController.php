@@ -58,7 +58,7 @@ class UserController extends Controller
         // obtenr los datos de la petición
         $json_params = $request->get("json", null);
         //$json_token = $request->get("token", null);
-        var_dump($json_params);
+        //var_dump($json_params);
 
         $user = new User();
 
@@ -109,7 +109,7 @@ class UserController extends Controller
         //$user->addClubid($json_params->get("clubid"));
         //$user->addPlayerpositionid($json_params->get("playerpositionid"));
 
-        var_dump($user);
+        //var_dump($user);
         // Invocar al manejador de BD
         //$manager = $this->manager->getDoctrine()->getRepository("BackendBundle:User");
         //$manager = $this->getDoctrine()->getRepository("BackendBundle:User");
@@ -118,6 +118,16 @@ class UserController extends Controller
         $manager->persist($user);
         // Decirle que haga los cambios en BD
         $manager->flush();
+
+        return $helpers->json(
+            array(
+                "status" => "OK",
+                "code" => "200",
+                "data" => "User added correctly"
+            ));
+        die();
+
+
 
     }
     // USER/ GET

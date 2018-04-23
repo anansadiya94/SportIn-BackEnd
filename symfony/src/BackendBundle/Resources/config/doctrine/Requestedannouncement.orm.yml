@@ -19,6 +19,12 @@ BackendBundle\Entity\Requestedannouncement:
             generator:
                 strategy: IDENTITY
     fields:
+        userid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: userId
         requested:
             type: boolean
             nullable: true
@@ -40,15 +46,5 @@ BackendBundle\Entity\Requestedannouncement:
             joinColumns:
                 announcementId:
                     referencedColumnName: announcementId
-            orphanRemoval: false
-        userid:
-            targetEntity: User
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                userId:
-                    referencedColumnName: userId
             orphanRemoval: false
     lifecycleCallbacks: {  }

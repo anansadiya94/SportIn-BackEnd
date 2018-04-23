@@ -516,3 +516,4 @@ class User
         return $this->roleid;
     }
 }
+
