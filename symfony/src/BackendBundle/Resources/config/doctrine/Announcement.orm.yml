@@ -51,6 +51,12 @@ BackendBundle\Entity\Announcement:
             nullable: true
             options:
                 default: '0'
+        position:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
     manyToOne:
         categoryid:
             targetEntity: Category

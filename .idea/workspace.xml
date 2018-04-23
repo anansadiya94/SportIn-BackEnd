@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1dd64a92-a939-46b8-a5ed-306e1055ffac" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php" />
       <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Announcement.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Announcement.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Category.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Category.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Club.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Club.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Country.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Country.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Playerposition.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Playerposition.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Population.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Population.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Reactedannouncement.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Reactedannouncement.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Requestedannouncement.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Requestedannouncement.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Role.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Role.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Searchhistory.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Searchhistory.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/User.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Club.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Club.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Playerposition.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Playerposition.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Reactedannouncement.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Reactedannouncement.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Requestedannouncement.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Requestedannouncement.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Searchhistory.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Searchhistory.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/User.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/User.orm.yml" />
+      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Announcement.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Announcement.orm.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,11 +17,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1155">
               <caret line="60" column="10" lean-forward="false" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Announcement.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Announcement.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4626">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -391,12 +384,12 @@
       <workItem from="1524041095350" duration="3329000" />
       <workItem from="1524161822079" duration="1831000" />
       <workItem from="1524474979748" duration="2744000" />
-      <workItem from="1524478359041" duration="217000" />
+      <workItem from="1524478359041" duration="605000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38680000" />
+    <option name="totallyTimeSpent" value="39068000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -651,13 +644,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Announcement.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1953">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/symfony/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-567">
@@ -806,6 +792,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1155">
           <caret line="60" column="10" lean-forward="false" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Announcement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4626">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
