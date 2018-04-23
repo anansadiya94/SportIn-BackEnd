@@ -89,22 +89,22 @@ class UserController extends Controller
         $user->setHeight(json_decode($json_params)->{"height"},null);
         $user->setWeight(json_decode($json_params)->{"weight"},null);
         $user->setBio(json_decode($json_params)->{"bio"},null);
-        $roleId = json_decode($json_params)->{"roleId"};
-        $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
-            array("roleid" => $roleId)
-        );
-        $user->setRoleid($role);
+        //*$roleId = json_decode($json_params)->{"roleId"};
+        //*$role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
+            //*array("roleid" => $roleId)
+        //*);
+        //*$user->setRoleid($role);
 
-        $countryId = json_decode($json_params)->{"countryId"};
-        $country = $this->getDoctrine()->getRepository("BackendBundle:Country")->findOneBy(
-            array("countryid" => $countryId)
-        );
-        $user->setCountryid($country);
+        //*$countryId = json_decode($json_params)->{"countryId"};
+        //*$country = $this->getDoctrine()->getRepository("BackendBundle:Country")->findOneBy(
+          //*  array("countryid" => $countryId)
+    //*    );
+      //*  $user->setCountryid($country);
 
         $populationId = json_decode($json_params)->{"populationId"};
-        //$population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
-            //array("populationid" => $populationId)
-        //);
+        //*$population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
+            //*array("populationid" => $populationId)
+        //*);
         //$user->setPopulationid($population);
         //$user->setPopulationid("");
 
