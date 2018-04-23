@@ -105,7 +105,9 @@ class UserController extends Controller
         //$population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
             //array("populationid" => $populationId)
         //);
-        $user->setPopulationid($population);
+        //$user->setPopulationid($population);
+        $user->setPopulationid("");
+
         //$user->addClubid($json_params->get("clubid"));
         //$user->addPlayerpositionid($json_params->get("playerpositionid"));
 
