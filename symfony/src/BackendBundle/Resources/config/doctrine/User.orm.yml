@@ -88,6 +88,12 @@ BackendBundle\Entity\User:
             length: 1
             options:
                 fixed: false
+        foot:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
         position:
             type: string
             nullable: true

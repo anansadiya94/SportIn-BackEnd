@@ -225,4 +225,33 @@ class Announcement
     {
         return $this->categoryid;
     }
+    /**
+     * @var string
+     */
+    private $position;
+
+
+    /**
+     * Set position
+     *
+     * @param string $position
+     *
+     * @return Announcement
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return string
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
 }

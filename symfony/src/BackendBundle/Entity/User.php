@@ -515,4 +515,33 @@ class User
     {
         return $this->roleid;
     }
+    /**
+     * @var string
+     */
+    private $foot;
+
+
+    /**
+     * Set foot
+     *
+     * @param string $foot
+     *
+     * @return User
+     */
+    public function setFoot($foot)
+    {
+        $this->foot = $foot;
+
+        return $this;
+    }
+
+    /**
+     * Get foot
+     *
+     * @return string
+     */
+    public function getFoot()
+    {
+        return $this->foot;
+    }
 }

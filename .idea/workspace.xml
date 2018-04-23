@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1dd64a92-a939-46b8-a5ed-306e1055ffac" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Announcement.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Announcement.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Announcement.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Announcement.orm.yml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/User.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/User.php" />
+      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/User.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/User.orm.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,7 +63,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1524479491691" expanded="true" signature="2117:2389" ph="position: &lt;4 keys&gt;" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -384,12 +387,12 @@
       <workItem from="1524041095350" duration="3329000" />
       <workItem from="1524161822079" duration="1831000" />
       <workItem from="1524474979748" duration="2744000" />
-      <workItem from="1524478359041" duration="605000" />
+      <workItem from="1524478359041" duration="1146000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39068000" />
+    <option name="totallyTimeSpent" value="39609000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -768,7 +771,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1524479491691" expanded="true" signature="2117:2389" ph="position: &lt;4 keys&gt;" />
+          </folding>
         </state>
       </provider>
     </entry>
