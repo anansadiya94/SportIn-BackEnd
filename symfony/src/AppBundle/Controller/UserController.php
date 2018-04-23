@@ -77,7 +77,7 @@ class UserController extends Controller
         //ALTER TABLE favorite_food
         //ADD CONSTRAINT fk_fav_food_person_id FOREIGN KEY (person_id) REFERENCES person (person_id);
         json_decode($json_params);
-        $user->setUsername(json_decode($json_params)->{"username"},null);
+        $user->setUsername(json_decode($json_params)->{"username"}, "adonisp");
         $user->setSurname(json_decode($json_params)->{"surname"},null);
         //$user->setSurname2(json_decode($json_params)->{"surname2"},null);
         $user->setEmail(json_decode($json_params)->{"email"},null);
