@@ -129,8 +129,8 @@ class UserController extends Controller
                 "status" => "OK",
                 "code" => "200",
                 "data" => "User added correctly"
-                "json_params" => var_dump($json_params);
-                "user" => var_dump($user);
+                "json_params" => echo($json_params);
+                "user" => echo($user);
 
             ));
 
