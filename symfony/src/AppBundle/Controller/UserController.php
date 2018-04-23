@@ -106,7 +106,7 @@ class UserController extends Controller
             //array("populationid" => $populationId)
         //);
         //$user->setPopulationid($population);
-        $user->setPopulationid("");
+        //$user->setPopulationid("");
 
         //$user->addClubid($json_params->get("clubid"));
         //$user->addPlayerpositionid($json_params->get("playerpositionid"));
