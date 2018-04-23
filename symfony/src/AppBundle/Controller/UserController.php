@@ -60,6 +60,7 @@ class UserController extends Controller
         $helpers = $this->get("app.helpers");
         // obtenr los datos de la petición
         $json_params = $request->get("json", null);
+        return $json_params;
         //$json_token = $request->get("token", null);
         //var_dump($json_params);
 
