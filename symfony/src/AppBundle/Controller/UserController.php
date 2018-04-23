@@ -102,7 +102,7 @@ class UserController extends Controller
         $user->setCountryid($country);
 
         $populationId = json_decode($json_params)->{"populationId"};
-        $population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
+        //$population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
             array("populationid" => $populationId)
         );
         $user->setPopulationid($population);
