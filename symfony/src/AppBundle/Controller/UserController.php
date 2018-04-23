@@ -121,6 +121,9 @@ class UserController extends Controller
         $manager = $this->getDoctrine()->getManager();
         // Decirle al manejador que daras de alta ese objeto
         $manager->persist($user);
+        echo("----")
+        echo($json_params);
+        echo($user);
         // Decirle que haga los cambios en BD
         $manager->flush();
 
@@ -129,8 +132,7 @@ class UserController extends Controller
                 "status" => "OK",
                 "code" => "200",
                 "data" => "User added correctly"
-                "json_params" => echo($json_params);
-                "user" => echo($user);
+
 
             ));
 
