@@ -129,11 +129,11 @@ class UserController extends Controller
                 "status" => "OK",
                 "code" => "200",
                 "data" => "User added correctly"
+            ));
                 printr("---------------------------------");
                 printr($json_params);
                 var_dump($user);
                 printr("---------------------------------");
-            ));
         die();
 
 
