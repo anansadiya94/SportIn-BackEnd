@@ -34,6 +34,9 @@ class UserController extends Controller
                         "status" => "error",
                         "code" => "ER-0002",
                         "data" => "Email or password not valids!"
+
+    
+
                     ));
                 die();
             }
@@ -77,7 +80,7 @@ class UserController extends Controller
         //ALTER TABLE favorite_food
         //ADD CONSTRAINT fk_fav_food_person_id FOREIGN KEY (person_id) REFERENCES person (person_id);
         json_decode($json_params);
-        $user->setUsername(json_decode($json_params)->{"username"});
+        $user->setUsername(json_decode($json_params)->{"username"},null);
         $user->setSurname(json_decode($json_params)->{"surname"},null);
         //$user->setSurname2(json_decode($json_params)->{"surname2"},null);
         $user->setEmail(json_decode($json_params)->{"email"},null);
@@ -126,6 +129,10 @@ class UserController extends Controller
                 "status" => "OK",
                 "code" => "200",
                 "data" => "User added correctly"
+                printr("---------------------------------")
+                printr($json_params);
+                var_dump($user);
+                printr("---------------------------------")
             ));
         die();
 
