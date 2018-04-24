@@ -59,9 +59,9 @@ class UserController extends Controller
         // obtener el ser icio que me permitirá convertir a JSON
         $helpers = $this->get("app.helpers");
         // obtenr los datos de la petición
-        //*$json_params = $request->get("json", null);
+        $json_params = $request->get("json", null);
         //$json_params = $this->get($request)->getContent();
-        $json_params = $request->getContent();
+        //$json_params = $request->getContent();
         var_dump($request);
         var_dump($json_params);
         //$json_token = $request->get("token", null);
