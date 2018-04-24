@@ -62,8 +62,6 @@ class UserController extends Controller
         $json_params = $request->get("json", null);
         //$json_params = $this->get($request)->getContent();
         //$json_params = $request->getContent();
-        var_dump($request);
-        var_dump($json_params);
         //$json_token = $request->get("token", null);
         //var_dump($json_params);
 
