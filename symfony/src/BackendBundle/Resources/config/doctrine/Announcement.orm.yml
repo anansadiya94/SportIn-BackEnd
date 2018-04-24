@@ -1,6 +1,6 @@
 BackendBundle\Entity\Announcement:
     type: entity
-    table: announcement
+    table: Announcement
     indexes:
         CategoryFK_idx:
             columns:
@@ -51,21 +51,17 @@ BackendBundle\Entity\Announcement:
             nullable: true
             options:
                 default: '0'
+        categoryid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: categoryId
         position:
             type: string
             nullable: true
             length: 50
             options:
                 fixed: false
-    manyToOne:
-        categoryid:
-            targetEntity: Category
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                categoryId:
-                    referencedColumnName: categoryId
-            orphanRemoval: false
     lifecycleCallbacks: {  }

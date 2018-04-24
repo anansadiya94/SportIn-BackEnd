@@ -1,6 +1,6 @@
 BackendBundle\Entity\Role:
     type: entity
-    table: role
+    table: Role
     id:
         roleid:
             type: integer

@@ -13,3 +13,6 @@ services:
   app.jwt_auth:
     class: AppBundle\Services\JwtAuth
     arguments: ["@Doctrine.orm.entity_manager"]
+  app.image_loader:
+    class: AppBundle\Services\ImageLoader
+    arguments: ["%kernel.root_dir%"]

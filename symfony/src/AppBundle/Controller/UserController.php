@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use BackendBundle\Entity\Country;
 use BackendBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -94,10 +93,10 @@ class UserController extends Controller
         $user->setHeight(json_decode($json_params)->{"height"},null);
         $user->setWeight(json_decode($json_params)->{"weight"},null);
         $user->setBio(json_decode($json_params)->{"bio"},null);
-        $user->setBio(json_decode($json_params)->{"sex"},null);
-        $user->setBio(json_decode($json_params)->{"foot"},null);
-        $user->setBio(json_decode($json_params)->{"position"},null);
-         $user->setBio(json_decode($json_params)->{"historial"},null);
+        $user->setSex(json_decode($json_params)->{"sex"},null);
+        $user->setFoot(json_decode($json_params)->{"foot"},null);
+        $user->setPosition(json_decode($json_params)->{"position"},null);
+        $user->setHistorial(json_decode($json_params)->{"historial"},null);
         //*$roleId = json_decode($json_params)->{"roleId"};
         //*$role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
             //*array("roleid" => $roleId)

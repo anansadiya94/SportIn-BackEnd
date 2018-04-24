@@ -1,6 +1,6 @@
 BackendBundle\Entity\Category:
     type: entity
-    table: category
+    table: Category
     id:
         categoryid:
             type: integer

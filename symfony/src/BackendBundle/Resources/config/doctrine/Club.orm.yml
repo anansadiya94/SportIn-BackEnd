@@ -1,6 +1,6 @@
 BackendBundle\Entity\Club:
     type: entity
-    table: club
+    table: Club
     id:
         clubid:
             type: integer

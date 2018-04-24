@@ -1,6 +1,6 @@
 BackendBundle\Entity\Country:
     type: entity
-    table: country
+    table: Country
     id:
         countryid:
             type: integer
@@ -27,9 +27,9 @@ BackendBundle\Entity\Country:
                 comment: Abreviación
             column: NOC
         flag:
-            type: blob
-            nullable: true
-            length: 65535
+            type: string
+            nullable: false
+            length: 50
             options:
                 fixed: false
     lifecycleCallbacks: {  }

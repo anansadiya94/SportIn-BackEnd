@@ -1,6 +1,6 @@
 BackendBundle\Entity\Population:
     type: entity
-    table: population
+    table: Population
     id:
         populationid:
             type: integer

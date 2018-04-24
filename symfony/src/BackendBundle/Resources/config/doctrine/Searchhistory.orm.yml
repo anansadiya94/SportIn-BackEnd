@@ -1,6 +1,6 @@
 BackendBundle\Entity\Searchhistory:
     type: entity
-    table: searchhistory
+    table: SearchHistory
     indexes:
         UserFK_idx:
             columns:

@@ -1,6 +1,6 @@
 BackendBundle\Entity\Clubhistoryperuser:
     type: entity
-    table: clubhistoryperuser
+    table: ClubHistoryPerUser
     indexes:
         ClubFK_idx:
             columns:
@@ -13,6 +13,13 @@ BackendBundle\Entity\Clubhistoryperuser:
                 unsigned: false
             id: true
             column: userId
+        clubid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: clubId
     fields:
         bio:
             type: string
@@ -34,15 +41,4 @@ BackendBundle\Entity\Clubhistoryperuser:
         current:
             type: boolean
             nullable: true
-    oneToOne:
-        clubid:
-            targetEntity: Club
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                clubId:
-                    referencedColumnName: clubId
-            orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -1,14 +1,18 @@
 BackendBundle\Entity\Playerpositionperuser:
     type: entity
-    table: playerpositionperuser
+    table: PlayerPositionPerUser
     indexes:
         PlayerPositionPerUser_UserFK:
             columns:
                 - userId
-        IDX_1785682E46DCA1B3:
-            columns:
-                - playerPositionId
     id:
+        playerpositionid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: playerPositionId
         userid:
             type: integer
             nullable: false
@@ -25,15 +29,4 @@ BackendBundle\Entity\Playerpositionperuser:
             nullable: true
             options:
                 default: '1'
-    oneToOne:
-        playerpositionid:
-            targetEntity: Playerposition
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                playerPositionId:
-                    referencedColumnName: playerPositionId
-            orphanRemoval: false
     lifecycleCallbacks: {  }

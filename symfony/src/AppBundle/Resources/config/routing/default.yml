@@ -32,3 +32,8 @@ default_announcement:
   path: /announcement
   defaults: { _controller: "AppBundle:Announcement:announcement"}
   methods: GET
+
+default_country:
+  path: /country/{id}
+  defaults: { _controller: "AppBundle:Country:show", id : null}
+  methods: GET

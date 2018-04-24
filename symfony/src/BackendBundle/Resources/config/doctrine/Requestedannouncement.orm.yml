@@ -1,6 +1,6 @@
 BackendBundle\Entity\Requestedannouncement:
     type: entity
-    table: requestedannouncement
+    table: RequestedAnnouncement
     indexes:
         UserFK_idx:
             columns:
@@ -19,6 +19,12 @@ BackendBundle\Entity\Requestedannouncement:
             generator:
                 strategy: IDENTITY
     fields:
+        announcementid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: announcementId
         userid:
             type: integer
             nullable: true
@@ -36,15 +42,4 @@ BackendBundle\Entity\Requestedannouncement:
         active:
             type: boolean
             nullable: true
-    manyToOne:
-        announcementid:
-            targetEntity: Announcement
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                announcementId:
-                    referencedColumnName: announcementId
-            orphanRemoval: false
     lifecycleCallbacks: {  }

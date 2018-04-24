@@ -1,6 +1,6 @@
 BackendBundle\Entity\User:
     type: entity
-    table: user
+    table: User
     indexes:
         CountryFK_idx:
             columns:
@@ -35,6 +35,12 @@ BackendBundle\Entity\User:
             length: 45
             options:
                 fixed: false
+        roleid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: roleId
         email:
             type: string
             nullable: true
@@ -59,6 +65,18 @@ BackendBundle\Entity\User:
             nullable: true
             options:
                 unsigned: false
+        countryid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: countryId
+        populationid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: populationId
         profilephoto:
             type: blob
             nullable: true
@@ -106,35 +124,4 @@ BackendBundle\Entity\User:
             length: 65535
             options:
                 fixed: false
-    manyToOne:
-        countryid:
-            targetEntity: Country
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                countryId:
-                    referencedColumnName: countryId
-            orphanRemoval: false
-        populationid:
-            targetEntity: Population
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                populationId:
-                    referencedColumnName: populationId
-            orphanRemoval: false
-        roleid:
-            targetEntity: Role
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                roleId:
-                    referencedColumnName: roleId
-            orphanRemoval: false
     lifecycleCallbacks: {  }

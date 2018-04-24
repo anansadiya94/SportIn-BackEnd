@@ -1,6 +1,6 @@
 BackendBundle\Entity\Playerposition:
     type: entity
-    table: playerposition
+    table: PlayerPosition
     id:
         playerpositionid:
             type: integer
