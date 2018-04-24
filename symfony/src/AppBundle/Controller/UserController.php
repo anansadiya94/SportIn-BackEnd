@@ -96,6 +96,8 @@ class UserController extends Controller
         $user->setBio(json_decode($json_params)->{"bio"},null);
         $user->setBio(json_decode($json_params)->{"sex"},null);
         $user->setBio(json_decode($json_params)->{"foot"},null);
+        $user->setBio(json_decode($json_params)->{"position"},null);
+         $user->setBio(json_decode($json_params)->{"historial"},null);
         //*$roleId = json_decode($json_params)->{"roleId"};
         //*$role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
             //*array("roleid" => $roleId)
