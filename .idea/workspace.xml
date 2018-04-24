@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1dd64a92-a939-46b8-a5ed-306e1055ffac" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/symfony/src/AppBundle/Services/ImageLoader.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/symfony/app/config/services.yml" afterPath="$PROJECT_DIR$/symfony/app/config/services.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/AppBundle/Controller/CountryController.php" afterPath="$PROJECT_DIR$/symfony/src/AppBundle/Controller/CountryController.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/AppBundle/Resources/config/routing/default.yml" afterPath="$PROJECT_DIR$/symfony/src/AppBundle/Resources/config/routing/default.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Announcement.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Announcement.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Category.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Category.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Club.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Club.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Clubhistoryperuser.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Clubhistoryperuser.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Country.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Country.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Playerposition.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Playerposition.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Playerpositionperuser.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Playerpositionperuser.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Population.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Population.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Reactedannouncement.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Reactedannouncement.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Requestedannouncement.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Requestedannouncement.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Role.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Role.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Searchhistory.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Searchhistory.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/User.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/User.orm.yml" />
+      <change beforePath="$PROJECT_DIR$/symfony/src/AppBundle/Services/ImageLoader.php" afterPath="$PROJECT_DIR$/symfony/src/AppBundle/Services/ImageLoader.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -69,8 +51,18 @@
       <file leaf-file-name="ImageLoader.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Services/ImageLoader.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state relative-caret-position="567">
+              <caret line="32" column="38" lean-forward="false" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parameters.yml" pinned="true" current-in-tab="false">
+        <entry file="remoteDeploymentFS://&lt;2c9396e4-19e0-4b63-87d8-91dc11b2951e&gt;/app/config/parameters.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -163,7 +155,7 @@
       <path value="$PROJECT_DIR$/symfony/vendor/knplabs/knp-paginator-bundle" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -333,10 +325,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46962000" />
+    <option name="totallyTimeSpent" value="47481000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1098" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23229167" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -765,8 +757,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Services/ImageLoader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        <state relative-caret-position="567">
+          <caret line="32" column="38" lean-forward="false" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
           <folding />
         </state>
       </provider>

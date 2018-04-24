@@ -30,7 +30,7 @@ class ImageLoader
     public function loadImageFromPath($country){
         $publicResourcesFolderPath =
             $this->root_dir.
-            '\..\web\resources\images\countries';
+            '/../web/resources/images/countries';
         $filename = "/".$country->getFlag();
         $encoded_image = base64_encode(
             file_get_contents($publicResourcesFolderPath.$filename));
