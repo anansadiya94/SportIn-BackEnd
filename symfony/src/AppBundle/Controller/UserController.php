@@ -115,8 +115,8 @@ class UserController extends Controller
         //$populationId = json_decode($json_params)->{"populationId"};
         //$population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
         //   array("populationid" => $populationId)
-        );
-        $user->setPopulationid($population);
+        //);
+        //$user->setPopulationid($population);
         $manager = $this->getDoctrine()->getManager();
         // Decirle al manejador que daras de alta ese objeto
         $manager->persist($user);
