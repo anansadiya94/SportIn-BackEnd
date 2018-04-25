@@ -33,7 +33,7 @@ default_announcement:
   defaults: { _controller: "AppBundle:Announcement:announcement"}
   methods: GET
 
-announcements_show:
+announcements_shows:
   path: /announcement/
   defaults: { _controller: "AppBundle:Announcement:shows"}
   methods: GET
