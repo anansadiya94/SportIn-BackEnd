@@ -76,14 +76,14 @@ class AnnouncementController extends Controller
         $announcement->setActive(json_decode($json_params)->{"active"},null);
         $announcement->setDescription(json_decode($json_params)->{"description"},null);
         $announcement->setModified(json_decode($json_params)->{"modified"},null);
-
+/*
         $categoryId = json_decode($json_params)->{"categoryId"};
 
         $category = $this->getDoctrine()->getRepository("BackendBundle:Category")->findOneBy(
             array("categoryid" => $categoryId)
         );
         $announcement->setCategoryid($category);
-
+*/
         //Nose si se quiere por id o por nombre estatico...
         $announcement->setPosition(json_decode($json_params)->{"position"},null);
 
