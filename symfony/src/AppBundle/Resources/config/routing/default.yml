@@ -63,17 +63,17 @@ default_clubhistoryperuser_show:
   defaults: { _controller: "AppBundle:Clubhistoryperuser:show", userid : 1}
   methods: GET
 
-country_showCountries:
-  path: /countries/
-  defaults: { _controller: "AppBundle:Country:showCountries"}
-  methods: GET
+#country_showCountries:
+ # path: /countries/
+  #defaults: { _controller: "AppBundle:Country:showCountries"}
+  #methods: GET
 
-country_showPopulations:
-  path: /populations/
-  defaults: { _controller: "AppBundle:Country:showPopulations"}
-  methods: GET
+#country_showPopulations:
+ # path: /populations/
+  #defaults: { _controller: "AppBundle:Country:showPopulations"}
+  #methods: GET
 
-  default_country:
-  path: /country/{id}
-  defaults: { _controller: "AppBundle:Country:show", id : null}
-  methods: GET
+  #default_country:
+  #path: /country/{id}
+  #defaults: { _controller: "AppBundle:Country:show", id : null}
+  #methods: GET
