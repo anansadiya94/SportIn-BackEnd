@@ -33,4 +33,23 @@ class CountryController extends Controller
         $country_results = $image_loader->loadImage($country_results);
         return $helpers->json($country_results);
     }
+
+    //GET /countries/
+     public function showCountriesAction(){
+        $helpers = $this->get("app.helpers");
+
+        $history = $this->getDoctrine()->getRepository("BackendBundle:Country")->findAll();
+
+        return $helpers->json($history);
+    }
+
+    //GET /populations/
+    public function showPopulationsAction(){
+        $helpers = $this->get("app.helpers");
+
+        $history = $this->getDoctrine()->getRepository("BackendBundle:Population")->findAll();
+
+        return $helpers->json($history);
+    }
 }
+
