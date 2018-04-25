@@ -31,7 +31,7 @@ announcement_show:
 default_announcement:
   path: /announcement
   defaults: { _controller: "AppBundle:Announcement:announcement"}
-  methods: GET
+  methods: POST
 
 announcements_shows:
   path: /announcement/
@@ -42,6 +42,7 @@ announcements_user_show:
   path: /announcementPerUser/{userid}
   defaults: { _controller: "AppBundle:Announcement:showUserAnnouncements", userid : 1}
   methods: GET
+
 
 default_playerpositionperuser_show:
   path: /playerpositionperuser/{userid}
