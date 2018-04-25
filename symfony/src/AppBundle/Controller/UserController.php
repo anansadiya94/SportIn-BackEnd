@@ -103,7 +103,7 @@ class UserController extends Controller
         $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
             array("roleid" => $roleId)
         );
-        
+
         $user->setRoleid($role);
 
         $countryId = json_decode($json_params)->{"countryId"};
@@ -112,9 +112,9 @@ class UserController extends Controller
         );
         $user->setCountryid($country);
 
-        $populationId = json_decode($json_params)->{"populationId"};
-        $population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
-            array("populationid" => $populationId)
+        //$populationId = json_decode($json_params)->{"populationId"};
+        //$population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
+        //   array("populationid" => $populationId)
         );
         $user->setPopulationid($population);
         $manager = $this->getDoctrine()->getManager();
