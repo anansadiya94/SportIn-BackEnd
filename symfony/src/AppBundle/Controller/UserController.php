@@ -66,20 +66,6 @@ class UserController extends Controller
 
         $user = new User();
 
-        //AÑADIR ESTO A LA BASE DE DATOS
-
-        //sexo,pierna, borrar surname2
-        //ALTER TABLE clubhistoryperuser DROP FOREIGN KEY clubHistoryPerUser_UserFK;
-        //ALTER TABLE playerpositionperuser DROP FOREIGN KEY playerPositionPerUser_UserFK;
-        //ALTER TABLE reactedannouncement DROP FOREIGN KEY ReactedAnnouncement_UserFK;
-        //ALTER TABLE searchhistory DROP FOREIGN KEY SearchHistory_UserFK;
-        //ALTER TABLE requestedannouncement DROP FOREIGN KEY RequestedAnnouncement_UserFK;
-        //ALTER TABLE user MODIFY userId INT(11)AUTO_INCREMENT;
-        //FALTA VOLVER A PONER LOS FOREIGN KEY -- EJEMPLO
-
-        //https://stackoverflow.com/questions/13606469/cannot-change-column-used-in-a-foreign-key-constraint
-        //ALTER TABLE favorite_food
-        //ADD CONSTRAINT fk_fav_food_person_id FOREIGN KEY (person_id) REFERENCES person (person_id);
         json_decode($json_params);
         $user->setUsername(json_decode($json_params)->{"username"},null);
         $user->setSurname(json_decode($json_params)->{"surname"},null);
@@ -98,13 +84,14 @@ class UserController extends Controller
         $user->setFoot(json_decode($json_params)->{"foot"},null);
         $user->setPosition(json_decode($json_params)->{"position"},null);
         $user->setHistorial(json_decode($json_params)->{"historial"},null);
-
+/*
         $roleId = json_decode($json_params)->{"roleId"};
         $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
             array("roleid" => $roleId)
         );
 
         $user->setRoleid($role);
+*/
 
 /**     $countryId = json_decode($json_params)->{"countryId"};
         $country = $this->getDoctrine()->getRepository("BackendBundle:Country")->findOneBy(
@@ -130,15 +117,11 @@ class UserController extends Controller
                 "status" => "OK",
                 "code" => "200",
                 "data" => "User added correctly"
-
-
             ));
-
         die();
 
-
-
     }
+
     // USER/ GET
     public function showAction(Request $request, $id){
         $helpers = $this->get("app.helpers");
