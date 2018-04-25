@@ -15,27 +15,50 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class AnnouncementController extends Controller
 {
 
-    //announcement/1
+    //GET /announcement/id
     public function showAction($id){
         $helpers = $this->get("app.helpers");
-        if($id == null){
-            $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findAll();
-        }else{
-            $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findOneBy(
-                array("announcementid" => $id)
-            );
-        }
+        $announcement = new Announcement();
 
+        $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findOneBy(
+            array("announcementid" => $id)
+        );
 
         return $helpers->json($announcement);
 
     }
 
-    // /announcement
+    //GET /announcement/
+    public function showsAction(){
+        $helpers = $this->get("app.helpers");
+        $announcement = new Announcement();
+
+        $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findAll();
+
+        return $helpers->json($announcement);
+
+    }
+
+    //GET /announcementPerUser/userid
+    public function showUserAnnouncementsAction($userid){
+        $helpers = $this->get("app.helpers");
+        $announcement = new Announcement();
+
+        $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findBy(
+            array("userid" => $userid)
+        );
+
+            return $helpers->json($announcement);
+    }
+
+    //POST /announcement
+    // {"title" : "siu","description" : "descriptionsiiuu","userId" : 4,"active" : "1","modified" : "1","categoryId" : 1, "position": "EI"}
     public function announcementAction(Request $request){
 
         // obtener el ser icio que me permitirá convertir a JSON
@@ -47,11 +70,9 @@ class AnnouncementController extends Controller
 
         $announcement = new Announcement();
 
-        //FALLA LA FECHA, NO SE CAMBIA BIEN AL FORMATO DE LA BASE DE DATOS
-        json_decode($json_params);
         $announcement->setUserid(json_decode($json_params)->{"userId"},null);
         $announcement->setTitle(json_decode($json_params)->{"title"},null);
-        $announcement->setPublicationdate(json_decode($json_params)->{"publicationDate"},null);
+        $announcement->setPublicationdate(new \DateTime('now'));
         $announcement->setActive(json_decode($json_params)->{"active"},null);
         $announcement->setDescription(json_decode($json_params)->{"description"},null);
         $announcement->setModified(json_decode($json_params)->{"modified"},null);
@@ -63,20 +84,41 @@ class AnnouncementController extends Controller
         );
         $announcement->setCategoryid($category);
 
+        //Nose si se quiere por id o por nombre estatico...
+        $announcement->setPosition(json_decode($json_params)->{"position"},null);
+
+        /*
+        //ESTO PARA CUANDO SE ACTUALIZE LA BASE DE DATOS CON NUEVOS CAMPOS
+        $populationId = json_decode($json_params)->{"populationId"};
+        $population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
+            array("populationid" => $populationId)
+        );
+        $announcement->setPopulationid($population);
+
+        $roleId = json_decode($json_params)->{"roleId"};
+        $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
+            array("roleid" => $roleId)
+        );
+        $announcement->setRoleid($role);
+
+        //este depende de la base de datos, si quiere que sea id o nombre directamente...
+        $positionId = json_decode($json_params)->{"position"};
+        $position = $this->getDoctrine()->getRepository("BackendBundle:Playerposition")->findOneBy(
+            array("playerpositionid" => $positionId)
+        );
+        $announcement->setPosition($position);
+        */
+
+
         var_dump($announcement);
         // Invocar al manejador de BD
-        //$manager = $this->manager->getDoctrine()->getRepository("BackendBundle:User");
-        //$manager = $this->getDoctrine()->getRepository("BackendBundle:User");
         $manager = $this->getDoctrine()->getManager();
         // Decirle al manejador que daras de alta ese objeto
         $manager->persist($announcement);
         // Decirle que haga los cambios en BD
         $manager->flush();
+        //return necesario
+        return new Response();
 
     }
-
-
-
-
-
 }

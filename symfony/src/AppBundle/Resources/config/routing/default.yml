@@ -33,7 +33,47 @@ default_announcement:
   defaults: { _controller: "AppBundle:Announcement:announcement"}
   methods: GET
 
-default_country:
+announcements_show:
+  path: /announcement/
+  defaults: { _controller: "AppBundle:Announcement:shows"}
+  methods: GET
+
+announcements_user_show:
+  path: /announcementPerUser/{userid}
+  defaults: { _controller: "AppBundle:Announcement:showUserAnnouncements", userid : 1}
+  methods: GET
+
+default_playerpositionperuser_show:
+  path: /playerpositionperuser/{userid}
+  defaults: { _controller: "AppBundle:Playerpositionperuser:show", userid : 1}
+  methods: GET
+
+default_playerpositionperuser_post:
+  path: /playerpositionperuser
+  defaults: { _controller: "AppBundle:Playerpositionperuser:playerpositionperuser"}
+  methods: POST
+
+default_clubhistoryperuser_post:
+  path: /clubhistoryperuser
+  defaults: { _controller: "AppBundle:Clubhistoryperuser:clubhistoryperuser"}
+  methods: POST
+
+default_clubhistoryperuser_show:
+  path: /clubhistoryperuser/{userid}
+  defaults: { _controller: "AppBundle:Clubhistoryperuser:show", userid : 1}
+  methods: GET
+
+country_showCountries:
+  path: /countries/
+  defaults: { _controller: "AppBundle:Country:showCountries"}
+  methods: GET
+
+country_showPopulations:
+  path: /populations/
+  defaults: { _controller: "AppBundle:Country:showPopulations"}
+  methods: GET
+
+  default_country:
   path: /country/{id}
   defaults: { _controller: "AppBundle:Country:show", id : null}
   methods: GET
