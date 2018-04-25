@@ -88,6 +88,7 @@ class UserController extends Controller
         $user->setPassword(json_decode($json_params)->{"password"},null); //cifrar
         $user->setActive(json_decode($json_params)->{"active"},null);
         //$user->setBirthdate(json_decode($json_params)->{"birthDate"},null);
+         $user->setBirthdate(new \DateTime(json_decode($json_params)->{"birthDate"},null));
         $user->setAge(json_decode($json_params)->{"age"},null);
         //$user->setProfilephoto(json_decode($json_params)->{"profilePhoto"},null);
         $user->setHeight(json_decode($json_params)->{"height"},null);
@@ -97,32 +98,25 @@ class UserController extends Controller
         $user->setFoot(json_decode($json_params)->{"foot"},null);
         $user->setPosition(json_decode($json_params)->{"position"},null);
         $user->setHistorial(json_decode($json_params)->{"historial"},null);
-        //*$roleId = json_decode($json_params)->{"roleId"};
-        //*$role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
-            //*array("roleid" => $roleId)
-        //*);
-        //*$user->setRoleid($role);
 
-        //*$countryId = json_decode($json_params)->{"countryId"};
-        //*$country = $this->getDoctrine()->getRepository("BackendBundle:Country")->findOneBy(
-          //*  array("countryid" => $countryId)
-    //*    );
-      //*  $user->setCountryid($country);
+        $roleId = json_decode($json_params)->{"roleId"};
+        $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
+            array("roleid" => $roleId)
+        );
+        
+        $user->setRoleid($role);
+
+        $countryId = json_decode($json_params)->{"countryId"};
+        $country = $this->getDoctrine()->getRepository("BackendBundle:Country")->findOneBy(
+            array("countryid" => $countryId)
+        );
+        $user->setCountryid($country);
 
         $populationId = json_decode($json_params)->{"populationId"};
-        //*$population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
-            //*array("populationid" => $populationId)
-        //*);
-        //$user->setPopulationid($population);
-        //$user->setPopulationid("");
-
-        //$user->addClubid($json_params->get("clubid"));
-        //$user->addPlayerpositionid($json_params->get("playerpositionid"));
-
-        //var_dump($user);
-        // Invocar al manejador de BD
-        //$manager = $this->manager->getDoctrine()->getRepository("BackendBundle:User");
-        //$manager = $this->getDoctrine()->getRepository("BackendBundle:User");
+        $population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
+            array("populationid" => $populationId)
+        );
+        $user->setPopulationid($population);
         $manager = $this->getDoctrine()->getManager();
         // Decirle al manejador que daras de alta ese objeto
         $manager->persist($user);
