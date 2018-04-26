@@ -84,14 +84,14 @@ class UserController extends Controller
         $user->setFoot(json_decode($json_params)->{"foot"},null);
         $user->setPosition(json_decode($json_params)->{"position"},null);
         $user->setHistorial(json_decode($json_params)->{"historial"},null);
-/*
+
         $roleId = json_decode($json_params)->{"roleId"};
         $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
             array("roleid" => $roleId)
         );
 
         $user->setRoleid($role);
-*/
+
 
 /**     $countryId = json_decode($json_params)->{"countryId"};
         $country = $this->getDoctrine()->getRepository("BackendBundle:Country")->findOneBy(
