@@ -50,10 +50,11 @@ class AnnouncementController extends Controller
         $conn = $entityManager->getConnection();
 
         $sql = "SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId";
-
+        var_dump($sql);
         $stmt = $conn->prepare($sql);
+        var_dump($stmt);
         $stmt->execute();
-        echo($stmt);
+
         // returns an array of arrays (i.e. a raw data set)
         $res = $stmt->fetchAll();
         return $helpers->json($res);
