@@ -37,13 +37,30 @@ class AnnouncementController extends Controller
     //GET /announcement/
     public function showsAction(){
  
+ /*
         $helpers = $this->get("app.helpers");
         $announcement = new Announcement();
 
         $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findAll();
 
         return $helpers->json($announcement);
+*/
 
+         // Equivalent DQL query: "select u from User u join u.address a WHERE u.name = ?1"
+        // User owns association to an Address and the Address is loaded in the query.
+        $rsm = new ResultSetMapping;
+        $rsm->addEntityResult('BackendBundle:Announcement', 'a');
+        //$rsm->addEntityResult('Announcement', 'a');
+        $rsm->addFieldResult('a', 'userid', 'userid');
+
+        //$rsm->addJoinedEntityResult('Announcement' , 'a', 'u', 'User');
+         $rsm->addJoinedEntityResult('BackendBundle:User','u','a','userid'); //tried with and without
+
+        $sql = 'SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId';
+        //$query = $this->em->createNativeQuery('SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId', $rsm);
+        $query = $this->getEntityManager()->createNativeQuery($sql,$rsm);
+        $users = $query->getResult();
+        return $users;
     }
 
 
