@@ -45,19 +45,6 @@ class AnnouncementController extends Controller
 
     }
 
-    public function getUsers(){
-        return $this->createQueryBuilder('User')
-        // p.category refers to the "category" property on product
-        ->innerJoin('User.userid', 'c')
-        // selects all the category data to avoid the query
-        ->addSelect('c')
-        ->andWhere('p.id = :id')
-        ->setParameter('id', $productId)
-        ->getQuery()
-        ->getOneOrNullResult();
-    }  
-
-
 
     //GET /announcementPerUser/userid
     public function showUserAnnouncementsAction($userid){
@@ -90,14 +77,14 @@ class AnnouncementController extends Controller
         $announcement->setActive(json_decode($json_params)->{"active"},null);
         $announcement->setDescription(json_decode($json_params)->{"description"},null);
         $announcement->setModified(json_decode($json_params)->{"modified"},null);
-/*
+
         $categoryId = json_decode($json_params)->{"categoryId"};
 
         $category = $this->getDoctrine()->getRepository("BackendBundle:Category")->findOneBy(
             array("categoryid" => $categoryId)
         );
         $announcement->setCategoryid($category);
-*/
+
         //Nose si se quiere por id o por nombre estatico...
         $announcement->setPosition(json_decode($json_params)->{"position"},null);
 
