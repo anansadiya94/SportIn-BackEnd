@@ -72,7 +72,7 @@ class AnnouncementController extends Controller
 */
             $res = $this
         ->getDoctrine()
-        ->createQuery('SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId')
+        ->createQuery('SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId');
         ->getResult();
     return new JsonResponse($res);
     }
