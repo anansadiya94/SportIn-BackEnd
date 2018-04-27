@@ -109,4 +109,9 @@ class Country
     {
         return $this->flag;
     }
+
+     public function __toString()
+{
+    return strval( $this->getCountryid() );
+}
 }

@@ -92,20 +92,19 @@ class UserController extends Controller
 
         $user->setRoleid($role);
 
-
-     $countryId = json_decode($json_params)->{"countryId"};
+        $countryId = json_decode($json_params)->{"countryId"};
         $country = $this->getDoctrine()->getRepository("BackendBundle:Country")->findOneBy(
             array("countryid" => $countryId)
         );
         $user->setCountryid($country);
 
-
+/*
         $populationId = json_decode($json_params)->{"populationId"};
         $population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
           array("populationid" => $populationId)
         );
         $user->setPopulationid($population);
-
+*/
         $manager = $this->getDoctrine()->getManager();
         // Decirle al manejador que daras de alta ese objeto
         $manager->persist($user);
@@ -140,4 +139,7 @@ class UserController extends Controller
         $email_constraint->message = "The email is not valid!";
         return $this->get("validator")->validate($email, $email_constraint);
     }
+
+
+
 }

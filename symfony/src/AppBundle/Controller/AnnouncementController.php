@@ -45,6 +45,20 @@ class AnnouncementController extends Controller
 
     }
 
+    public function getUsers(){
+        return $this->createQueryBuilder('User')
+        // p.category refers to the "category" property on product
+        ->innerJoin('User.userid', 'c')
+        // selects all the category data to avoid the query
+        ->addSelect('c')
+        ->andWhere('p.id = :id')
+        ->setParameter('id', $productId)
+        ->getQuery()
+        ->getOneOrNullResult();
+    }  
+
+
+
     //GET /announcementPerUser/userid
     public function showUserAnnouncementsAction($userid){
         $helpers = $this->get("app.helpers");
