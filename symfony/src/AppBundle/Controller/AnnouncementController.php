@@ -73,10 +73,9 @@ class AnnouncementController extends Controller
         //$rsm->addJoinedEntityResult('Announcement' , 'a', 'u', 'User');
          $rsm->addJoinedEntityResult('BackendBundle:User','u','a','userid'); //tried with and without
 
-        //$sql = 'SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId';
-        $query = $this->em->createNativeQuery('SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId', $rsm);
-        $query = $this->getEntityManager()->createNativeQuery($sql, $rsm);
-
+        $sql = 'SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId';
+        //$query = $this->em->createNativeQuery('SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId', $rsm);
+        $query = $this->getEntityManager()->createNativeQuery($sql,$rsm);
         $users = $query->getResult();
         return $users;
 
