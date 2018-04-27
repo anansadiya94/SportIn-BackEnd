@@ -55,7 +55,7 @@ class AnnouncementController extends Controller
 
         // returns an array of arrays (i.e. a raw data set)
         $res = $stmt->fetchAll();
-        echo($res);
+        var_dump($res);
         return $helpers->json($res);
 
     }
