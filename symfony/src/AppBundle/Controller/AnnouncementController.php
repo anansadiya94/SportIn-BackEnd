@@ -45,7 +45,8 @@ class AnnouncementController extends Controller
         return $helpers->json($announcement);
 */
         $helpers = $this->get("app.helpers");
-        $conn = $this->getEntityManager()->getConnection();
+        $entityManager = $this->getDoctrine()->getManager();
+        $conn = $entityManager->getConnection();
 
         $sql = "SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId";
 
