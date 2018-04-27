@@ -70,8 +70,9 @@ class AnnouncementController extends Controller
         $rsm->addFieldResult('a', 'userid', 'userid');
         $rsm->addJoinedEntityResult('Announcement' , 'a', 'u', 'User');
 
-        $sql = 'SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId';
-        $query = $this->getDoctrine()->getManager()->createNativeQuery($sql, $rsm);
+        //$sql = 'SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId';
+        $query = $this->em->createNativeQuery('SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId', $rsm);
+        $query = $this->getEntityManager()->createNativeQuery($sql, $rsm);
 
         $users = $query->getResult();
         return $user;
