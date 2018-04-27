@@ -75,7 +75,7 @@ class AnnouncementController extends Controller
         $query = $this->getEntityManager()->createNativeQuery($sql, $rsm);
 
         $users = $query->getResult();
-        return $user;
+        return $users;
 
     }
 
