@@ -544,4 +544,9 @@ class User
     {
         return $this->foot;
     }
+
+    public function __toString()
+{
+    return strval( $this->getUserid() );
+}
 }

@@ -254,4 +254,9 @@ class Announcement
     {
         return $this->position;
     }
+
+    public function __toString()
+{
+    return strval( $this->getAnnouncementid() );
+}
 }

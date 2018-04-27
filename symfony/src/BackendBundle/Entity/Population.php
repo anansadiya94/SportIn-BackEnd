@@ -109,4 +109,9 @@ class Population
     {
         return $this->postalcode;
     }
+
+    public function __toString()
+{
+    return strval( $this->getPopulationid();
+}
 }
