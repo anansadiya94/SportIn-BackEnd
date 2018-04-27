@@ -45,18 +45,14 @@ class AnnouncementController extends Controller
         return $helpers->json($announcement);
 */
         $helpers = $this->get("app.helpers");
-        $entityManager = $this->getDoctrine()->getManager();
-        $conn = $entityManager->getConnection();
+        $announcement = new Announcement();
 
-        $sql = "SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId";
+        $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findAll();
+        $user = $this->getDoctrine()->getRepository("BackendBundle:User")->findOneBy(
+            array("userId" => $user))
+        return $helpers->json($user);
 
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
 
-        // returns an array of arrays (i.e. a raw data set)
-        $res = $stmt->fetchAll();
-        var_dump($res);
-        return $helpers->json($res);
 
     }
 
