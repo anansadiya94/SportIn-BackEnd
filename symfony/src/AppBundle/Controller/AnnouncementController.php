@@ -46,10 +46,12 @@ class AnnouncementController extends Controller
 */
 
         $helpers = $this->get("app.helpers");
+        $conn = $this->getDoctrine()->connection('http://127.0.0.1', 'announcements');
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
         $statement = $connection->prepare("SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId");
         $statement->execute();
+        $this->getDoctrine()->closeConnection($conn);
         return $helpers->json($statement->fetchAll());
     }
 
