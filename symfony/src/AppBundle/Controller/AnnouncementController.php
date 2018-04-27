@@ -45,36 +45,11 @@ class AnnouncementController extends Controller
 
         return $helpers->json($announcement);
 */
-        /*
-         // Equivalent DQL query: "select u from User u join u.address a WHERE u.name = ?1"
-        // User owns association to an Address and the Address is loaded in the query.
-        $rsm = new ResultSetMapping;
-        $rsm->addEntityResult('BackendBundle:Announcement', 'a');
-        //$rsm->addEntityResult('Announcement', 'a');
-        $rsm->addFieldResult('a', 'userid', 'userid');
-
-        //$rsm->addJoinedEntityResult('Announcement' , 'a', 'u', 'User');
-         $rsm->addJoinedEntityResult('BackendBundle:User','u','a','userid'); //tried with and without
-
-        $sql = 'SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId';
-        //$query = $this->em->createNativeQuery('SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId', $rsm);
-        $query = $this->getEntityManager()->createNativeQuery($sql,$rsm);
-        $users = $query->getResult();
-        return $users;
-        */
-
-/*
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
         $statement = $connection->prepare("SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId");
         $statement->execute();
-        return $statement->fetchAll();
-*/
-            $res = $this
-        ->getDoctrine()
-        ->createQuery('SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId');
-        ->getResult();
-    return new JsonResponse($res);
+        return new Response($helpers->json($statement->fetchAll()));
     }
 
 
