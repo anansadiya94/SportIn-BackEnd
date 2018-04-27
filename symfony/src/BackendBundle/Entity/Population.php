@@ -112,6 +112,6 @@ class Population
 
     public function __toString()
 {
-    return strval( $this->getPopulationid();
+    return strval( $this->getPopulationid());
 }
 }
