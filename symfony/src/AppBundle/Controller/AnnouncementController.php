@@ -50,7 +50,7 @@ class AnnouncementController extends Controller
         $connection = $em->getConnection();
         $statement = $connection->prepare("SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId");
         $statement->execute();
-        return $helpers->json($statement);
+        return $helpers->json($statement->fetchAll());
     }
 
 
