@@ -44,17 +44,20 @@ class AnnouncementController extends Controller
 
         return $helpers->json($announcement);
 */
-
+        echo("---prueba");
         $helpers = $this->get("app.helpers");
-        $conn = $this->getDoctrine()->connection('http://127.0.0.1', 'announcement');
-        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
-        $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId");
-        echo "statament -------------------------\n";
-        var_dump($statement);
-        $statement->execute();
-        $this->getDoctrine()->closeConnection($conn);
-        return $helpers->json($statement->fetchAll());
+        $entityManager = $this->getDoctrine()->getManager();
+        $conn = $entityManager->getConnection();
+
+        $sql = "SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        echo($stmt);
+        // returns an array of arrays (i.e. a raw data set)
+        $res = $stmt->fetchAll();
+        return $helpers->json($res);
+        echo("---prueba11111");
     }
 
 
