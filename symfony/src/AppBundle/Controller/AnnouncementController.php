@@ -44,14 +44,11 @@ class AnnouncementController extends Controller
 
         return $helpers->json($announcement);
 */
-        $helpers = $this->get("app.helpers");
-        $announcement = new Announcement();
-
-        $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findAll();
-        $user = $this->getDoctrine()->getRepository("BackendBundle:User")->findOneBy(
-            array("userId" => $user))
-        return $helpers->json($user);
-
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId FOR JSON AUTO");
+        $statement->execute();
+        return $statement->fetchAll();
 
 
     }
