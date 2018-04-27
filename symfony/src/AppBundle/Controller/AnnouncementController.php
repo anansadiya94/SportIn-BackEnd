@@ -45,11 +45,11 @@ class AnnouncementController extends Controller
         return $helpers->json($announcement);
 */
 
-        $res = $this
+        $helpers = $this->get("app.helpers");
             ->getDoctrine()
             ->createQuery('SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId')
             ->getResult();
-        return new JsonResponse($res);
+        return new JsonResponse($helpers);
 
     }
 
