@@ -44,7 +44,7 @@ class AnnouncementController extends Controller
 
         return $helpers->json($announcement);
 */
-        $helpers = this->get("app.helpers");
+        $helpers = $this->get("app.helpers");
         $entityManager = $this->getEntityManager();
 
         $dql = "SELECT * FROM Announcement
