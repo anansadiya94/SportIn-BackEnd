@@ -44,7 +44,8 @@ class AnnouncementController extends Controller
         $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findAll();
 
         return $helpers->json($announcement);
-*/
+*/  
+        $helpers = $this->get("app.helpers");
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
         $statement = $connection->prepare("SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId");
