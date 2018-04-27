@@ -74,7 +74,7 @@ class AnnouncementController extends Controller
         $query = $this->getDoctrine()->getManager()->createNativeQuery($sql, $rsm);
 
         $users = $query->getResult();
-        return $user
+        return $user;
 
     }
 
