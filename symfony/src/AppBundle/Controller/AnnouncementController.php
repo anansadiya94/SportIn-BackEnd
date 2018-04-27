@@ -36,12 +36,24 @@ class AnnouncementController extends Controller
 
     //GET /announcement/
     public function showsAction(){
+ /*
         $helpers = $this->get("app.helpers");
         $announcement = new Announcement();
 
         $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findAll();
 
         return $helpers->json($announcement);
+*/
+        $helpers = this->get("app.helpers");
+        $entityManager = $this->getEntityManager();
+
+        $dql = "SELECT * FROM Announcement
+        INNER JOIN User
+        ON Announcement.userId=User.userId";
+
+        $query = $entityManager->createQuery($dql);
+        $res = $query->execute();
+        return $helpers->json($res);
 
     }
 
