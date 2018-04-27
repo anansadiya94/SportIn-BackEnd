@@ -44,6 +44,8 @@ class AnnouncementController extends Controller
 
         return $helpers->json($announcement);
 */
+
+/*        
         echo("---prueba");
         $helpers = $this->get("app.helpers");
         $entityManager = $this->getDoctrine()->getManager();
@@ -59,6 +61,21 @@ class AnnouncementController extends Controller
         $res = $stmt->fetchAll();
         return $helpers->json($res);
         echo("---prueba11111");
+*/
+
+        // Equivalent DQL query: "select u from User u join u.address a WHERE u.name = ?1"
+        // User owns association to an Address and the Address is loaded in the query.
+        $rsm = new ResultSetMapping;
+        $rsm->addEntityResult('Announcement', 'a');
+        $rsm->addFieldResult('a', 'userid', 'userid');
+        $rsm->addJoinedEntityResult('Announcement' , 'a', 'u', 'User');
+
+        $sql = 'SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId';
+        $query = $this->getDoctrine()->getManager()->createNativeQuery($sql, $rsm);
+
+        $users = $query->getResult();
+        return $user
+
     }
 
 
