@@ -36,14 +36,14 @@ class AnnouncementController extends Controller
 
     //GET /announcement/
     public function showsAction(){
- /*
+ 
         $helpers = $this->get("app.helpers");
         $announcement = new Announcement();
 
         $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findAll();
 
         return $helpers->json($announcement);
-*/
+
 
 /*        
         echo("---prueba");
@@ -62,7 +62,7 @@ class AnnouncementController extends Controller
         return $helpers->json($res);
         echo("---prueba11111");
 */
-
+        /*
         // Equivalent DQL query: "select u from User u join u.address a WHERE u.name = ?1"
         // User owns association to an Address and the Address is loaded in the query.
         $rsm = new ResultSetMapping;
@@ -78,6 +78,7 @@ class AnnouncementController extends Controller
         $query = $this->getEntityManager()->createNativeQuery($sql,$rsm);
         $users = $query->getResult();
         return $users;
+        */
 
     }
 
