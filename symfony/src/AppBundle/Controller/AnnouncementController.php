@@ -46,11 +46,11 @@ class AnnouncementController extends Controller
 */
 
         $helpers = $this->get("app.helpers");
-            ->getDoctrine()
-            ->createQuery('SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId')
-            ->getResult();
-        return new JsonResponse($helpers);
-
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId FOR JSON AUTO");
+        $statement->execute();
+        return $helpers->json($statement);
     }
 
 
