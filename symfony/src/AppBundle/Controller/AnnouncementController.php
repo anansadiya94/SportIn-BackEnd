@@ -63,12 +63,18 @@ class AnnouncementController extends Controller
         return $users;
         */
 
+/*
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
         $statement = $connection->prepare("SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId");
         $statement->execute();
-        return $statement->json($statement)->fetchAll();
-
+        return $statement->fetchAll();
+*/
+            $res = $this
+        ->getDoctrine()
+        ->createQuery('SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId')
+        ->getResult();
+    return new JsonResponse($res);
     }
 
 
