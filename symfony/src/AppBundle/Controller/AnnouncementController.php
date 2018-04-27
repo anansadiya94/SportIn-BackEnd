@@ -45,7 +45,7 @@ class AnnouncementController extends Controller
 
         return $helpers->json($announcement);
 */
-
+        /*
          // Equivalent DQL query: "select u from User u join u.address a WHERE u.name = ?1"
         // User owns association to an Address and the Address is loaded in the query.
         $rsm = new ResultSetMapping;
@@ -61,6 +61,18 @@ class AnnouncementController extends Controller
         $query = $this->getEntityManager()->createNativeQuery($sql,$rsm);
         $users = $query->getResult();
         return $users;
+        */
+
+        $helpers = this->get("app.helpers");
+        $entityManager = $this->getEntityManager();
+
+        $dql = "SELECT * FROM Announcement
+        INNER JOIN User
+        ON Announcement.userId=User.userId";
+
+        $query = $entityManager->createQuery($dql);
+        $res = $query->execute()
+        return $helpers->json($res);
     }
 
 
