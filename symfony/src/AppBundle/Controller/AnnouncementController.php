@@ -44,24 +44,6 @@ class AnnouncementController extends Controller
 
         return $helpers->json($announcement);
 
-
-/*        
-        echo("---prueba");
-        $helpers = $this->get("app.helpers");
-        $entityManager = $this->getDoctrine()->getManager();
-        $conn = $entityManager->getConnection();
-
-        $sql = "SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId";
-        var_dump($sql);
-        $stmt = $conn->prepare($sql);
-        var_dump($stmt);
-        $stmt->execute();
-
-        // returns an array of arrays (i.e. a raw data set)
-        $res = $stmt->fetchAll();
-        return $helpers->json($res);
-        echo("---prueba11111");
-*/
         /*
         // Equivalent DQL query: "select u from User u join u.address a WHERE u.name = ?1"
         // User owns association to an Address and the Address is loaded in the query.
