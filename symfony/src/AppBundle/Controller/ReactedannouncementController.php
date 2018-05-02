@@ -66,7 +66,7 @@ class ReactedannouncementController extends Controller
 */
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON Reactedannouncement.announcementId=Announcement.announcementId
+        $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
         INNER JOIN User ON ReactedAnnouncement.userId=User.userId
         WHERE ReactedAnnouncement.interested = 0
         AND Announcement.userId = $userid;");
