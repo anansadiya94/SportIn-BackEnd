@@ -66,10 +66,10 @@ class ReactedannouncementController extends Controller
 */
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON Reactedannouncement.announcementid=announcement.announcementid
-        INNER JOIN User ON Reactedannouncement.userId=User.userId
-        WHERE reactedannouncement.interested = 0
-        AND announcement.userId = $userid;");
+        $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON Reactedannouncement.announcementId=Announcement.announcementId
+        INNER JOIN User ON ReactedAnnouncement.userId=User.userId
+        WHERE ReactedAnnouncement.interested = 0
+        AND Announcement.userId = $userid;");
         $statement->execute();
         return new JsonResponse($statement->fetchAll());
     }
@@ -93,7 +93,7 @@ class ReactedannouncementController extends Controller
         $connection = $em->getConnection();
         $statement = $connection->prepare("UPDATE ReactedAnnouncement 
         SET interested = $interested
-        WHERE reactedannouncementId = $reactedAnnouncementId;");
+        WHERE reactedasnouncementId = $reactedAnnouncementId;");
         $statement->execute();
 
         return new Response();
