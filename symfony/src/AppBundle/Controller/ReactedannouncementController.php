@@ -19,20 +19,80 @@ class ReactedannouncementController extends Controller
 {
 
     //GET /reactedannouncement/userid/interested
+    //userid soy yo, es decir, el usuario que quiere ver sus ofertas
     //interested 0:espera - 1:aceptado - 2:rechazado
     public function showAction($userid,$interested){
         $helpers = $this->get("app.helpers");
 
-        $reactedannouncement = $this->getDoctrine()->getRepository("BackendBundle:Reactedannouncement")->findBy(
+        /*$reactedannouncement = $this->getDoctrine()->getRepository("BackendBundle:Reactedannouncement")->findBy(
             array("userid" => $userid,
                 "interested" => $interested)
         );
 
         return $helpers->json($reactedannouncement);
+*/
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT * FROM Reactedannouncement INNER JOIN Announcement ON Reactedannouncement.announcementid=announcement.announcementid
+        INNER JOIN User ON announcement.userId=User.userId
+        WHERE reactedannouncement.interested = $interested
+        AND reactedannouncement.userId = $userid;");
+        $statement->execute();
+        return new JsonResponse($statement->fetchAll());
     }
 
+    //GET /reactedannouncementnotification/userid
+    //user id aqui es la persona que quiere ver sus notificaciones.
+    public function showNotificationsAction($userid){
+        $helpers = $this->get("app.helpers");
+
+        /*$reactedannouncement = $this->getDoctrine()->getRepository("BackendBundle:Reactedannouncement")->findBy(
+            array("userid" => $userid,
+                "interested" => $interested)
+        );
+
+        return $helpers->json($reactedannouncement);
+*/
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT * FROM Reactedannouncement INNER JOIN Announcement ON Reactedannouncement.announcementid=announcement.announcementid
+        INNER JOIN User ON Reactedannouncement.userId=User.userId
+        WHERE reactedannouncement.interested = 0
+        AND announcement.userId = $userid;");
+        $statement->execute();
+        return new JsonResponse($statement->fetchAll());
+    }
+
+    //POST /updatereactedannouncement
+    // {"reactedAnnouncementId" : 3,"interested" : 2}
+    public function updatereactedannouncementAction(Request $request){
+
+        // obtener el ser icio que me permitirá convertir a JSON
+        $helpers = $this->get("app.helpers");
+        // obtenr los datos de la petición
+        $json_params = $request->get("json", null);
+        //$json_token = $request->get("token", null);
+        var_dump($json_params);
+
+        $interested = null;
+        $reactedAnnouncementId = null;
+        $interested = json_decode($json_params)->{"interested"};
+        $reactedAnnouncementId = json_decode($json_params)->{"reactedAnnouncementId"};
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("UPDATE ReactedAnnouncement 
+        SET interested = $interested
+        WHERE reactedannouncementId = $reactedAnnouncementId;");
+        $statement->execute();
+
+        return new Response();
+
+    }
+
+
+
     //POST /reactedannouncement
-    // {"userId" : 9,"announcementId" : 3,"active" : 1,"interested" : 2,"liked" : 1}
+    // {"userId" : 9,"announcementId" : 3}
     public function reactedannouncementAction(Request $request){
 
         // obtener el ser icio que me permitirá convertir a JSON
@@ -44,7 +104,10 @@ class ReactedannouncementController extends Controller
 
         $reactedannouncement = new Reactedannouncement();
 
-        $reactedannouncement->setActive(json_decode($json_params)->{"active"},null);
+        $reactedannouncement->setActive(1);
+        $reactedannouncement->setInterested(0); //Siempre a 0, en pendiente
+        $reactedannouncement->setLiked(1);
+        $reactedannouncement->setMoment(new \DateTime('now'));
 
         $userId = json_decode($json_params)->{"userId"};
         $user = $this->getDoctrine()->getRepository("BackendBundle:User")->findOneBy(
@@ -58,10 +121,6 @@ class ReactedannouncementController extends Controller
             array("announcementid" => $announcementId)
         );
         $reactedannouncement->setAnnouncementid($announcement);
-
-        $reactedannouncement->setInterested(json_decode($json_params)->{"interested"},null);
-        $reactedannouncement->setLiked(json_decode($json_params)->{"liked"},null);
-        $reactedannouncement->setMoment(new \DateTime('now'));
 
 
         var_dump($reactedannouncement);

@@ -74,6 +74,16 @@ default_reactedAnnouncement_reactedannouncement:
   path: /reactedannouncement
   defaults: { _controller: "AppBundle:Reactedannouncement:reactedannouncement"}
   methods: POST
+
+default_reactedAnnouncement_shownotification:
+  path: /reactedannouncementnotification/{userid}/
+  defaults: { _controller: "AppBundle:Reactedannouncement:showNotifications", userid : 1}
+  methods: GET
+
+default_updatereactedAnnouncement_reactedannouncement:
+  path: /updatereactedannouncement
+  defaults: { _controller: "AppBundle:Reactedannouncement:updatereactedannouncement"}
+  methods: POST
   
 #country_showCountries:
  # path: /countries/
