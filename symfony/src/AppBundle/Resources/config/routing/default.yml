@@ -67,12 +67,12 @@ default_clubhistoryperuser_show:
 #reactedAnnouncement con Adonis
 default_reactedAnnouncement_show:
   path: /reactedannouncement/{userid}/{interested}
-  defaults: { controller: "AppBundle:Reactedannouncement:show", userid : 1, interested : 2}
+  defaults: { _controller: "AppBundle:Reactedannouncement:show", userid : 1, interested : 2}
   methods: GET
 
 default_reactedAnnouncement_reactedannouncement:
   path: /reactedannouncement
-  defaults: { controller: "AppBundle:Reactedannouncement:reactedannouncement"}
+  defaults: { _controller: "AppBundle:Reactedannouncement:reactedannouncement"}
   methods: POST
   
 #country_showCountries:

@@ -96,20 +96,7 @@ class AnnouncementController extends Controller
 
         //Nose si se quiere por id o por nombre estatico...
         $announcement->setPosition(json_decode($json_params)->{"position"},null);
-
-        /*
-        //ESTO PARA CUANDO SE ACTUALIZE LA BASE DE DATOS CON NUEVOS CAMPOS
-        $populationId = json_decode($json_params)->{"populationId"};
-        $population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
-            array("populationid" => $populationId)
-        );
-        $announcement->setPopulationid($population);
-
-        $roleId = json_decode($json_params)->{"roleId"};
-        $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
-            array("roleid" => $roleId)
-        );
-        $announcement->setRoleid($role);
+/*
 
         //este depende de la base de datos, si quiere que sea id o nombre directamente...
         $positionId = json_decode($json_params)->{"position"};
@@ -117,8 +104,7 @@ class AnnouncementController extends Controller
             array("playerpositionid" => $positionId)
         );
         $announcement->setPosition($position);
-        */
-
+*/
 
         var_dump($announcement);
         // Invocar al manejador de BD
