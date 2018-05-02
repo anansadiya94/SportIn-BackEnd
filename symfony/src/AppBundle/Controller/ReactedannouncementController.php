@@ -93,7 +93,7 @@ class ReactedannouncementController extends Controller
         $connection = $em->getConnection();
         $statement = $connection->prepare("UPDATE ReactedAnnouncement 
         SET interested = $interested
-        WHERE reactedanouncementId = $reactedAnnouncementId;");
+        WHERE reactedannouncementId = $reactedAnnouncementId;");
         $statement->execute();
 
         return new Response();
