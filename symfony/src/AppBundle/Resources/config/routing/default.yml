@@ -43,7 +43,6 @@ announcements_user_show:
   defaults: { _controller: "AppBundle:Announcement:showUserAnnouncements", userid : 1}
   methods: GET
 
-
 default_playerpositionperuser_show:
   path: /playerpositionperuser/{userid}
   defaults: { _controller: "AppBundle:Playerpositionperuser:show", userid : 1}
@@ -76,7 +75,7 @@ default_reactedAnnouncement_reactedannouncement:
   methods: POST
 
 default_reactedAnnouncement_shownotification:
-  path: /reactedannouncementnotification/{userid}/
+  path: /reactedannouncementnotification/{userid}
   defaults: { _controller: "AppBundle:Reactedannouncement:showNotifications", userid : 1}
   methods: GET
 
@@ -84,16 +83,16 @@ default_updatereactedAnnouncement_reactedannouncement:
   path: /updatereactedannouncement
   defaults: { _controller: "AppBundle:Reactedannouncement:updatereactedannouncement"}
   methods: POST
-  
-#country_showCountries:
- # path: /countries/
-  #defaults: { _controller: "AppBundle:Country:showCountries"}
-  #methods: GET
+#hasta aqui##################  
+default_country_showCountries:
+  path: /countries/
+  defaults: { _controller: "AppBundle:Country:showCountries"}
+  methods: GET
 
-#country_showPopulations:
- # path: /populations/
-  #defaults: { _controller: "AppBundle:Country:showPopulations"}
-  #methods: GET
+default_country_showPopulations:
+  path: /populations/
+  defaults: { _controller: "AppBundle:Country:showPopulations"}
+  methods: GET
 
   #default_country:
   #path: /country/{id}
