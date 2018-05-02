@@ -31,10 +31,20 @@ class ReactedannouncementController extends Controller
 
         return $helpers->json($reactedannouncement);
 */
+
+        /*
+        query
+
+        SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
+        INNER JOIN User ON Announcement.userId=User.userId
+        WHERE ReactedAnnouncement.interested = 1
+        AND ReactedAnnouncement.userId = 1;
+
+        */
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementid=announcement.announcementid
-        INNER JOIN User ON announcement.userId=User.userId
+        $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
+        INNER JOIN User ON Announcement.userId=User.userId
         WHERE ReactedAnnouncement.interested = $interested
         AND ReactedAnnouncement.userId = $userid;");
         $statement->execute();
