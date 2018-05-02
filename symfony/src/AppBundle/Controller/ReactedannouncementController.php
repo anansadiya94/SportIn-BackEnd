@@ -33,7 +33,7 @@ class ReactedannouncementController extends Controller
 */
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM Reactedannouncement INNER JOIN Announcement ON Reactedannouncement.announcementid=announcement.announcementid
+        $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementid=announcement.announcementid
         INNER JOIN User ON announcement.userId=User.userId
         WHERE reactedannouncement.interested = $interested
         AND reactedannouncement.userId = $userid;");
@@ -55,7 +55,7 @@ class ReactedannouncementController extends Controller
 */
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM Reactedannouncement INNER JOIN Announcement ON Reactedannouncement.announcementid=announcement.announcementid
+        $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON Reactedannouncement.announcementid=announcement.announcementid
         INNER JOIN User ON Reactedannouncement.userId=User.userId
         WHERE reactedannouncement.interested = 0
         AND announcement.userId = $userid;");
