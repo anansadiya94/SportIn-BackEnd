@@ -21,12 +21,18 @@ class PlayerpositionperuserController extends Controller
     //GET playerpositionperuser/userid
     public function showAction($userid){
         $helpers = $this->get("app.helpers");
-
+/*
         $user = $this->getDoctrine()->getRepository("BackendBundle:Playerpositionperuser")->findBy(
             array("userid" => $userid)
         );
         return $helpers->json($user);
-
+*/
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT * FROM PlayerPositionPerUser INNER JOIN PlayerPosition ON PlayerPositionPerUser.playerPositionId=PlayerPosition.playerPositionId
+        WHERE PlayerPositionPerUser.userId = $userid;");
+        $statement->execute();
+        return new JsonResponse($statement->fetchAll());
     }
 
     //POST /playerpositionperuser

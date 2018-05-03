@@ -43,13 +43,5 @@ class CountryController extends Controller
         return $helpers->json($history);
     }
 
-    //GET /populations/
-    public function showPopulationsAction(){
-        $helpers = $this->get("app.helpers");
-
-        $history = $this->getDoctrine()->getRepository("BackendBundle:Population")->findAll();
-
-        return $helpers->json($history);
-    }
 }
 

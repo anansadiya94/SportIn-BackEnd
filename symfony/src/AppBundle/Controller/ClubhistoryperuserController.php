@@ -22,12 +22,19 @@ class ClubhistoryperuserController extends Controller
     //GET /clubhistoryperuser/userid
     public function showAction($userid){
         $helpers = $this->get("app.helpers");
-
+/*
         $history = $this->getDoctrine()->getRepository("BackendBundle:Clubhistoryperuser")->findBy(
             array("userid" => $userid)
         );
 
         return $helpers->json($history);
+*/
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT * FROM ClubHistoryPerUser INNER JOIN Club ON ClubHistoryPerUser.clubId=Club.clubId
+        WHERE ClubHistoryPerUser.userId = $userid");
+        $statement->execute();
+        return new JsonResponse($statement->fetchAll());
     }
 
     //POST /clubhistoryperuser

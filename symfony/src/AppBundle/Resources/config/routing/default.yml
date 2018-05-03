@@ -89,11 +89,30 @@ default_country_showCountries:
   defaults: { _controller: "AppBundle:Country:showCountries"}
   methods: GET
 
-default_country_showPopulations:
+#default_country_showPopulations:
+ # path: /populations/
+  #defaults: { _controller: "AppBundle:Country:showPopulations"}
+  #methods: GET
+
+default_population_showPopulations:
   path: /populations/
-  defaults: { _controller: "AppBundle:Country:showPopulations"}
+  defaults: { _controller: "AppBundle:Population:showPopulations"}
   methods: GET
 
+default_role_showRoles:
+  path: /roles/
+  defaults: { _controller: "AppBundle:Role:showRoles"}
+  methods: GET
+
+default_club_showClubs:
+  path: /clubs/
+  defaults: { _controller: "AppBundle:Club:showClubs"}
+  methods: GET
+
+default_announcements_role_show:
+  path: /announcementPerRole/{roleid}
+  defaults: { _controller: "AppBundle:Announcement:showRoleAnnouncements", roleid : 1}
+  methods: GET
   #default_country:
   #path: /country/{id}
   #defaults: { _controller: "AppBundle:Country:show", id : null}

@@ -34,6 +34,23 @@ class AnnouncementController extends Controller
 
     }
 
+     //GET /announcementPerRole/roleid
+     public function showRoleAnnouncementsAction($roleid){
+        $helpers = $this->get("app.helpers");
+
+        $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findAll();
+
+        //return $helpers->json($announcement);
+
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId
+        WHERE User.roleId = $roleid;");
+        $statement->execute();
+        return new JsonResponse($statement->fetchAll());
+
+    }
+
     //GET /announcement/
     public function showsAction(){
  
