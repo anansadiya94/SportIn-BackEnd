@@ -34,7 +34,7 @@ class ImageLoader
         $filename = "/".$country->getFlag();
         $encoded_image = base64_encode(
             file_get_contents($publicResourcesFolderPath.$filename));
-        $country->setFlag($encoded_image);
+        $country->setFlagEncoded($encoded_image);
         return $country;
     }
 }

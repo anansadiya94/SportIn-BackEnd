@@ -19,28 +19,35 @@ class CountryController extends Controller
     public function showAction(Request $request, $id){
         $helpers = $this->get("app.helpers");
         $image_loader = $this->get("app.image_loader");
-        if($id == null){
-            //GET all the countrys
-            $country_results =
-                $this->getDoctrine()->getRepository("BackendBundle:Country")->findAll();
-        }else{
-            $country_results =
+        if($id != null){
+            //GET all the countries
+            $result =
                 $this->getDoctrine()->getRepository("BackendBundle:Country")->findOneBy(
                     array("countryid" => $id)
                 );
+            $result = $image_loader->loadImage($result);
+        }else{
+
+            $result =  array(
+                "status" => "error",
+                "code" => "ER-0004",
+                "data" => "No ID specified!"
+            );
+
         }
 
-        $country_results = $image_loader->loadImage($country_results);
-        return $helpers->json($country_results);
+        return $helpers->json($result);
     }
 
     //GET /countries/
      public function showCountriesAction(){
         $helpers = $this->get("app.helpers");
-
-        $history = $this->getDoctrine()->getRepository("BackendBundle:Country")->findAll();
-
-        return $helpers->json($history);
+        $image_loader = $this->get("app.image_loader");
+        $countries = $this->getDoctrine()->getRepository("BackendBundle:Country")->findAll();
+        if($countries != null){
+            $countries = $image_loader->loadImage($countries);
+        }
+        return $helpers->json($countries);
     }
 
 }

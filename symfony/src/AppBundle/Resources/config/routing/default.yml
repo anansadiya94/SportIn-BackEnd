@@ -113,7 +113,8 @@ default_announcements_role_show:
   path: /announcementPerRole/{roleid}
   defaults: { _controller: "AppBundle:Announcement:showRoleAnnouncements", roleid : 1}
   methods: GET
-  #default_country:
-  #path: /country/{id}
-  #defaults: { _controller: "AppBundle:Country:show", id : null}
-  #methods: GET
+
+default_country:
+  path: /country/{id}
+  defaults: { _controller: "AppBundle:Country:show", id : null}
+  methods: GET
