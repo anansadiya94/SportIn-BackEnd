@@ -39,8 +39,13 @@ announcements_shows:
   methods: GET
 
 announcements_user_show:
-  path: /announcementPerUser/{userid}
-  defaults: { _controller: "AppBundle:Announcement:showUserAnnouncements", userid : 1}
+  path: /announcementPerUser/{user_token}
+  defaults: { _controller: "AppBundle:Announcement:showUserAnnouncements", user_token : null}
+  methods: GET
+
+announcements_user_show_alter:
+  path: /announcementPerUser/
+  defaults: { _controller: "AppBundle:Announcement:showUserAnnouncements", user_token : null}
   methods: GET
 
 default_playerpositionperuser_show:

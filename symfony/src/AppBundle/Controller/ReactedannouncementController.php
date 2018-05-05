@@ -22,7 +22,7 @@ class ReactedannouncementController extends Controller
     //GET /reactedannouncement/userid/interested
     //userid soy yo, es decir, el usuario que quiere ver sus ofertas
     //interested 0:espera - 1:aceptado - 2:rechazado
-    public function showAction($userid,$interested){
+    public function showAction($userid, $interested){
         $helpers = $this->get("app.helpers");
 
         /*$reactedannouncement = $this->getDoctrine()->getRepository("BackendBundle:Reactedannouncement")->findBy(

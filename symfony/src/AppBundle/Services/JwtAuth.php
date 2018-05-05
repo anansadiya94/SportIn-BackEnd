@@ -13,12 +13,12 @@ use Firebase\JWT\JWT;
 class JwtAuth
 {
     private $manager;
+    private $key = 'sportin_2018';
     public function __construct($manager){
         $this->manager = $manager;
     }
 
     public function singin($email, $password, $getHash = true){
-        $key = 'sportin_2018';
         $singin = false;
 
         $user = $this->manager->getRepository("BackendBundle:User")->findOneBy(
@@ -39,8 +39,8 @@ class JwtAuth
                 "iat" => time(),
                 "exp" => time() + (7 * 24 * 60 * 60)
             );
-            $token_encoded = JWT::encode($token, $key, 'HS256');
-            $token_no_encoded = JWT::decode($token_encoded, $key, array('HS256'));
+            $token_encoded = JWT::encode($token, $this->key, 'HS256');
+            $token_no_encoded = JWT::decode($token_encoded, $this->key, array('HS256'));
             if($getHash){
                 return $token_encoded;
             }else{
@@ -59,5 +59,26 @@ class JwtAuth
                 "data" => "Login failed!"
             );
         }
+    }
+
+    public function checkToken($token){
+        $result = false;
+        $user = null;
+        try{
+            $token_decoded = JWT::decode($token, $this->key, array('HS256'));
+            $email = $token_decoded->email;
+            $password = $token_decoded->password;
+
+            $user = $this->manager->getRepository("BackendBundle:User")->findOneBy(
+                array(
+                    "email" => $email,
+                    "password" => $password)
+            );
+        }catch (\Exception $e){
+
+        }
+
+        if(!is_null($user)) $result = $user;
+        return $result;
     }
 }

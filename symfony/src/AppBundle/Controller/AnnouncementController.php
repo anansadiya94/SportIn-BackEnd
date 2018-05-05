@@ -73,15 +73,38 @@ class AnnouncementController extends Controller
 
 
     //GET /announcementPerUser/userid
-    public function showUserAnnouncementsAction($userid){
+    public function showUserAnnouncementsAction($user_token){
         $helpers = $this->get("app.helpers");
-        $announcement = new Announcement();
+        $jwt_auth = $this->get("app.jwt_auth");
 
-        $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findBy(
-            array("userid" => $userid)
-        );
+        if($user_token != null){
+            $user_auth = $jwt_auth->checkToken($user_token);
+            if(is_object($user_auth)){
 
-            return $helpers->json($announcement);
+                $result = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findBy(
+                    array("userid" => $user_auth->getUserid())
+                );
+            }else{
+                //ER-0006: not a valid token
+                    return $helpers->json(
+                        array(
+                            "status" => "error",
+                            "code" => "ER-0006",
+                            "data" => "Received token not valid!"
+                        ));
+                    die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
+        return $helpers->json($result);
     }
 
     //POST /announcement
