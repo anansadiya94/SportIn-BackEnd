@@ -80,4 +80,8 @@ class Category
     {
         return $this->active;
     }
+    public function __toString()
+{
+    return strval( $this->getCategoryid() );
+}
 }

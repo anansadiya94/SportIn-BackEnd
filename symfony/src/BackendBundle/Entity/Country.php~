@@ -27,6 +27,11 @@ class Country
      */
     private $flag;
 
+    /**
+     * @var string
+     */
+    private $flagencoded;
+
 
     /**
      * Get countryid
@@ -108,5 +113,22 @@ class Country
     public function getFlag()
     {
         return $this->flag;
+    }
+
+     public function __toString(){
+        return strval( $this->getCountryid() );
+    }
+
+    /**
+     * Get flagEncoded
+     *
+     * @return string
+     */
+    public function getFlagEncoded(){
+        return $this->flagencoded;
+    }
+
+    public function setFlagEncoded($flag_encoded){
+        $this->flagencoded = $flag_encoded;
     }
 }

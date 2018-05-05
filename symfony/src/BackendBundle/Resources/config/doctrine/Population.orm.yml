@@ -24,11 +24,4 @@ BackendBundle\Entity\Population:
             length: 45
             options:
                 fixed: false
-        postalcode:
-            type: string
-            nullable: true
-            length: 45
-            options:
-                fixed: false
-            column: postalCode
     lifecycleCallbacks: {  }

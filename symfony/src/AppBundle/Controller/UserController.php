@@ -84,6 +84,7 @@ class UserController extends Controller
         $user->setFoot(json_decode($json_params)->{"foot"},null);
         $user->setPosition(json_decode($json_params)->{"position"},null);
         $user->setHistorial(json_decode($json_params)->{"historial"},null);
+        //$user->setPopulationid()
 
         $roleId = json_decode($json_params)->{"roleId"};
         $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
@@ -98,13 +99,13 @@ class UserController extends Controller
         );
         $user->setCountryid($country);
 
-/*
+
         $populationId = json_decode($json_params)->{"populationId"};
         $population = $this->getDoctrine()->getRepository("BackendBundle:Population")->findOneBy(
           array("populationid" => $populationId)
         );
         $user->setPopulationid($population);
-*/
+
         $manager = $this->getDoctrine()->getManager();
         // Decirle al manejador que daras de alta ese objeto
         $manager->persist($user);
