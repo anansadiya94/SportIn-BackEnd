@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="2c9396e4-19e0-4b63-87d8-91dc11b2951e" name="sportin" url="http://18.221.192.57">
-        <fileTransfer host="18.221.192.57" port="22" privateKey="C:\cygwin64\home\Diee\adoniskey.pem" rootFolder="/var/www/html/sportin-web/symfony/" accessType="SFTP" keyPair="true">
+      <webServer id="2c9396e4-19e0-4b63-87d8-91dc11b2951e" name="sportin" url="http://18.218.97.74">
+        <fileTransfer host="18.218.97.74" port="22" privateKey="C:\cygwin64\home\Diee\adoniskey.pem" rootFolder="/var/www/html/sportin-web/symfony/" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

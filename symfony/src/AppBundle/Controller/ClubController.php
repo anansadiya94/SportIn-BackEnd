@@ -24,7 +24,6 @@ class ClubController extends Controller
         }else{
             $clubs = $this->getDoctrine()->getRepository("BackendBundle:Club")->findAll();
         }
-
         return $helpers->json($clubs);
     }
 }

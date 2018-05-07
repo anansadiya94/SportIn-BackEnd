@@ -19,9 +19,9 @@ BackendBundle\Entity\Club:
             options:
                 fixed: false
         shield:
-            type: blob
+            type: string
             nullable: true
-            length: 65535
+            length: 500
             options:
                 fixed: false
         initials:
@@ -31,4 +31,16 @@ BackendBundle\Entity\Club:
             options:
                 fixed: false
                 comment: 'Siglas del club'
+        location:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        province:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
     lifecycleCallbacks: {  }
