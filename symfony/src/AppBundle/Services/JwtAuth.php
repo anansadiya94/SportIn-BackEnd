@@ -42,15 +42,17 @@ class JwtAuth
             $token_encoded = JWT::encode($token, $this->key, 'HS256');
             $token_no_encoded = JWT::decode($token_encoded, $this->key, array('HS256'));
             if($getHash){
-                return $token_encoded;
+                return
+                    array(
+                        "status" => "success",
+                        "code" => "200",
+                        "data" => $token_encoded);
             }else{
-                return $token_no_encoded;
+                return array(
+                    "status" => "success",
+                    "code" => "200",
+                    "data" => $token_no_encoded);
             }
-
-            /*return array(
-                "status" => "success",
-                "data" => "Login sucessfull!"
-            );*/
         }else{
             // ER-0003 : Login incorrecto
             return array(

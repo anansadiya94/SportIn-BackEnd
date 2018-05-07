@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1dd64a92-a939-46b8-a5ed-306e1055ffac" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Club.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Club.php" />
+      <change beforePath="$PROJECT_DIR$/symfony/src/AppBundle/Services/JwtAuth.php" afterPath="$PROJECT_DIR$/symfony/src/AppBundle/Services/JwtAuth.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClubController.php" pinned="true" current-in-tab="true">
+      <file leaf-file-name="ClubController.php" pinned="true" current-in-tab="false">
         <entry file="remoteDeploymentFS://&lt;2c9396e4-19e0-4b63-87d8-91dc11b2951e&gt;/src/AppBundle/Controller/ClubController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -82,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JwtAuth.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="JwtAuth.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Services/JwtAuth.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="65" column="21" lean-forward="false" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
+            <state relative-caret-position="483">
+              <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -124,10 +124,10 @@
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/CountryController.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/ReactedannouncementController.php" />
-        <option value="$PROJECT_DIR$/symfony/src/AppBundle/Services/JwtAuth.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Resources/config/routing/default.yml" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/AnnouncementController.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/ClubController.php" />
+        <option value="$PROJECT_DIR$/symfony/src/AppBundle/Services/JwtAuth.php" />
       </list>
     </option>
   </component>
@@ -377,12 +377,12 @@
       <workItem from="1524161822079" duration="1831000" />
       <workItem from="1524474979748" duration="2744000" />
       <workItem from="1524478359041" duration="1146000" />
-      <workItem from="1525515969121" duration="13594000" />
+      <workItem from="1525515969121" duration="15908000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61375000" />
+    <option name="totallyTimeSpent" value="63689000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -774,14 +774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Services/JwtAuth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="65" column="21" lean-forward="false" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/AnnouncementController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -809,6 +801,14 @@
             <element signature="e#6#87#0#PHP" expanded="true" />
             <element signature="e#122#179#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Services/JwtAuth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
