@@ -110,8 +110,8 @@ default_role_showRoles:
   methods: GET
 
 default_club_showClubs:
-  path: /clubs/
-  defaults: { _controller: "AppBundle:Club:showClubs"}
+  path: /clubs/{clubid}
+  defaults: { _controller: "AppBundle:Club:showClubs", clubid : null}
   methods: GET
 
 default_announcements_role_show:

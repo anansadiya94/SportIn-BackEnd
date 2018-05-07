@@ -9,12 +9,9 @@
 namespace AppBundle\Controller;
 
 use BackendBundle\Entity\Announcement;
-use BackendBundle\Entity\Country;
-use BackendBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\HttpFoundation\Response;
 
 
