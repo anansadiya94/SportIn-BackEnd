@@ -51,8 +51,7 @@ class UserController extends Controller
         }
     }
     // /user POST
-    //{"username": "hola", "surname": "hola", "email": "hsdd@gmail.com", "password": "vvsdsdad", "active": "1", "birthDate": "1982-04-05", "age": "22", "height": "22", "weight": "44", "bio": "adasdasdasdasdasdasdasdasdasdasddas", "sex": "H", "foot": "R", "historial": "he jugado aqui", "playerPositionId": 2, "roleId": 3, "countryId": 4, "populationId": 3}
-
+    // {"username": "funciona", "surname": "hola", "email": "hsdd@gmail.com", "password": "vvsdsdad", "active": "1", "birthDate": "1982-04-05", "age": "22", "height": "22", "weight": "44", "bio": "adasdasdasdasdasdasdasdasdasdasddas", "sex": "H", "foot": "R", "historial": "he jugado aqui", "playerPositionId": 2, "roleId": 3, "countryId": 4, "populationId": 3, "clubId": 900}
     public function userAction(Request $request){
 
         /* No ACABADO AÚN */
@@ -108,6 +107,12 @@ class UserController extends Controller
           array("populationid" => $populationId)
         );
         $user->setPopulationid($population);
+
+        $clubId = json_decode($json_params)->{"clubId"};
+        $club = $this->getDoctrine()->getRepository("BackendBundle:Club")->findOneBy(
+          array("clubid" => $clubId)
+        );
+        $user->setClubid($club);
 
         $manager = $this->getDoctrine()->getManager();
         // Decirle al manejador que daras de alta ese objeto
