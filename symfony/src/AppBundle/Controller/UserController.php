@@ -82,9 +82,13 @@ class UserController extends Controller
         $user->setBio(json_decode($json_params)->{"bio"},null);
         $user->setSex(json_decode($json_params)->{"sex"},null);
         $user->setFoot(json_decode($json_params)->{"foot"},null);
-        $user->setPosition(json_decode($json_params)->{"position"},null);
         $user->setHistorial(json_decode($json_params)->{"historial"},null);
         //$user->setPopulationid()
+        $playerPositionId = json_decode($json_params)->{"position"};
+        $playerPosition = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
+            array("playerPositionId" => $playerPositionId)
+        );
+        $user->setPosition($playerPosition);
 
         $roleId = json_decode($json_params)->{"roleId"};
         $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(

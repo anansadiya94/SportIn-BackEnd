@@ -1,0 +1,23 @@
+BackendBundle\Entity\Contactperuser:
+    type: entity
+    table: ContactPerUser
+    indexes:
+        ContactPerUser_User_FK2:
+            columns:
+                - contact_userId
+    id:
+        userid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: userId
+        contactUserid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: contact_userId
+    lifecycleCallbacks: {  }

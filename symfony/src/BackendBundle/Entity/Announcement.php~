@@ -259,4 +259,62 @@ class Announcement
 {
     return strval( $this->getAnnouncementid() );
 }
+    /**
+     * @var \BackendBundle\Entity\Playerposition
+     */
+    private $playerpositionid;
+
+    /**
+     * @var \BackendBundle\Entity\Role
+     */
+    private $searchedroleid;
+
+
+    /**
+     * Set playerpositionid
+     *
+     * @param \BackendBundle\Entity\Playerposition $playerpositionid
+     *
+     * @return Announcement
+     */
+    public function setPlayerpositionid(\BackendBundle\Entity\Playerposition $playerpositionid = null)
+    {
+        $this->playerpositionid = $playerpositionid;
+
+        return $this;
+    }
+
+    /**
+     * Get playerpositionid
+     *
+     * @return \BackendBundle\Entity\Playerposition
+     */
+    public function getPlayerpositionid()
+    {
+        return $this->playerpositionid;
+    }
+
+    /**
+     * Set searchedroleid
+     *
+     * @param \BackendBundle\Entity\Role $searchedroleid
+     *
+     * @return Announcement
+     */
+    public function setSearchedroleid(\BackendBundle\Entity\Role $searchedroleid = null)
+    {
+        $this->searchedroleid = $searchedroleid;
+
+        return $this;
+    }
+
+    /**
+     * Get searchedroleid
+     *
+     * @return \BackendBundle\Entity\Role
+     */
+    public function getSearchedroleid()
+    {
+        return $this->searchedroleid;
+    }
 }

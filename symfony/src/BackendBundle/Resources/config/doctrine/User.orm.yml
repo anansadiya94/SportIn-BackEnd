@@ -11,6 +11,9 @@ BackendBundle\Entity\User:
         RoleFK_idx:
             columns:
                 - roleId
+        User_PlayerPosition_FK:
+            columns:
+                - playerPositionId
     id:
         userid:
             type: integer
@@ -112,16 +115,22 @@ BackendBundle\Entity\User:
             length: 1
             options:
                 fixed: false
-        position:
-            type: string
+        playerpositionid:
+            type: integer
             nullable: true
-            length: 30
             options:
-                fixed: false
+                unsigned: false
+            column: playerPositionId
         historial:
             type: text
             nullable: true
             length: 65535
             options:
                 fixed: false
+        clubid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: clubId
     lifecycleCallbacks: {  }

@@ -5,6 +5,12 @@ BackendBundle\Entity\Announcement:
         CategoryFK_idx:
             columns:
                 - categoryId
+        Announcement_PlayerPosition_FK:
+            columns:
+                - playerPositionId
+        Announcement_Role_FK:
+            columns:
+                - searchedRoleId
     id:
         announcementid:
             type: integer
@@ -58,10 +64,25 @@ BackendBundle\Entity\Announcement:
                 unsigned: false
                 default: '0'
             column: categoryId
-        position:
-            type: string
-            nullable: true
-            length: 50
-            options:
-                fixed: false
+    manyToOne:
+        playerpositionid:
+            targetEntity: Playerposition
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                playerPositionId:
+                    referencedColumnName: playerPositionId
+            orphanRemoval: false
+        searchedroleid:
+            targetEntity: Role
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                searchedRoleId:
+                    referencedColumnName: roleId
+            orphanRemoval: false
     lifecycleCallbacks: {  }

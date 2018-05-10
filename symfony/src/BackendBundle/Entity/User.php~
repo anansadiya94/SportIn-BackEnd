@@ -549,4 +549,108 @@ class User
 {
     return strval( $this->getUserid() );
 }
+    /**
+     * @var integer
+     */
+    private $clubid;
+
+    /**
+     * @var \BackendBundle\Entity\Playerposition
+     */
+    private $playerpositionid;
+
+
+    /**
+     * Set clubid
+     *
+     * @param integer $clubid
+     *
+     * @return User
+     */
+    public function setClubid($clubid)
+    {
+        $this->clubid = $clubid;
+
+        return $this;
+    }
+
+    /**
+     * Get clubid
+     *
+     * @return integer
+     */
+    public function getClubid()
+    {
+        return $this->clubid;
+    }
+
+    /**
+     * Set playerpositionid
+     *
+     * @param \BackendBundle\Entity\Playerposition $playerpositionid
+     *
+     * @return User
+     */
+    public function setPlayerpositionid(\BackendBundle\Entity\Playerposition $playerpositionid = null)
+    {
+        $this->playerpositionid = $playerpositionid;
+
+        return $this;
+    }
+
+    /**
+     * Get playerpositionid
+     *
+     * @return \BackendBundle\Entity\Playerposition
+     */
+    public function getPlayerpositionid()
+    {
+        return $this->playerpositionid;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $contactUserid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->contactUserid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add contactUserid
+     *
+     * @param \BackendBundle\Entity\User $contactUserid
+     *
+     * @return User
+     */
+    public function addContactUserid(\BackendBundle\Entity\User $contactUserid)
+    {
+        $this->contactUserid[] = $contactUserid;
+
+        return $this;
+    }
+
+    /**
+     * Remove contactUserid
+     *
+     * @param \BackendBundle\Entity\User $contactUserid
+     */
+    public function removeContactUserid(\BackendBundle\Entity\User $contactUserid)
+    {
+        $this->contactUserid->removeElement($contactUserid);
+    }
+
+    /**
+     * Get contactUserid
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContactUserid()
+    {
+        return $this->contactUserid;
+    }
 }
