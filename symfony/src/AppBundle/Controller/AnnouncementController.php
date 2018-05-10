@@ -155,7 +155,7 @@ class AnnouncementController extends Controller
         $position = $this->getDoctrine()->getRepository("BackendBundle:Playerposition")->findOneBy(
             array("playerpositionid" => $positionId)
         );
-        $announcement->setPlayerpositiondid($position);
+        $announcement->setPlayerpositionid($position);
 
 
         $searchedRoleId = json_decode($json_params)->{"searchedRoleId"};
