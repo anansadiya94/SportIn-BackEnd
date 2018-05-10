@@ -21,13 +21,22 @@ class AnnouncementController extends Controller
     //GET /announcement/id
     public function showAction($id){
         $helpers = $this->get("app.helpers");
-        $announcement = new Announcement();
 
-        $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findOneBy(
-            array("announcementid" => $id)
-        );
+        $announcement = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findAll();
 
-        return $helpers->json($announcement);
+        //return $helpers->json($announcement);
+
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT a.`*`,u.`*`, c.name as 
+        'categoryName', pp.name as 'PlayerPositionName', r.name as 'RoleName' FROM Announcement a 
+        INNER JOIN User u ON a.userId=u.userId
+        INNER JOIN Category c ON a.categoryId= c.categoryId
+        INNER JOIN PlayerPosition pp ON pp.playerPositionId = a.playerPositionId
+        INNER JOIN Role r ON r.roleId = a.searchedRoleId
+        WHERE u.userId = $id;");
+        $statement->execute();
+        return new JsonResponse($statement->fetchAll());
 
     }
 
