@@ -174,7 +174,13 @@ class AnnouncementController extends Controller
         // Decirle que haga los cambios en BD
         $manager->flush();
         //return necesario
-        return new Response();
+        return $helpers->json(
+            array(
+                "status" => "OK",
+                "code" => "200",
+                "data" => "Announcement added correctly"
+            ));
+        die();
 
     }
 }
