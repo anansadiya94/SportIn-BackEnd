@@ -136,7 +136,7 @@ class AnnouncementController extends Controller
 
         $announcement = new Announcement();
 
-        $announcement->setUserid(json_decode($json_params)->{"userId"},null);
+        //$announcement->setUserid(json_decode($json_params)->{"userId"},null);
         $announcement->setTitle(json_decode($json_params)->{"title"},null);
         $announcement->setPublicationdate(new \DateTime('now'));
         $announcement->setActive(json_decode($json_params)->{"active"},null);
