@@ -41,8 +41,13 @@ class AnnouncementController extends Controller
 
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId
-        WHERE User.roleId = $roleid;");
+        $statement = $connection->prepare("SELECT a.`*`,u.`*`, c.name as 
+        'categoryName', pp.name as 'PlayerPositionName', r.name as 'RoleName' FROM Announcement a 
+        INNER JOIN User u ON a.userId=u.userId
+        INNER JOIN Category c ON a.categoryId= c.categoryId
+        INNER JOIN PlayerPosition pp ON pp.playerPositionId = a.playerPositionId
+        INNER JOIN Role r ON r.roleId = a.searchedRoleId
+        WHERE a.searchedRoleId = $roleid;");
         $statement->execute();
         return new JsonResponse($statement->fetchAll());
 
@@ -62,7 +67,12 @@ class AnnouncementController extends Controller
         $helpers = $this->get("app.helpers");
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM Announcement INNER JOIN User ON Announcement.userId=User.userId");
+        $statement = $connection->prepare("SELECT a.`*`,u.`*`, c.name as 
+        'categoryName', pp.name as 'PlayerPositionName', r.name as 'RoleName' FROM Announcement a 
+        INNER JOIN User u ON a.userId=u.userId
+        INNER JOIN Category c ON a.categoryId= c.categoryId
+        INNER JOIN PlayerPosition pp ON pp.playerPositionId = a.playerPositionId
+        INNER JOIN Role r ON r.roleId = a.searchedRoleId;");
         $statement->execute();
         return new JsonResponse($statement->fetchAll());
 
@@ -105,7 +115,7 @@ class AnnouncementController extends Controller
     }
 
     //POST /announcement
-    // {"title" : "siu","description" : "descriptionsiiuu","userId" : 4,"active" : "1","modified" : "1","categoryId" : 1, "position": "EI"}
+    // {"title" : "siu","description" : "descriptionsiiuu","userId" : 4,"active" : "1","modified" : "1","categoryId" : 1, "positionId": "1", "searchedRoleId": "1"}
     public function announcementAction(Request $request){
 
         // obtener el ser icio que me permitirá convertir a JSON
@@ -131,17 +141,21 @@ class AnnouncementController extends Controller
         );
         $announcement->setCategoryid($category);
 
-        //Nose si se quiere por id o por nombre estatico...
-        $announcement->setPosition(json_decode($json_params)->{"position"},null);
-/*
 
-        //este depende de la base de datos, si quiere que sea id o nombre directamente...
-        $positionId = json_decode($json_params)->{"position"};
+        $positionId = json_decode($json_params)->{"positionId"};
         $position = $this->getDoctrine()->getRepository("BackendBundle:Playerposition")->findOneBy(
             array("playerpositionid" => $positionId)
         );
-        $announcement->setPosition($position);
-*/
+        $announcement->setPlayerpositiondid($position);
+
+
+        $searchedRoleId = json_decode($json_params)->{"searchedRoleId"};
+        $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
+            array("roleid" => $searchedRoleId)
+        );
+        $announcement->setSearchedroleid($role);
+
+
 
         var_dump($announcement);
         // Invocar al manejador de BD
