@@ -30,7 +30,7 @@ class ContactperuserController extends Controller
 
     }
     //POST /contact
-    // {"userid" : 1,"contactUserId" : 2}
+    // {"userId" : 1,"contactUserId" : 2}
     public function contactAction(Request $request){
 
         // obtener el servicio que me permitirá convertir a JSON
@@ -54,7 +54,7 @@ class ContactperuserController extends Controller
             array(
                 "status" => "OK",
                 "code" => "200",
-                "data" => "Announcement added correctly"
+                "data" => "Contact added correctly"
             ));
         die();
 

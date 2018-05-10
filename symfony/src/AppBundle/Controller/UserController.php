@@ -51,7 +51,8 @@ class UserController extends Controller
         }
     }
     // /user POST
-    //MIRAR DE HACER BIEN!!
+    //{"username": "hola", "surname": "hola", "email": "hsdd@gmail.com", "password": "vvsdsdad", "active": "1", "birthDate": "1982-04-05", "age": "22", "height": "22", "weight": "44", "bio": "adasdasdasdasdasdasdasdasdasdasddas", "sex": "H", "foot": "R", "historial": "he jugado aqui", "playerPositionId": 2, "roleId": 3, "countryId": 4, "populationId": 3}
+
     public function userAction(Request $request){
 
         /* No ACABADO AÚN */
@@ -69,11 +70,9 @@ class UserController extends Controller
         json_decode($json_params);
         $user->setUsername(json_decode($json_params)->{"username"},null);
         $user->setSurname(json_decode($json_params)->{"surname"},null);
-        //$user->setSurname2(json_decode($json_params)->{"surname2"},null);
         $user->setEmail(json_decode($json_params)->{"email"},null);
         $user->setPassword(json_decode($json_params)->{"password"},null); //cifrar
         $user->setActive(json_decode($json_params)->{"active"},null);
-        //$user->setBirthdate(json_decode($json_params)->{"birthDate"},null);
          $user->setBirthdate(new \DateTime(json_decode($json_params)->{"birthDate"},null));
         $user->setAge(json_decode($json_params)->{"age"},null);
         //$user->setProfilephoto(json_decode($json_params)->{"profilePhoto"},null);
@@ -83,12 +82,12 @@ class UserController extends Controller
         $user->setSex(json_decode($json_params)->{"sex"},null);
         $user->setFoot(json_decode($json_params)->{"foot"},null);
         $user->setHistorial(json_decode($json_params)->{"historial"},null);
-        //$user->setPopulationid()
-        $playerPositionId = json_decode($json_params)->{"position"};
-        $playerPosition = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
-            array("playerPositionId" => $playerPositionId)
+
+        $playerPositionId = json_decode($json_params)->{"playerPositionId"};
+        $playerPosition = $this->getDoctrine()->getRepository("BackendBundle:Playerposition")->findOneBy(
+            array("playerpositionid" => $playerPositionId)
         );
-        $user->setPosition($playerPosition);
+        $user->setPlayerpositionid($playerPosition);
 
         $roleId = json_decode($json_params)->{"roleId"};
         $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
@@ -141,9 +140,12 @@ class UserController extends Controller
 */
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT u.`*` , r.name as 'roleName', c.name as 'countryName', c.NOC, p.name as 'populationName', p.province FROM User u INNER JOIN Role r ON r.roleId = u.roleId
+        $statement = $connection->prepare("SELECT u.`*` , r.name as 'roleName', 
+        c.name as 'countryName', c.NOC, p.name as 'populationName', p.province, pp.name as 'playerPositionName' FROM User u 
+        INNER JOIN Role r ON r.roleId = u.roleId
         INNER JOIN Country c ON c.countryId = u.countryId
         INNER JOIN Population p ON p.populationId = u.populationId
+        INNER JOIN PlayerPosition pp ON pp.playerPositionId = u.playerPositionId
         WHERE u.userId = $id;");
         $statement->execute();
         return new JsonResponse($statement->fetchAll());
