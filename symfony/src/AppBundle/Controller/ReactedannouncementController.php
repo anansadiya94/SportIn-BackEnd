@@ -119,6 +119,17 @@ class ReactedannouncementController extends Controller
         //$json_token = $request->get("token", null);
         var_dump($json_params);
 
+
+        $userId = json_decode($json_params)->{"userId"};
+        $announcementId = json_decode($json_params)->{"announcementId"};
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("INSERT INTO `ReactedAnnouncement` (`reactedAnnouncementId`, `announcementId`, `userId`, `liked`, `interested`, `moment`, `active`) 
+        VALUES (NULL, $announcementId, $userId, '1', '0', CURRENT_TIMESTAMP, '1');
+        ");
+        $statement->execute();
+
+/*
         $reactedannouncement = new Reactedannouncement();
 
         $reactedannouncement->setActive(1);
@@ -148,6 +159,7 @@ class ReactedannouncementController extends Controller
         // Decirle que haga los cambios en BD
         $manager->flush();
         //return necesario
+*/
         return $helpers->json(
             array(
                 "status" => "OK",
