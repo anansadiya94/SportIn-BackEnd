@@ -9,7 +9,7 @@
 namespace AppBundle\Controller;
 
 use BackendBundle\Entity\User;
-use BackendBundle\Entity\Contact;
+use BackendBundle\Entity\Contactperuser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,7 +41,7 @@ class ContactperuserController extends Controller
         $contact = new Contactperuser();
 
         $contact->setUserid(json_decode($json_params)->{"userId"},null);
-        $contact->setContactuserid(json_decode($json_params)->{"contactUserId"},null);
+        $contact->setContactUserId(json_decode($json_params)->{"contactUserId"},null);
 
         // Invocar al manejador de BD
         $manager = $this->getDoctrine()->getManager();
