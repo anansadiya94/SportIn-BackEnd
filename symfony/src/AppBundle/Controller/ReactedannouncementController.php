@@ -96,7 +96,13 @@ class ReactedannouncementController extends Controller
         WHERE reactedannouncementId = $reactedAnnouncementId;");
         $statement->execute();
 
-        return new Response();
+        return $helpers->json(
+            array(
+                "status" => "OK",
+                "code" => "200",
+                "data" => "Announcement added correctly"
+            ));
+        die();
 
     }
 
@@ -142,7 +148,13 @@ class ReactedannouncementController extends Controller
         // Decirle que haga los cambios en BD
         $manager->flush();
         //return necesario
-        return new Response();
+        return $helpers->json(
+            array(
+                "status" => "OK",
+                "code" => "200",
+                "data" => "Announcement added correctly"
+            ));
+        die();
 
     }
 }
