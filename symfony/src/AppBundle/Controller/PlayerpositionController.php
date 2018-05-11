@@ -19,7 +19,7 @@ class PlayerpositionController extends Controller
         $helpers = $this->get("app.helpers");
         if($positionid != null){
             $positions = $this->getDoctrine()->getRepository("BackendBundle:Playerposition")->findOneBy(
-                array("positionid" => $positionid)
+                array("playerpositionid" => $positionid)
             );
         }else{
             $positions = $this->getDoctrine()->getRepository("BackendBundle:Playerposition")->findAll();
