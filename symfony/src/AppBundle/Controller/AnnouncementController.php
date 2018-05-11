@@ -27,9 +27,9 @@ class AnnouncementController extends Controller
         //return $helpers->json($announcement);
 
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
-        $connection = $em->getConnection();
+        $connection = $em->getConnection(); //arreglado po.name
         $statement = $connection->prepare("SELECT a.`*`,u.`*`, c.name as 
-        'categoryName', pp.name as 'PlayerPositionName', r.name as 'RoleName', cl.name as 'PopulationName' FROM Announcement a 
+        'categoryName', pp.name as 'PlayerPositionName', r.name as 'RoleName', po.name as 'PopulationName' FROM Announcement a 
         INNER JOIN User u ON a.userId=u.userId
         INNER JOIN Category c ON a.categoryId= c.categoryId
         INNER JOIN PlayerPosition pp ON pp.playerPositionId = a.playerPositionId
