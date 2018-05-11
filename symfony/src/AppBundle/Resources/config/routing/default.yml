@@ -138,3 +138,8 @@ default_contact:
   path: /contact
   defaults: { _controller: "AppBundle:Contactperuser:contact"}
   methods: POST 
+
+default_playerposition_showPositions:
+  path: /position/{positionid}
+  defaults: { _controller: "AppBundle:Playerposition:showPositions", positionid : null}
+  methods: GET 
