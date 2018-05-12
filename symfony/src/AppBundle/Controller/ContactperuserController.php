@@ -23,8 +23,11 @@ class ContactperuserController extends Controller
 
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM User INNER JOIN ContactPerUser ON ContactPerUser.contact_userId=User.userId
-        WHERE ContactPerUser.userId=$userid");
+        $statement = $connection->prepare("INSERT INTO Contactperuser(userId, contact_userId) SELECT $userId, $contact_userId 
+        FROM DUAL WHERE NOT EXISTS (SELECT userId,contact_userId FROM Contactperuser c 
+        WHERE c.userId=$userId AND c.contact_userId=$contact_userId)");
+        //$statement = $connection->prepare("SELECT * FROM User INNER JOIN ContactPerUser ON ContactPerUser.contact_userId=User.userId
+        //WHERE ContactPerUser.userId=$userid");
         $statement->execute();
         return new JsonResponse($statement->fetchAll());
 

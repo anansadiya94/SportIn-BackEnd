@@ -143,3 +143,8 @@ default_playerposition_showPositions:
   path: /position/{positionid}
   defaults: { _controller: "AppBundle:Playerposition:showPositions", positionid : null}
   methods: GET 
+
+default_user_deactivate:
+  path: /deactivateuser
+  defaults: { _controller: "AppBundle:User:deactivateuser"}
+  methods: POST

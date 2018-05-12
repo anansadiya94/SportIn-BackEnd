@@ -154,6 +154,38 @@ class UserController extends Controller
         $statement->execute();
         return new JsonResponse($statement->fetchAll());
     }
+
+
+    //POST /deactivateuser
+    // {"userId" : 3}
+    public function deactivateuserAction(Request $request){
+
+        // obtener el ser icio que me permitirá convertir a JSON
+        $helpers = $this->get("app.helpers");
+        // obtenr los datos de la petición
+        $json_params = $request->get("json", null);
+        //$json_token = $request->get("token", null);
+        var_dump($json_params);
+
+        $active = 0;
+        $userId = json_decode($json_params)->{"userId"};
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("UPDATE User 
+        SET active = $active
+        WHERE userId = $userId;");
+        $statement->execute();
+
+        return $helpers->json(
+            array(
+                "status" => "OK",
+                "code" => "200",
+                "data" => "Announcement added correctly"
+            ));
+        die();
+
+    }
+
     private function validateEmail($email){
         $email_constraint = new Email();
         $email_constraint->message = "The email is not valid!";
