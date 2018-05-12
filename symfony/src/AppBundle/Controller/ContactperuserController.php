@@ -30,7 +30,7 @@ class ContactperuserController extends Controller
 
     }
     //POST /contact
-    // {"userId" : 1,"contactUserId" : 2}
+    // {"userId" : 1,"contact_userId" : 2}
     public function contactAction(Request $request){
 /*
         // obtener el servicio que me permitirá convertir a JSON
@@ -62,9 +62,9 @@ class ContactperuserController extends Controller
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
 
-        $statement = $connection->prepare("INSERT INTO Contactperuser(userId, contact_userId) 
+        $statement = $connection->prepare("INSERT INTO ContactPerUser(userId, contact_userId) 
         SELECT $userId, $contact_userId FROM DUAL WHERE NOT EXISTS 
-        (SELECT userId,contact_userId FROM Contactperuser c 
+        (SELECT userId,contact_userId FROM ContactPerUser c 
         WHERE c.userId=$userId AND c.contact_userId=$contact_userId)");
         $statement->execute();
         return $helpers->json(
