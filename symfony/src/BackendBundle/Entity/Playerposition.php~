@@ -155,4 +155,10 @@ class Playerposition
     {
         return $this->userid;
     }
+
+    public function __toString()
+    {
+        return strval( $this->getPlayerpositionid() );
+    }
+
 }

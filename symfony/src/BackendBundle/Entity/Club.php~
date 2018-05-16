@@ -213,4 +213,10 @@ class Club
     {
         return $this->province;
     }
+
+    public function __toString()
+    {
+        return strval( $this->getClubid() );
+    }
+
 }

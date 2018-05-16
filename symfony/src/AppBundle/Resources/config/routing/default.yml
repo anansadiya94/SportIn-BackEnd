@@ -148,3 +148,8 @@ default_user_deactivate:
   path: /deactivateuser
   defaults: { _controller: "AppBundle:User:deactivateuser"}
   methods: POST
+
+default_image_upload:
+  path: /imageUpload
+  defaults: { _controller: "AppBundle:Media:imageUpload"}
+  methods: POST
