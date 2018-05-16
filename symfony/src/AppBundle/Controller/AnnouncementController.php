@@ -139,7 +139,7 @@ class AnnouncementController extends Controller
         if($user_token != null){
             $user_auth = $jwt_auth->checkToken($user_token);
             if(is_object($user_auth) &&
-                ($user_auth->sub() == json_decode($json_params)->{"userId"}) ){
+                ($user_auth->getUserId() == json_decode($json_params)->{"userId"}) ){
 
                 $announcement = new Announcement();
                 //funciona

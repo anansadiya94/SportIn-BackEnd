@@ -18,15 +18,40 @@ use Symfony\Component\HttpFoundation\Response;
 class ContactperuserController extends Controller
 {
     //GET /contact/userid
-    public function showUserContactsAction($userid){
+    public function showUserContactsAction($token){
         $helpers = $this->get("app.helpers");
+        $jwt_auth = $this->get("app.jwt_auth");
 
-        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
-        $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM User INNER JOIN ContactPerUser ON ContactPerUser.contact_userId=User.userId
-        WHERE ContactPerUser.userId=$userid");
-        $statement->execute();
-        return new JsonResponse($statement->fetchAll());
+        if($token != null) {
+            $user = $jwt_auth->checkToken($token);
+            if (is_object($user)) {
+                $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+                $connection = $em->getConnection();
+                $statement = $connection->prepare("SELECT * FROM User INNER JOIN ContactPerUser ON ContactPerUser.contact_userId=User.userId
+              WHERE ContactPerUser.userId=$user->getUserId()");
+                $statement->execute();
+                return new JsonResponse($statement->fetchAll());
+
+            } else {
+                //ER-0006: not a valid token
+                return $helpers->json(
+                    array(
+                        "status" => "error",
+                        "code" => "ER-0006",
+                        "data" => "Received token not valid!"
+                    ));
+                die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
 
     }
     //POST /contact

@@ -70,8 +70,8 @@ default_clubhistoryperuser_show:
 
 #reactedAnnouncement con Adonis
 default_reactedAnnouncement_show:
-  path: /reactedannouncement/{userid}/{interested}
-  defaults: { _controller: "AppBundle:Reactedannouncement:show", userid : 1, interested : 2}
+  path: /reactedannouncement/{token}/{interested}
+  defaults: { _controller: "AppBundle:Reactedannouncement:show", token : null, interested : 2}
   methods: GET
 
 default_reactedAnnouncement_reactedannouncement:
@@ -80,8 +80,8 @@ default_reactedAnnouncement_reactedannouncement:
   methods: POST
 
 default_reactedAnnouncement_shownotification:
-  path: /reactedannouncementnotification/{userid}
-  defaults: { _controller: "AppBundle:Reactedannouncement:showNotifications", userid : 1}
+  path: /reactedannouncementnotification/{token}
+  defaults: { _controller: "AppBundle:Reactedannouncement:showNotifications", token : null}
   methods: GET
 
 default_updatereactedAnnouncement_reactedannouncement:
@@ -130,8 +130,8 @@ default_category_showCategories:
   methods: GET
 
 default_contact_showUserContacts:
-  path: /contact/{userid}
-  defaults: { _controller: "AppBundle:Contactperuser:showUserContacts",userid: null}
+  path: /contact/{token}
+  defaults: { _controller: "AppBundle:Contactperuser:showUserContacts",token: null}
   methods: GET
 
 default_contact:

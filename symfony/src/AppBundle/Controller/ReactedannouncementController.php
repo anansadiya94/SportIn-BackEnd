@@ -22,56 +22,83 @@ class ReactedannouncementController extends Controller
     //GET /reactedannouncement/userid/interested
     //userid soy yo, es decir, el usuario que quiere ver sus ofertas
     //interested 0:espera - 1:aceptado - 2:rechazado
-    public function showAction($userid, $interested){
+    public function showAction($token, $interested){
         $helpers = $this->get("app.helpers");
+        $jwt_auth = $this->get("app.jwt_auth");
 
-        /*$reactedannouncement = $this->getDoctrine()->getRepository("BackendBundle:Reactedannouncement")->findBy(
-            array("userid" => $userid,
-                "interested" => $interested)
-        );
+        if($token != null) {
 
-        return $helpers->json($reactedannouncement);
-*/
+            $user = $jwt_auth->checkToken($token);
+            if(is_object($user)){
 
-        /*
-        query
-
-        SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
-        INNER JOIN User ON Announcement.userId=User.userId
-        WHERE ReactedAnnouncement.interested = 1
-        AND ReactedAnnouncement.userId = 1;
-
-        */
-        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
-        $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
-        INNER JOIN User ON Announcement.userId=User.userId
-        WHERE ReactedAnnouncement.interested = $interested
-        AND ReactedAnnouncement.userId = $userid;");
-        $statement->execute();
-        return new JsonResponse($statement->fetchAll());
+                $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+                $connection = $em->getConnection();
+                $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
+                INNER JOIN User ON Announcement.userId=User.userId
+                WHERE ReactedAnnouncement.interested = $interested
+                AND ReactedAnnouncement.userId = $user->getUserId();");
+                $statement->execute();
+                return new JsonResponse($statement->fetchAll());
+            }else{
+                //ER-0006: not a valid token
+                return $helpers->json(
+                    array(
+                        "status" => "error",
+                        "code" => "ER-0006",
+                        "data" => "Received token not valid!"
+                    ));
+                die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
     }
 
     //GET /reactedannouncementnotification/userid
     //user id aqui es la persona que quiere ver sus notificaciones.
-    public function showNotificationsAction($userid){
+    public function showNotificationsAction($token)
+    {
         $helpers = $this->get("app.helpers");
+        $jwt_auth = $this->get("app.jwt_auth");
 
-        /*$reactedannouncement = $this->getDoctrine()->getRepository("BackendBundle:Reactedannouncement")->findBy(
-            array("userid" => $userid,
-                "interested" => $interested)
-        );
-
-        return $helpers->json($reactedannouncement);
-*/
-        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
-        $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
-        INNER JOIN User ON ReactedAnnouncement.userId=User.userId
-        WHERE ReactedAnnouncement.interested = 0
-        AND Announcement.userId = $userid;");
-        $statement->execute();
-        return new JsonResponse($statement->fetchAll());
+        if ($token != null) {
+            $user = $jwt_auth->checkToken($token);
+            if (is_object($user)) {
+                $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+                $connection = $em->getConnection();
+                $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
+                INNER JOIN User ON ReactedAnnouncement.userId=User.userId
+                WHERE ReactedAnnouncement.interested = 0
+                AND Announcement.userId = $user->getUserId();");
+                $statement->execute();
+                return new JsonResponse($statement->fetchAll());
+            }else {
+                //ER-0006: not a valid token
+                return $helpers->json(
+                    array(
+                        "status" => "error",
+                        "code" => "ER-0006",
+                        "data" => "Received token not valid!"
+                    ));
+                die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
     }
 
     //POST /updatereactedannouncement
