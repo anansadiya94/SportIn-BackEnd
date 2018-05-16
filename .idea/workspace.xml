@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1dd64a92-a939-46b8-a5ed-306e1055ffac" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/symfony/src/AppBundle/Controller/MediaController.php" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/symfony/src/AppBundle/Controller/AnnouncementController.php" afterPath="$PROJECT_DIR$/symfony/src/AppBundle/Controller/AnnouncementController.php" />
+      <change beforePath="$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php" />
       <change beforePath="$PROJECT_DIR$/symfony/src/AppBundle/Resources/config/routing/default.yml" afterPath="$PROJECT_DIR$/symfony/src/AppBundle/Resources/config/routing/default.yml" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Club.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Club.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Contactperuser.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Contactperuser.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Playerposition.php" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Playerposition.php" />
-      <change beforePath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/User.orm.yml" afterPath="$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/User.orm.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,8 +32,8 @@
       <file leaf-file-name="default.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Resources/config/routing/default.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3213">
-              <caret line="153" column="43" lean-forward="false" selection-start-line="153" selection-start-column="43" selection-end-line="153" selection-end-column="43" />
+            <state relative-caret-position="441">
+              <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -58,23 +55,57 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="57" />
+            <state relative-caret-position="477">
+              <caret line="149" column="45" lean-forward="false" selection-start-line="149" selection-start-column="45" selection-end-line="149" selection-end-column="45" />
               <folding>
-                <marker date="1526233045868" expanded="true" signature="6031:6535" ph="SELECT u.`*`... User" />
-                <marker date="1526233045868" expanded="true" signature="7305:7370" ph="UPDATE User... " />
+                <element signature="e#40#70#0#PHP" expanded="true" />
+                <marker date="1526502630628" expanded="true" signature="6425:6968" ph="SELECT u.`*`... User" />
+                <marker date="1526502630628" expanded="true" signature="6425:6969" ph="SELECT u.`*`... User" />
+                <marker date="1526502630628" expanded="true" signature="6425:6972" ph="SELECT u.`*`... User" />
+                <marker date="1526502630628" expanded="true" signature="6425:6976" ph="SELECT u.`*`... User" />
+                <marker date="1526502630628" expanded="true" signature="6425:6978" ph="SELECT u.`*`... User" />
+                <marker date="1526502630628" expanded="true" signature="6425:6989" ph="SELECT u.`*`... User" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MediaController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MediaController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/MediaController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="168">
+              <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
               <folding>
                 <element signature="e#122#167#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnnouncementController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/AnnouncementController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="131" column="45" lean-forward="false" selection-start-line="131" selection-start-column="8" selection-end-line="131" selection-end-column="45" />
+              <folding>
+                <marker date="1526494062252" expanded="true" signature="885:1391" ph="SELECT a.`*`... Announcement" />
+                <marker date="1526494062252" expanded="true" signature="1978:2386" ph="SELECT a.`*`... Announcement" />
+                <marker date="1526494062252" expanded="true" signature="3037:3411" ph="SELECT a.`*`... Announcement" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContactperuserController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/ContactperuserController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+              <folding>
+                <marker date="1526233045803" expanded="true" signature="762:888" ph="SELECT * FRO... User" />
+                <marker date="1526233045803" expanded="true" signature="2344:2593" ph="INSERT INTO ContactPerUser... " />
+                <marker date="1526233045803" expanded="true" signature="2404:2593" ph="SELECT ${$us... DUAL" />
+                <marker date="1526233045803" expanded="true" signature="2473:2577" ph="SELECT userI... ContactPerUser" />
               </folding>
             </state>
           </provider>
@@ -128,14 +159,14 @@
         <option value="$PROJECT_DIR$/symfony/src/BackendBundle/Entity/Country.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/CountryController.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/ReactedannouncementController.php" />
-        <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/AnnouncementController.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/ClubController.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Services/JwtAuth.php" />
-        <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/ImagesController.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/ImageController.php" />
+        <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/AnnouncementController.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Resources/config/routing/default.yml" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/MediaController.php" />
+        <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php" />
       </list>
     </option>
   </component>
@@ -184,7 +215,7 @@
       <path value="$PROJECT_DIR$/symfony/vendor/knplabs/knp-paginator-bundle" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -408,15 +439,16 @@
       <workItem from="1525515969121" duration="16507000" />
       <workItem from="1525939382315" duration="4441000" />
       <workItem from="1526233076117" duration="5194000" />
-      <workItem from="1526492582547" duration="346000" />
+      <workItem from="1526492582547" duration="7478000" />
+      <workItem from="1526504322897" duration="34000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74269000" />
+    <option name="totallyTimeSpent" value="81435000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1098" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1375" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -454,13 +486,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Club.orm.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/symfony/src/BackendBundle/Resources/config/doctrine/Country.orm.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -584,6 +609,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="21" column="6" lean-forward="false" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -626,7 +652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -695,7 +720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -718,7 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="651">
           <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -741,7 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -749,12 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-          <folding>
-            <element signature="e#2041#2969#0#PHP" expanded="false" />
-            <marker date="1525983541413" expanded="true" signature="1529:1812" ph="SELECT * FRO... ReactedAnnouncement" />
-            <marker date="1525983541413" expanded="true" signature="2591:2864" ph="SELECT * FRO... ReactedAnnouncement" />
-            <marker date="1525983541413" expanded="true" signature="3833:3936" ph="UPDATE ReactedAnnouncement... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -783,14 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Services/JwtAuth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1029">
-          <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/symfony/src/BackendBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1092">
@@ -799,44 +807,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Resources/config/routing/default.yml">
+    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Services/JwtAuth.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3213">
-          <caret line="153" column="43" lean-forward="false" selection-start-line="153" selection-start-column="43" selection-end-line="153" selection-end-column="43" />
+        <state relative-caret-position="1029">
+          <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/AnnouncementController.php">
+    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/ContactperuserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="76" column="45" lean-forward="false" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
+        <state relative-caret-position="210">
+          <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
           <folding>
-            <element signature="e#122#160#0#PHP" expanded="false" />
-            <marker date="1526233045802" expanded="true" signature="885:1391" ph="SELECT a.`*`... Announcement" />
-            <marker date="1526233045802" expanded="true" signature="1978:2386" ph="SELECT a.`*`... Announcement" />
-            <marker date="1526233045802" expanded="true" signature="3037:3411" ph="SELECT a.`*`... Announcement" />
+            <marker date="1526233045803" expanded="true" signature="762:888" ph="SELECT * FRO... User" />
+            <marker date="1526233045803" expanded="true" signature="2344:2593" ph="INSERT INTO ContactPerUser... " />
+            <marker date="1526233045803" expanded="true" signature="2404:2593" ph="SELECT ${$us... DUAL" />
+            <marker date="1526233045803" expanded="true" signature="2473:2577" ph="SELECT userI... ContactPerUser" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Resources/config/routing/default.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/MediaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding>
+            <element signature="e#122#167#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="57" />
+        <state relative-caret-position="477">
+          <caret line="149" column="45" lean-forward="false" selection-start-line="149" selection-start-column="45" selection-end-line="149" selection-end-column="45" />
           <folding>
-            <marker date="1526233045868" expanded="true" signature="6031:6535" ph="SELECT u.`*`... User" />
-            <marker date="1526233045868" expanded="true" signature="7305:7370" ph="UPDATE User... " />
+            <element signature="e#40#70#0#PHP" expanded="true" />
+            <marker date="1526502630628" expanded="true" signature="6425:6968" ph="SELECT u.`*`... User" />
+            <marker date="1526502630628" expanded="true" signature="6425:6969" ph="SELECT u.`*`... User" />
+            <marker date="1526502630628" expanded="true" signature="6425:6972" ph="SELECT u.`*`... User" />
+            <marker date="1526502630628" expanded="true" signature="6425:6976" ph="SELECT u.`*`... User" />
+            <marker date="1526502630628" expanded="true" signature="6425:6978" ph="SELECT u.`*`... User" />
+            <marker date="1526502630628" expanded="true" signature="6425:6989" ph="SELECT u.`*`... User" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/MediaController.php">
+    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/AnnouncementController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="267">
+          <caret line="131" column="45" lean-forward="false" selection-start-line="131" selection-start-column="8" selection-end-line="131" selection-end-column="45" />
           <folding>
-            <element signature="e#122#167#0#PHP" expanded="true" />
+            <marker date="1526494062252" expanded="true" signature="885:1391" ph="SELECT a.`*`... Announcement" />
+            <marker date="1526494062252" expanded="true" signature="1978:2386" ph="SELECT a.`*`... Announcement" />
+            <marker date="1526494062252" expanded="true" signature="3037:3411" ph="SELECT a.`*`... Announcement" />
           </folding>
         </state>
       </provider>

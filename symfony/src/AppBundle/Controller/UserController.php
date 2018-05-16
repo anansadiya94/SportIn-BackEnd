@@ -135,7 +135,7 @@ class UserController extends Controller
     }
 
     // USER/ GET
-    public function showAction(Request $request, $id){
+    public function showAction(Request $request, $token){
 /*
         $helpers = $this->get("app.helpers");
         if($id == null){
@@ -147,16 +147,44 @@ class UserController extends Controller
         }
         return $helpers->json($user);
 */
-        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
-        $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT u.`*` , r.name as 'roleName', c.name as 'countryName', 
-        c.NOC, p.name as 'populationName', p.province, pp.name as 'playerPositionName', cl.name as 'ClubName' 
-        FROM User u INNER JOIN Role r ON r.roleId = u.roleId INNER JOIN Country c ON c.countryId = u.countryId 
-        INNER JOIN Population p ON p.populationId = u.populationId 
-        INNER JOIN PlayerPosition pp ON pp.playerPositionId = u.playerPositionId 
-        INNER JOIN Club cl ON cl.clubId = u.clubId WHERE u.userId = $id");
-        $statement->execute();
-        return new JsonResponse($statement->fetchAll());
+        $helpers = $this->get("app.helpers");
+        $jwt_auth = $this->get("app.jwt_auth");
+        if($token != null){
+
+            $user = $jwt_auth->checkToken($token);
+            if(is_object($user)){
+                $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+                $connection = $em->getConnection();
+                $statement = $connection->prepare("SELECT u.`*` , r.name as 'roleName', c.name as 'countryName', 
+                c.NOC, p.name as 'populationName', p.province, pp.name as 'playerPositionName', cl.name as 'ClubName' 
+                FROM User u INNER JOIN Role r ON r.roleId = u.roleId INNER JOIN Country c ON c.countryId = u.countryId 
+                INNER JOIN Population p ON p.populationId = u.populationId 
+                INNER JOIN PlayerPosition pp ON pp.playerPositionId = u.playerPositionId 
+                INNER JOIN Club cl ON cl.clubId = u.clubId WHERE u.userId = ".$user->getUserId());
+                $statement->execute();
+                return new JsonResponse($statement->fetchAll());
+
+            }else{
+                //ER-0006: not a valid token
+                return $helpers->json(
+                    array(
+                        "status" => "error",
+                        "code" => "ER-0006",
+                        "data" => "Received token not valid!"
+                    ));
+                die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
+
     }
 
 

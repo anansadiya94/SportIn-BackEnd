@@ -19,8 +19,8 @@ default_user:
   methods: POST
 
 user_show:
-  path: /user/{id}
-  defaults: { _controller: "AppBundle:User:show", id : null}
+  path: /user/{token}
+  defaults: { _controller: "AppBundle:User:show", token : null}
   methods: GET
 
 announcement_show:

@@ -130,59 +130,84 @@ class AnnouncementController extends Controller
 
         // obtener el ser icio que me permitirá convertir a JSON
         $helpers = $this->get("app.helpers");
+        $jwt_auth = $this->get("app.jwt_auth");
         // obtenr los datos de la petición
         $json_params = $request->get("json", null);
-        //$json_token = $request->get("token", null);
-        var_dump($json_params);
+        $user_token = $request->get("token", null);
+        //var_dump($json_params);
 
-        $announcement = new Announcement();
+        if($user_token != null){
+            $user_auth = $jwt_auth->checkToken($user_token);
+            if(is_object($user_auth) &&
+                ($user_auth->sub() == json_decode($json_params)->{"userId"}) ){
 
-        //funciona
-        $announcement->setUserid(json_decode($json_params)->{"userId"},null);
-        $announcement->setTitle(json_decode($json_params)->{"title"},null);
-        $announcement->setPublicationdate(new \DateTime('now'));
-        $announcement->setActive(json_decode($json_params)->{"active"},null);
-        $announcement->setDescription(json_decode($json_params)->{"description"},null);
-        $announcement->setModified(json_decode($json_params)->{"modified"},null);
+                $announcement = new Announcement();
+                //funciona
+                $announcement->setUserid(json_decode($json_params)->{"userId"},null);
+                $announcement->setTitle(json_decode($json_params)->{"title"},null);
+                $announcement->setPublicationdate(new \DateTime('now'));
+                $announcement->setActive(json_decode($json_params)->{"active"},null);
+                $announcement->setDescription(json_decode($json_params)->{"description"},null);
+                $announcement->setModified(json_decode($json_params)->{"modified"},null);
 
-        $categoryId = json_decode($json_params)->{"categoryId"};
+                $categoryId = json_decode($json_params)->{"categoryId"};
 
-        $category = $this->getDoctrine()->getRepository("BackendBundle:Category")->findOneBy(
-            array("categoryid" => $categoryId)
-        );
-        $announcement->setCategoryid($category);
-
-
-        $positionId = json_decode($json_params)->{"positionId"};
-        $position = $this->getDoctrine()->getRepository("BackendBundle:Playerposition")->findOneBy(
-            array("playerpositionid" => $positionId)
-        );
-        $announcement->setPlayerpositionid($position);
+                $category = $this->getDoctrine()->getRepository("BackendBundle:Category")->findOneBy(
+                    array("categoryid" => $categoryId)
+                );
+                $announcement->setCategoryid($category);
 
 
-        $searchedRoleId = json_decode($json_params)->{"searchedRoleId"};
-        $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
-            array("roleid" => $searchedRoleId)
-        );
-        $announcement->setSearchedroleid($role);
+                $positionId = json_decode($json_params)->{"positionId"};
+                $position = $this->getDoctrine()->getRepository("BackendBundle:Playerposition")->findOneBy(
+                    array("playerpositionid" => $positionId)
+                );
+                $announcement->setPlayerpositionid($position);
+
+
+                $searchedRoleId = json_decode($json_params)->{"searchedRoleId"};
+                $role = $this->getDoctrine()->getRepository("BackendBundle:Role")->findOneBy(
+                    array("roleid" => $searchedRoleId)
+                );
+                $announcement->setSearchedroleid($role);
 
 
 
-        var_dump($announcement);
-        // Invocar al manejador de BD
-        $manager = $this->getDoctrine()->getManager();
-        // Decirle al manejador que daras de alta ese objeto
-        $manager->persist($announcement);
-        // Decirle que haga los cambios en BD
-        $manager->flush();
-        //return necesario
-        return $helpers->json(
-            array(
-                "status" => "OK",
-                "code" => "200",
-                "data" => "Announcement added correctly"
-            ));
-        die();
+                //var_dump($announcement);
+                // Invocar al manejador de BD
+                $manager = $this->getDoctrine()->getManager();
+                // Decirle al manejador que daras de alta ese objeto
+                $manager->persist($announcement);
+                // Decirle que haga los cambios en BD
+                $manager->flush();
+                //return necesario
+                $result = $helpers->json(
+                    array(
+                        "status" => "OK",
+                        "code" => "200",
+                        "data" => "Announcement added correctly"
+                    ));
+            }else{
+                //ER-0006: not a valid token
+                return $helpers->json(
+                    array(
+                        "status" => "error",
+                        "code" => "ER-0006",
+                        "data" => "Received token not valid!"
+                    ));
+                die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
 
+        return $result;
     }
 }
