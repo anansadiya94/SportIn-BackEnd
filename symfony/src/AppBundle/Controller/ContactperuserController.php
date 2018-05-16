@@ -22,13 +22,14 @@ class ContactperuserController extends Controller
         $helpers = $this->get("app.helpers");
         $jwt_auth = $this->get("app.jwt_auth");
 
+
         if($token != null) {
             $user = $jwt_auth->checkToken($token);
             if (is_object($user)) {
                 $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
                 $connection = $em->getConnection();
                 $statement = $connection->prepare("SELECT * FROM User INNER JOIN ContactPerUser ON ContactPerUser.contact_userId=User.userId
-              WHERE ContactPerUser.userId=$user->getUserId()");
+              WHERE ContactPerUser.userId=$user->getUserid()");
                 $statement->execute();
                 return new JsonResponse($statement->fetchAll());
 
