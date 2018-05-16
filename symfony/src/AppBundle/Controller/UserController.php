@@ -57,6 +57,7 @@ class UserController extends Controller
         /* No ACABADO AÚN */
         // obtener el ser icio que me permitirá convertir a JSON
         $helpers = $this->get("app.helpers");
+        $jwt_auth = $this->get("app.jwt_auth");
         // obtenr los datos de la petición
         $json_params = $request->get("json", null);
         //$json_params = $this->get($request)->getContent();
@@ -120,12 +121,15 @@ class UserController extends Controller
         // Decirle que haga los cambios en BD
         $manager->flush();
 
-        return $helpers->json(
+        return new JsonResponse(
+            $jwt_auth->singin($user->getEmail(), $user->getPassword()));
+
+        /*return $helpers->json(
             array(
                 "status" => "OK",
                 "code" => "200",
                 "data" => "User added correctly"
-            ));
+            ));*/
         die();
 
     }
