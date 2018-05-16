@@ -76,7 +76,7 @@ class ReactedannouncementController extends Controller
                 $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
                 INNER JOIN User ON ReactedAnnouncement.userId=User.userId
                 WHERE ReactedAnnouncement.interested = 0
-                AND Announcement.userId = $user->getUserid();");
+                AND Announcement.userId =".$user->getUserId());
                 $statement->execute();
                 return new JsonResponse($statement->fetchAll());
             }else {

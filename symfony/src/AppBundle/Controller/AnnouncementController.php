@@ -99,7 +99,7 @@ class AnnouncementController extends Controller
             if(is_object($user_auth)){
 
                 $result = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findBy(
-                    array("userid" => $user_auth->getUserid())
+                    array("userid" => $user_auth->getUserId())
                 );
             }else{
                 //ER-0006: not a valid token
@@ -139,7 +139,7 @@ class AnnouncementController extends Controller
         if($user_token != null){
             $user_auth = $jwt_auth->checkToken($user_token);
             if(is_object($user_auth) &&
-                ($user_auth->getUserid() == json_decode($json_params)->{"userId"}) ){
+                ($user_auth->getUserId() == json_decode($json_params)->{"userId"}) ){
 
                 $announcement = new Announcement();
                 //funciona

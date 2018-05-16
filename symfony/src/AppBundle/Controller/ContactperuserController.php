@@ -28,8 +28,9 @@ class ContactperuserController extends Controller
             if (is_object($user)) {
                 $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
                 $connection = $em->getConnection();
-                $statement = $connection->prepare("SELECT * FROM User INNER JOIN ContactPerUser ON ContactPerUser.contact_userId=User.userId
-              WHERE ContactPerUser.userId=$user->getUserid()");
+                $statement = $connection->prepare(
+                    "SELECT * FROM User INNER JOIN ContactPerUser ON ContactPerUser.contact_userId=User.userId
+              WHERE ContactPerUser.userId=".$user->getUserId());
                 $statement->execute();
                 return new JsonResponse($statement->fetchAll());
 
