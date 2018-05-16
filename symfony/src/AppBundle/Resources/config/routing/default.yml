@@ -153,3 +153,8 @@ default_image_upload:
   path: /imageUpload
   defaults: { _controller: "AppBundle:Media:imageUpload"}
   methods: POST
+
+default_user_repeatedmail:
+  path: /repeatedEmail/{email}
+  defaults: { _controller: "AppBundle:User:repeatedEmail", email : null}
+  methods: GET

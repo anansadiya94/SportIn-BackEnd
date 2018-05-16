@@ -224,6 +224,33 @@ class UserController extends Controller
         return $this->get("validator")->validate($email, $email_constraint);
     }
 
+    public function repeatedEmailAction($email){
+        $helpers = $this->get("app.helpers");
+        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT * FROM User u WHERE u.email='$email'");
+        $statement->execute();
+        //$statement->fetchAll() //esto esta dentro del if, pero mirar como se hace
+        if($statement->rowCount() == 0){
+            return $helpers->json(
+                array(
+                    "status" => "ok",
+                    "code" => "201",
+                    "data" => "Valid Email"
+                ));
+            die();
+        }else{
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "202",
+                    "data" => "Email already in the DB"
+                ));
+            die();
+
+        }
+    }
+
 
 
 }
