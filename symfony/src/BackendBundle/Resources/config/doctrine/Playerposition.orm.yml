@@ -24,6 +24,12 @@ BackendBundle\Entity\Playerposition:
             length: 45
             options:
                 fixed: false
+        photo:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
         active:
             type: boolean
             nullable: true

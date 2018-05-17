@@ -81,9 +81,9 @@ BackendBundle\Entity\User:
                 unsigned: false
             column: populationId
         profilephoto:
-            type: string
+            type: text
             nullable: true
-            length: 30
+            length: 65535
             options:
                 fixed: false
             column: profilePhoto

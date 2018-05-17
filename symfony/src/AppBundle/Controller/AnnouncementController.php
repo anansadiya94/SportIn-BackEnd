@@ -134,22 +134,24 @@ class AnnouncementController extends Controller
         // obtener los datos de la petición
         $json_params = $request->get("json", null);
         $user_token = $request->get("token", null);
-        
+        //var_dump($user_token);
+        //die();
 
         if($user_token != null){
             $user_auth = $jwt_auth->checkToken($user_token);
-            if(is_object($user_auth) &&
-                ($user_auth->getUserId() == json_decode($json_params)->{"userId"}) ){
+            //var_dump(($user_auth));
+            //die();
+            if(is_object($user_auth)){
 
                 $announcement = new Announcement();
                 //funciona
-                $announcement->setUserid(json_decode($json_params)->{"userId"},null);
+                $announcement->setUserid($user_auth->getUserId());
                 $announcement->setTitle(json_decode($json_params)->{"title"},null);
                 $announcement->setPublicationdate(new \DateTime('now'));
                 $announcement->setActive(json_decode($json_params)->{"active"},null);
                 $announcement->setDescription(json_decode($json_params)->{"description"},null);
                 $announcement->setModified(json_decode($json_params)->{"modified"},null);
-
+                $announcement->setPhoto(json_decode($json_params)->{"image"}, null);
                 $categoryId = json_decode($json_params)->{"categoryId"};
 
                 $category = $this->getDoctrine()->getRepository("BackendBundle:Category")->findOneBy(

@@ -66,4 +66,3 @@ class Contactperuser
         return $this->contactUserid;
     }
 }
-

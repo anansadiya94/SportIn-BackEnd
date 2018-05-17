@@ -161,4 +161,33 @@ class Playerposition
         return strval( $this->getPlayerpositionid() );
     }
 
+    /**
+     * @var string
+     */
+    private $photo;
+
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return Playerposition
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
 }

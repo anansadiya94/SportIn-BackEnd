@@ -317,4 +317,33 @@ class Announcement
     {
         return $this->searchedroleid;
     }
+    /**
+     * @var string
+     */
+    private $photo;
+
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return Announcement
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
 }

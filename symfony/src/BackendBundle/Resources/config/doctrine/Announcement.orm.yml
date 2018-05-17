@@ -64,6 +64,12 @@ BackendBundle\Entity\Announcement:
                 unsigned: false
                 default: '0'
             column: categoryId
+        photo:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
     manyToOne:
         playerpositionid:
             targetEntity: Playerposition
