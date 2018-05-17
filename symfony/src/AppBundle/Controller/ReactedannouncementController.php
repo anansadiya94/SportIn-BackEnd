@@ -105,31 +105,59 @@ class ReactedannouncementController extends Controller
     // {"reactedAnnouncementId" : 3,"interested" : 2}
     public function updatereactedannouncementAction(Request $request){
 
-        // obtener el ser icio que me permitirá convertir a JSON
+        // obtener el servicio que me permitirá convertir a JSON
         $helpers = $this->get("app.helpers");
-        // obtenr los datos de la petición
+        $jwt_auth = $this->get("app.jwt_auth");
+        // obtener los datos de la petición
         $json_params = $request->get("json", null);
-        //$json_token = $request->get("token", null);
-        var_dump($json_params);
+        $user_token = $request->get("token", null);
 
-        $interested = null;
-        $reactedAnnouncementId = null;
-        $interested = json_decode($json_params)->{"interested"};
-        $reactedAnnouncementId = json_decode($json_params)->{"reactedAnnouncementId"};
-        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
-        $connection = $em->getConnection();
-        $statement = $connection->prepare("UPDATE ReactedAnnouncement 
-        SET interested = $interested
-        WHERE reactedannouncementId = $reactedAnnouncementId;");
-        $statement->execute();
+        if($user_token != null){
+            $user_auth = $jwt_auth->checkToken($user_token);
+            if(is_object($user_auth) &&
+                ($user_auth->getUserId() == json_decode($json_params)->{"userId"}) ){
 
-        return $helpers->json(
-            array(
-                "status" => "OK",
-                "code" => "200",
-                "data" => "Announcement added correctly"
-            ));
-        die();
+       
+                $interested = null;
+                $reactedAnnouncementId = null;
+                $interested = json_decode($json_params)->{"interested"};
+                $reactedAnnouncementId = json_decode($json_params)->{"reactedAnnouncementId"};
+                $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+                $connection = $em->getConnection();
+                $statement = $connection->prepare("UPDATE ReactedAnnouncement 
+                SET interested = $interested
+                WHERE reactedannouncementId = $reactedAnnouncementId;");
+                $statement->execute();
+
+                $result = $helpers->json(
+                    array(
+                        "status" => "OK",
+                        "code" => "200",
+                        "data" => "ReactedAnnouncement updated correctly"
+                    ));
+                
+            }else{
+                //ER-0006: not a valid token
+                return $helpers->json(
+                    array(
+                        "status" => "error",
+                        "code" => "ER-0006",
+                        "data" => "Received token not valid!"
+                    ));
+                die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
+
+        return $result;
 
     }
 
@@ -139,24 +167,59 @@ class ReactedannouncementController extends Controller
     // {"userId" : 9,"announcementId" : 3}
     public function reactedannouncementAction(Request $request){
 
-        // obtener el ser icio que me permitirá convertir a JSON
+        // obtener el servicio que me permitirá convertir a JSON
         $helpers = $this->get("app.helpers");
-        // obtenr los datos de la petición
+        $jwt_auth = $this->get("app.jwt_auth");
+        // obtener los datos de la petición
         $json_params = $request->get("json", null);
-        //$json_token = $request->get("token", null);
-        var_dump($json_params);
+        $user_token = $request->get("token", null);
+        
+        if($user_token != null){
+            $user_auth = $jwt_auth->checkToken($user_token);
+            if(is_object($user_auth) &&
+                ($user_auth->getUserId() == json_decode($json_params)->{"userId"}) ){
 
 
-        $userId = json_decode($json_params)->{"userId"};
-        $announcementId = json_decode($json_params)->{"announcementId"};
-        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
-        $connection = $em->getConnection();
-        $statement = $connection->prepare("INSERT INTO `ReactedAnnouncement` (`reactedAnnouncementId`, `announcementId`, `userId`, `liked`, `interested`, `moment`, `active`) 
-        VALUES (NULL, $announcementId, $userId, '1', '0', CURRENT_TIMESTAMP, '1');
-        ");
-        $statement->execute();
+                $userId = json_decode($json_params)->{"userId"};
+                $announcementId = json_decode($json_params)->{"announcementId"};
+                $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+                $connection = $em->getConnection();
+                $statement = $connection->prepare("INSERT INTO `ReactedAnnouncement` (`reactedAnnouncementId`, `announcementId`, `userId`, `liked`, `interested`, `moment`, `active`) 
+                VALUES (NULL, $announcementId, $userId, '1', '0', CURRENT_TIMESTAMP, '1');
+                ");
+                $statement->execute();
 
-/*
+                $result = $helpers->json(
+                    array(
+                        "status" => "OK",
+                        "code" => "200",
+                        "data" => "ReactedAnnouncement added correctly"
+                    ));
+            }else{
+                //ER-0006: not a valid token
+                return $helpers->json(
+                    array(
+                        "status" => "error",
+                        "code" => "ER-0006",
+                        "data" => "Received token not valid!"
+                    ));
+                die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
+
+        return $result;
+        
+
+        /*
         $reactedannouncement = new Reactedannouncement();
 
         $reactedannouncement->setActive(1);
@@ -187,13 +250,6 @@ class ReactedannouncementController extends Controller
         $manager->flush();
         //return necesario
 */
-        return $helpers->json(
-            array(
-                "status" => "OK",
-                "code" => "200",
-                "data" => "Announcement added correctly"
-            ));
-        die();
 
     }
 }

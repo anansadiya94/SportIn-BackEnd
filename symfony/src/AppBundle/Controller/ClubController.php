@@ -9,13 +9,12 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 class ClubController extends Controller
 {
 
     //GET /clubs/
-    public function showClubsAction(Request $request, $clubid){
+    public function showClubsAction($clubid){
         $helpers = $this->get("app.helpers");
         if($clubid != null){
             $clubs = $this->getDoctrine()->getRepository("BackendBundle:Club")->findOneBy(

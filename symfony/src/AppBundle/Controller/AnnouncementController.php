@@ -128,13 +128,13 @@ class AnnouncementController extends Controller
     // {"title" : "siu","description" : "descriptionsiiuu","userId" : 4,"active" : "1","modified" : "1","categoryId" : 1, "positionId": "1", "searchedRoleId": "1"}
     public function announcementAction(Request $request){
 
-        // obtener el ser icio que me permitirá convertir a JSON
+        // obtener el servicio que me permitirá convertir a JSON
         $helpers = $this->get("app.helpers");
         $jwt_auth = $this->get("app.jwt_auth");
-        // obtenr los datos de la petición
+        // obtener los datos de la petición
         $json_params = $request->get("json", null);
         $user_token = $request->get("token", null);
-        //var_dump($json_params);
+        
 
         if($user_token != null){
             $user_auth = $jwt_auth->checkToken($user_token);

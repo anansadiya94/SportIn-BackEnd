@@ -50,21 +50,18 @@ class UserController extends Controller
             die();
         }
     }
+
     // /user POST
     // {"username": "funciona", "surname": "hola", "email": "hsdd@gmail.com", "password": "vvsdsdad", "active": "1", "birthDate": "1982-04-05", "age": "22", "height": "22", "weight": "44", "bio": "adasdasdasdasdasdasdasdasdasdasddas", "sex": "H", "foot": "R", "historial": "he jugado aqui", "playerPositionId": 2, "roleId": 3, "countryId": 4, "populationId": 3, "clubId": 900}
     public function userAction(Request $request){
 
-        /* No ACABADO AÚN */
-        // obtener el ser icio que me permitirá convertir a JSON
+        // obtener el servicio que me permitirá convertir a JSON
         $helpers = $this->get("app.helpers");
-        $jwt_auth = $this->get("app.jwt_auth");
-        // obtenr los datos de la petición
-        $json_params = $request->get("json", null);
-        //$json_params = $this->get($request)->getContent();
-        //$json_params = $request->getContent();
-        //$json_token = $request->get("token", null);
-        //var_dump($json_params);
+        //$jwt_auth = $this->get("app.jwt_auth");
 
+        // obtener los datos de la petición
+        $json_params = $request->get("json", null);
+        
         $user = new User();
 
         json_decode($json_params);
@@ -121,21 +118,21 @@ class UserController extends Controller
         // Decirle que haga los cambios en BD
         $manager->flush();
 
-        return new JsonResponse(
-            $jwt_auth->singin($user->getEmail(), $user->getPassword()));
+        /*return new JsonResponse(
+            $jwt_auth->singin($user->getEmail(), $user->getPassword()));*/
 
-        /*return $helpers->json(
+        return $helpers->json(
             array(
                 "status" => "OK",
                 "code" => "200",
                 "data" => "User added correctly"
-            ));*/
+            ));
         die();
 
     }
 
     // USER/ GET
-    public function showAction(Request $request, $token){
+    public function showAction($token){
 /*
         $helpers = $this->get("app.helpers");
         if($id == null){
@@ -192,29 +189,53 @@ class UserController extends Controller
     // {"userId" : 3}
     public function deactivateuserAction(Request $request){
 
-        // obtener el ser icio que me permitirá convertir a JSON
+        // obtener el servicio que me permitirá convertir a JSON
         $helpers = $this->get("app.helpers");
-        // obtenr los datos de la petición
+        $jwt_auth = $this->get("app.jwt_auth");
+        // obtener los datos de la petición
         $json_params = $request->get("json", null);
-        //$json_token = $request->get("token", null);
-        var_dump($json_params);
+        $user_token = $request->get("token", null);
+        
+        if($user_token != null){
+            $user_auth = $jwt_auth->checkToken($user_token);
+            if(is_object($user_auth) &&
+                ($user_auth->getUserId() == json_decode($json_params)->{"userId"}) ){
+            $active = 0;
+            $userId = json_decode($json_params)->{"userId"};
+            $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+            $connection = $em->getConnection();
+            $statement = $connection->prepare("UPDATE User 
+            SET active = $active
+            WHERE userId = $userId;");
+            $statement->execute();
 
-        $active = 0;
-        $userId = json_decode($json_params)->{"userId"};
-        $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
-        $connection = $em->getConnection();
-        $statement = $connection->prepare("UPDATE User 
-        SET active = $active
-        WHERE userId = $userId;");
-        $statement->execute();
-
-        return $helpers->json(
-            array(
-                "status" => "OK",
-                "code" => "200",
-                "data" => "Announcement added correctly"
-            ));
-        die();
+            $result = $helpers->json(
+                array(
+                    "status" => "OK",
+                    "code" => "200",
+                    "data" => "User has been deactivated correctly"
+                ));
+            
+             }else{
+                //ER-0006: not a valid token
+                return $helpers->json(
+                    array(
+                        "status" => "error",
+                        "code" => "ER-0006",
+                        "data" => "Received token not valid!"
+                    ));
+                die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
 
     }
 
@@ -225,12 +246,14 @@ class UserController extends Controller
     }
 
     public function repeatedEmailAction($email){
+
+        // obtener el servicio que me permitirá convertir a JSON
         $helpers = $this->get("app.helpers");
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
         $statement = $connection->prepare("SELECT * FROM User u WHERE u.email='$email'");
         $statement->execute();
-        //$statement->fetchAll() //esto esta dentro del if, pero mirar como se hace
+        
         if($statement->rowCount() == 0){
             return $helpers->json(
                 array(
@@ -244,7 +267,7 @@ class UserController extends Controller
                 array(
                     "status" => "error",
                     "code" => "202",
-                    "data" => "Email already in the DB"
+                    "data" => "Email already exists in the DB"
                 ));
             die();
 

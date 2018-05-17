@@ -9,13 +9,12 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 class CategoryController extends Controller
 {
 
     //GET /categories/
-    public function showCategoriesAction(Request $request, $categoryid){
+    public function showCategoriesAction($categoryid){
         $helpers = $this->get("app.helpers");
         if($categoryid != null){
             $categories = $this->getDoctrine()->getRepository("BackendBundle:Category")->findOneBy(
