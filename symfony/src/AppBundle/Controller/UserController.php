@@ -73,6 +73,14 @@ class UserController extends Controller
          $user->setBirthdate(new \DateTime(json_decode($json_params)->{"birthDate"},null));
         $user->setAge(json_decode($json_params)->{"age"},null);
         //$user->setProfilephoto(json_decode($json_params)->{"profilePhoto"},null);
+
+        if (json_decode($json_params)->{"profilePhoto"} == null){
+            $user->setProfilephoto($helpers->photoUser());
+        }else {
+        $user->setProfilephoto(json_decode($json_params)->{"profilePhoto"}, null);
+        }
+
+
         $user->setHeight(json_decode($json_params)->{"height"},null);
         $user->setWeight(json_decode($json_params)->{"weight"},null);
         $user->setBio(json_decode($json_params)->{"bio"},null);
