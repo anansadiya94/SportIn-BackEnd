@@ -185,7 +185,7 @@ class ReactedannouncementController extends Controller
                 $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
                 $connection = $em->getConnection();
                 $statement = $connection->prepare("INSERT INTO `ReactedAnnouncement` (`reactedAnnouncementId`, `announcementId`, `userId`, `liked`, `interested`, `moment`, `active`) 
-                VALUES (NULL, $announcementId, $user_auth->getUserId(), '1', '0', CURRENT_TIMESTAMP, '1');
+                VALUES (NULL, $announcementId, ".$user_auth->getUserId().", '1', '0', CURRENT_TIMESTAMP, '1');
                 ");
                 $statement->execute();
 

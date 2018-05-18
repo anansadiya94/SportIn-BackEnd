@@ -237,6 +237,8 @@ class UserController extends Controller
             die();
         }
 
+        return $result;
+
     }
 
     private function validateEmail($email){
