@@ -154,7 +154,7 @@ class AnnouncementController extends Controller
                 $announcement->setModified(json_decode($json_params)->{"modified"},null);
 
 
-                if ($json_params->{"image"} == null){
+                if (json_decode($json_params)->{"image"} == null){
                     $announcement->setPhoto($helpers->photoAnnouncement());
                 }else {
                 $announcement->setPhoto(json_decode($json_params)->{"image"}, null);
