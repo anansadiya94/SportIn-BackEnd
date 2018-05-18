@@ -82,7 +82,8 @@ class AnnouncementController extends Controller
         INNER JOIN User u ON a.userId=u.userId
         INNER JOIN Category c ON a.categoryId= c.categoryId
         INNER JOIN PlayerPosition pp ON pp.playerPositionId = a.playerPositionId
-        INNER JOIN Role r ON r.roleId = a.searchedRoleId;");
+        INNER JOIN Role r ON r.roleId = a.searchedRoleId;
+        ORDER BY a.publicationDate DESC;");
         $statement->execute();
         return new JsonResponse($statement->fetchAll());
 
@@ -125,7 +126,7 @@ class AnnouncementController extends Controller
     }
 
     //POST /announcement
-    // {"title" : "siu","description" : "descriptionsiiuu","userId" : 4,"active" : "1","modified" : "1","categoryId" : 1, "positionId": "1", "searchedRoleId": "1"}
+    // {"title" : "siu","description" : "descriptionsiiuu","userId" : 4,"active" : "1","modified" : "1","categoryId" : 1, "positionId": "1", "searchedRoleId": "1", "image":"dsfsdfsd"}
     public function announcementAction(Request $request){
 
         // obtener el servicio que me permitirá convertir a JSON
@@ -151,7 +152,14 @@ class AnnouncementController extends Controller
                 $announcement->setActive(json_decode($json_params)->{"active"},null);
                 $announcement->setDescription(json_decode($json_params)->{"description"},null);
                 $announcement->setModified(json_decode($json_params)->{"modified"},null);
+
+
+                if ($json_params->{"image"} == null){
+                    $announcement->setPhoto($helpers->photoAnnouncement());
+                }else {
                 $announcement->setPhoto(json_decode($json_params)->{"image"}, null);
+                }
+
                 $categoryId = json_decode($json_params)->{"categoryId"};
 
                 $category = $this->getDoctrine()->getRepository("BackendBundle:Category")->findOneBy(

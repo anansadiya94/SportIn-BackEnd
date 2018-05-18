@@ -206,7 +206,7 @@ class UserController extends Controller
             $connection = $em->getConnection();
             $statement = $connection->prepare("UPDATE User 
             SET active = $active
-            WHERE userId = $userId;");
+            WHERE userId = ".$user_auth->getUserId());
             $statement->execute();
 
             $result = $helpers->json(
