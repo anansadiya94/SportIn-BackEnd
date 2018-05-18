@@ -85,8 +85,8 @@ class ContactperuserController extends Controller
             $statement->execute();
 
             $statement2 = $connection->prepare("INSERT INTO ContactPerUser(userId, contact_userId) 
-            SELECT $userId, $contact_userId FROM DUAL WHERE NOT EXISTS 
-            (SELECT userId,contact_userId FROM ContactPerUser c 
+            SELECT $contact_userId,$userId  FROM DUAL WHERE NOT EXISTS 
+            (SELECT contact_userId,userId FROM ContactPerUser c 
             WHERE c.userId=$contact_userId AND c.contact_userId=".$user_auth->getUserId().")");
             $statement2->execute();
             
