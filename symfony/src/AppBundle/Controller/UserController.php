@@ -57,7 +57,7 @@ class UserController extends Controller
 
         // obtener el servicio que me permitirá convertir a JSON
         $helpers = $this->get("app.helpers");
-        //$jwt_auth = $this->get("app.jwt_auth");
+        $jwt_auth = $this->get("app.jwt_auth");
 
         // obtener los datos de la petición
         $json_params = $request->get("json", null);
@@ -73,14 +73,6 @@ class UserController extends Controller
          $user->setBirthdate(new \DateTime(json_decode($json_params)->{"birthDate"},null));
         $user->setAge(json_decode($json_params)->{"age"},null);
         //$user->setProfilephoto(json_decode($json_params)->{"profilePhoto"},null);
-
-        if (json_decode($json_params)->{"profilePhoto"} == null){
-            $user->setProfilephoto($helpers->photoUser());
-        }else {
-        $user->setProfilephoto(json_decode($json_params)->{"profilePhoto"}, null);
-        }
-
-
         $user->setHeight(json_decode($json_params)->{"height"},null);
         $user->setWeight(json_decode($json_params)->{"weight"},null);
         $user->setBio(json_decode($json_params)->{"bio"},null);
@@ -126,21 +118,21 @@ class UserController extends Controller
         // Decirle que haga los cambios en BD
         $manager->flush();
 
-        /*return new JsonResponse(
-            $jwt_auth->singin($user->getEmail(), $user->getPassword()));*/
+        return new JsonResponse(
+            $jwt_auth->singin($user->getEmail(), $user->getPassword()));
 
-        return $helpers->json(
+       /* return $helpers->json(
             array(
                 "status" => "OK",
                 "code" => "200",
                 "data" => "User added correctly"
             ));
-        die();
+        die();*/
 
     }
 
-    // USER/token/id
-    public function showAction($token,$id){
+    // USER/ GET
+    public function showAction($token){
 /*
         $helpers = $this->get("app.helpers");
         if($id == null){
@@ -165,7 +157,7 @@ class UserController extends Controller
                 FROM User u INNER JOIN Role r ON r.roleId = u.roleId INNER JOIN Country c ON c.countryId = u.countryId 
                 INNER JOIN Population p ON p.populationId = u.populationId 
                 INNER JOIN PlayerPosition pp ON pp.playerPositionId = u.playerPositionId 
-                INNER JOIN Club cl ON cl.clubId = u.clubId WHERE u.userId = $id");
+                INNER JOIN Club cl ON cl.clubId = u.clubId WHERE u.userId = ".$user->getUserId());
                 $statement->execute();
                 return new JsonResponse($statement->fetchAll());
 
@@ -214,7 +206,7 @@ class UserController extends Controller
             $connection = $em->getConnection();
             $statement = $connection->prepare("UPDATE User 
             SET active = $active
-            WHERE userId = ".$user_auth->getUserId());
+            WHERE userId = $userId;");
             $statement->execute();
 
             $result = $helpers->json(
@@ -244,8 +236,6 @@ class UserController extends Controller
                 ));
             die();
         }
-
-        return $result;
 
     }
 
