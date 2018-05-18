@@ -139,8 +139,8 @@ class UserController extends Controller
 
     }
 
-    // USER/ GET
-    public function showAction($token){
+    // USER/token/id
+    public function showAction($token,$id){
 /*
         $helpers = $this->get("app.helpers");
         if($id == null){
@@ -165,7 +165,7 @@ class UserController extends Controller
                 FROM User u INNER JOIN Role r ON r.roleId = u.roleId INNER JOIN Country c ON c.countryId = u.countryId 
                 INNER JOIN Population p ON p.populationId = u.populationId 
                 INNER JOIN PlayerPosition pp ON pp.playerPositionId = u.playerPositionId 
-                INNER JOIN Club cl ON cl.clubId = u.clubId WHERE u.userId = ".$user->getUserId());
+                INNER JOIN Club cl ON cl.clubId = u.clubId WHERE u.userId = $id");
                 $statement->execute();
                 return new JsonResponse($statement->fetchAll());
 
