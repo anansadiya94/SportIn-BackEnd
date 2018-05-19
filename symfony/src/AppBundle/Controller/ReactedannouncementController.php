@@ -36,7 +36,7 @@ class ReactedannouncementController extends Controller
                 $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
                 INNER JOIN User ON Announcement.userId=User.userId
                 WHERE ReactedAnnouncement.interested = $interested
-                AND ReactedAnnouncement.userId = $user->getUserid();");
+                AND ReactedAnnouncement.userId = ".$user->getUserId());
                 $statement->execute();
                 return new JsonResponse($statement->fetchAll());
             }else{
@@ -114,8 +114,7 @@ class ReactedannouncementController extends Controller
 
         if($user_token != null){
             $user_auth = $jwt_auth->checkToken($user_token);
-            if(is_object($user_auth) &&
-                ($user_auth->getUserId() == json_decode($json_params)->{"userId"}) ){
+            if(is_object($user_auth)){
 
        
                 $interested = null;
