@@ -153,12 +153,8 @@ class AnnouncementController extends Controller
                 $announcement->setDescription(json_decode($json_params)->{"description"},null);
                 $announcement->setModified(json_decode($json_params)->{"modified"},null);
 
-
-                if (json_decode($json_params)->{"image"} == null){
-                    $announcement->setPhoto($helpers->photoAnnouncement());
-                }else {
                 $announcement->setPhoto(json_decode($json_params)->{"image"}, null);
-                }
+                
 
                 $categoryId = json_decode($json_params)->{"categoryId"};
 
