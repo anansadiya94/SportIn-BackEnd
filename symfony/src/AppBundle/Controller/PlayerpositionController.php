@@ -20,9 +20,15 @@ class PlayerpositionController extends Controller
             $positions = $this->getDoctrine()->getRepository("BackendBundle:Playerposition")->findOneBy(
                 array("playerpositionid" => $positionid)
             );
+            return $helpers->json($positions);
         }else{
-            $positions = $this->getDoctrine()->getRepository("BackendBundle:Playerposition")->findAll();
+            //$positions = $this->getDoctrine()->getRepository("BackendBundle:Playerposition")->findAll();
+            $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+            $connection = $em->getConnection();
+            $statement = $connection->prepare("SELECT * FROM PlayerPosition WHERE active = 1;");
+            $statement->execute();
+            return new JsonResponse($statement->fetchAll());
         }
-        return $helpers->json($positions);
+        //return $helpers->json($positions);
     }
 }

@@ -20,9 +20,16 @@ class ClubController extends Controller
             $clubs = $this->getDoctrine()->getRepository("BackendBundle:Club")->findOneBy(
                 array("clubid" => $clubid)
             );
+            return $helpers->json($clubs);
         }else{
-            $clubs = $this->getDoctrine()->getRepository("BackendBundle:Club")->findAll();
+            //$clubs = $this->getDoctrine()->getRepository("BackendBundle:Club")->findAll();
+
+            $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+            $connection = $em->getConnection();
+            $statement = $connection->prepare("SELECT * FROM Club WHERE province IS NOT NULL;");
+            $statement->execute();
+            return new JsonResponse($statement->fetchAll());
         }
-        return $helpers->json($clubs);
+        //return $helpers->json($clubs);
     }
 }
