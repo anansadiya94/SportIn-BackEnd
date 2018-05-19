@@ -28,19 +28,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="210" column="37" lean-forward="true" selection-start-line="210" selection-start-column="37" selection-end-line="210" selection-end-column="37" />
+            <state relative-caret-position="1068">
+              <caret line="237" column="19" lean-forward="false" selection-start-line="237" selection-start-column="19" selection-end-line="237" selection-end-column="19" />
               <folding>
-                <marker date="1526751576266" expanded="true" signature="6191:6735" ph="SELECT u.`*`... User" />
-                <marker date="1526751576266" expanded="true" signature="8361:8433" ph="UPDATE User... " />
-                <marker date="1526751576266" expanded="true" signature="8361:8434" ph="UPDATE User... " />
-                <marker date="1526751576266" expanded="true" signature="8361:8459" ph="UPDATE User... " />
-                <marker date="1526751576266" expanded="true" signature="8361:8460" ph="UPDATE User... " />
-                <marker date="1526751576266" expanded="true" signature="8361:8464" ph="UPDATE User... " />
-                <marker date="1526751576266" expanded="true" signature="9970:10013" ph="SELECT * FRO... User" />
+                <marker date="1526752016171" expanded="true" signature="6191:6735" ph="SELECT u.`*`... User" />
+                <marker date="1526752016171" expanded="true" signature="8361:8433" ph="UPDATE User... " />
+                <marker date="1526752016171" expanded="true" signature="8361:8434" ph="UPDATE User... " />
+                <marker date="1526752016171" expanded="true" signature="8361:8459" ph="UPDATE User... " />
+                <marker date="1526752016171" expanded="true" signature="8361:8460" ph="UPDATE User... " />
+                <marker date="1526752016171" expanded="true" signature="8361:8464" ph="UPDATE User... " />
+                <marker date="1526752016171" expanded="true" signature="9990:10033" ph="SELECT * FRO... User" />
               </folding>
             </state>
           </provider>
@@ -134,28 +134,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContactperuserController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ContactperuserController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/ContactperuserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="95" column="37" lean-forward="true" selection-start-line="95" selection-start-column="37" selection-end-line="95" selection-end-column="37" />
+            <state relative-caret-position="1281">
+              <caret line="71" column="36" lean-forward="false" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
               <folding>
-                <marker date="1526751576303" expanded="true" signature="971:1103" ph="SELECT * FRO... User" />
-                <marker date="1526751576303" expanded="true" signature="971:1112" ph="SELECT * FRO... User" />
-                <marker date="1526751576303" expanded="true" signature="971:1123" ph="SELECT * FRO... User" />
-                <marker date="1526751576303" expanded="true" signature="2863:3164" ph="INSERT INTO ContactPerUser... " />
-                <marker date="1526751576303" expanded="true" signature="2927:2934" ph="SELECT ${$us... " />
-                <marker date="1526751576303" expanded="true" signature="2927:2959" ph="SELECT ${$us... " />
-                <marker date="1526751576303" expanded="true" signature="2927:3164" ph="SELECT ${$us... DUAL" />
-                <marker date="1526751576303" expanded="true" signature="3020:3136" ph="SELECT userI... ContactPerUser" />
-                <marker date="1526751576303" expanded="true" signature="3252:3557" ph="INSERT INTO ContactPerUser... " />
-                <marker date="1526751576303" expanded="true" signature="3316:3323" ph="SELECT ${$co... " />
-                <marker date="1526751576303" expanded="true" signature="3316:3324" ph="SELECT ${$us... " />
-                <marker date="1526751576303" expanded="true" signature="3316:3343" ph="SELECT ${$co... " />
-                <marker date="1526751576303" expanded="true" signature="3316:3344" ph="SELECT ${$co... " />
-                <marker date="1526751576303" expanded="true" signature="3316:3370" ph="SELECT ${$co... " />
-                <marker date="1526751576303" expanded="true" signature="3316:3557" ph="SELECT ${$co... DUAL" />
-                <marker date="1526751576303" expanded="true" signature="3413:3529" ph="SELECT conta... ContactPerUser" />
+                <marker date="1526751923961" expanded="true" signature="971:1103" ph="SELECT * FRO... User" />
+                <marker date="1526751923961" expanded="true" signature="971:1112" ph="SELECT * FRO... User" />
+                <marker date="1526751923961" expanded="true" signature="971:1123" ph="SELECT * FRO... User" />
+                <marker date="1526751923961" expanded="true" signature="2776:3077" ph="INSERT INTO ContactPerUser... " />
+                <marker date="1526751923961" expanded="true" signature="2840:2847" ph="SELECT ${$us... " />
+                <marker date="1526751923961" expanded="true" signature="2840:2872" ph="SELECT ${$us... " />
+                <marker date="1526751923961" expanded="true" signature="2840:3077" ph="SELECT ${$us... DUAL" />
+                <marker date="1526751923961" expanded="true" signature="2933:3049" ph="SELECT userI... ContactPerUser" />
+                <marker date="1526751923961" expanded="true" signature="3165:3470" ph="INSERT INTO ContactPerUser... " />
+                <marker date="1526751923961" expanded="true" signature="3229:3236" ph="SELECT ${$co... " />
+                <marker date="1526751923961" expanded="true" signature="3229:3237" ph="SELECT ${$us... " />
+                <marker date="1526751923961" expanded="true" signature="3229:3256" ph="SELECT ${$co... " />
+                <marker date="1526751923961" expanded="true" signature="3229:3257" ph="SELECT ${$co... " />
+                <marker date="1526751923961" expanded="true" signature="3229:3283" ph="SELECT ${$co... " />
+                <marker date="1526751923961" expanded="true" signature="3229:3470" ph="SELECT ${$co... DUAL" />
+                <marker date="1526751923961" expanded="true" signature="3326:3442" ph="SELECT conta... ContactPerUser" />
               </folding>
             </state>
           </provider>
@@ -202,8 +202,8 @@
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Resources/config/routing/default.yml" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/AnnouncementController.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/ReactedannouncementController.php" />
-        <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/ContactperuserController.php" />
+        <option value="$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php" />
       </list>
     </option>
   </component>
@@ -478,12 +478,12 @@
       <workItem from="1526492582547" duration="7478000" />
       <workItem from="1526504322897" duration="3103000" />
       <workItem from="1526579770990" duration="5184000" />
-      <workItem from="1526643031594" duration="4783000" />
+      <workItem from="1526643031594" duration="5205000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94471000" />
+    <option name="totallyTimeSpent" value="94893000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -904,43 +904,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php">
+    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/ContactperuserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="210" column="37" lean-forward="true" selection-start-line="210" selection-start-column="37" selection-end-line="210" selection-end-column="37" />
+        <state relative-caret-position="1281">
+          <caret line="71" column="36" lean-forward="false" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
           <folding>
-            <marker date="1526751576266" expanded="true" signature="6191:6735" ph="SELECT u.`*`... User" />
-            <marker date="1526751576266" expanded="true" signature="8361:8433" ph="UPDATE User... " />
-            <marker date="1526751576266" expanded="true" signature="8361:8434" ph="UPDATE User... " />
-            <marker date="1526751576266" expanded="true" signature="8361:8459" ph="UPDATE User... " />
-            <marker date="1526751576266" expanded="true" signature="8361:8460" ph="UPDATE User... " />
-            <marker date="1526751576266" expanded="true" signature="8361:8464" ph="UPDATE User... " />
-            <marker date="1526751576266" expanded="true" signature="9970:10013" ph="SELECT * FRO... User" />
+            <marker date="1526751923961" expanded="true" signature="971:1103" ph="SELECT * FRO... User" />
+            <marker date="1526751923961" expanded="true" signature="971:1112" ph="SELECT * FRO... User" />
+            <marker date="1526751923961" expanded="true" signature="971:1123" ph="SELECT * FRO... User" />
+            <marker date="1526751923961" expanded="true" signature="2776:3077" ph="INSERT INTO ContactPerUser... " />
+            <marker date="1526751923961" expanded="true" signature="2840:2847" ph="SELECT ${$us... " />
+            <marker date="1526751923961" expanded="true" signature="2840:2872" ph="SELECT ${$us... " />
+            <marker date="1526751923961" expanded="true" signature="2840:3077" ph="SELECT ${$us... DUAL" />
+            <marker date="1526751923961" expanded="true" signature="2933:3049" ph="SELECT userI... ContactPerUser" />
+            <marker date="1526751923961" expanded="true" signature="3165:3470" ph="INSERT INTO ContactPerUser... " />
+            <marker date="1526751923961" expanded="true" signature="3229:3236" ph="SELECT ${$co... " />
+            <marker date="1526751923961" expanded="true" signature="3229:3237" ph="SELECT ${$us... " />
+            <marker date="1526751923961" expanded="true" signature="3229:3256" ph="SELECT ${$co... " />
+            <marker date="1526751923961" expanded="true" signature="3229:3257" ph="SELECT ${$co... " />
+            <marker date="1526751923961" expanded="true" signature="3229:3283" ph="SELECT ${$co... " />
+            <marker date="1526751923961" expanded="true" signature="3229:3470" ph="SELECT ${$co... DUAL" />
+            <marker date="1526751923961" expanded="true" signature="3326:3442" ph="SELECT conta... ContactPerUser" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/ContactperuserController.php">
+    <entry file="file://$PROJECT_DIR$/symfony/src/AppBundle/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="95" column="37" lean-forward="true" selection-start-line="95" selection-start-column="37" selection-end-line="95" selection-end-column="37" />
+        <state relative-caret-position="1068">
+          <caret line="237" column="19" lean-forward="false" selection-start-line="237" selection-start-column="19" selection-end-line="237" selection-end-column="19" />
           <folding>
-            <marker date="1526751576303" expanded="true" signature="971:1103" ph="SELECT * FRO... User" />
-            <marker date="1526751576303" expanded="true" signature="971:1112" ph="SELECT * FRO... User" />
-            <marker date="1526751576303" expanded="true" signature="971:1123" ph="SELECT * FRO... User" />
-            <marker date="1526751576303" expanded="true" signature="2863:3164" ph="INSERT INTO ContactPerUser... " />
-            <marker date="1526751576303" expanded="true" signature="2927:2934" ph="SELECT ${$us... " />
-            <marker date="1526751576303" expanded="true" signature="2927:2959" ph="SELECT ${$us... " />
-            <marker date="1526751576303" expanded="true" signature="2927:3164" ph="SELECT ${$us... DUAL" />
-            <marker date="1526751576303" expanded="true" signature="3020:3136" ph="SELECT userI... ContactPerUser" />
-            <marker date="1526751576303" expanded="true" signature="3252:3557" ph="INSERT INTO ContactPerUser... " />
-            <marker date="1526751576303" expanded="true" signature="3316:3323" ph="SELECT ${$co... " />
-            <marker date="1526751576303" expanded="true" signature="3316:3324" ph="SELECT ${$us... " />
-            <marker date="1526751576303" expanded="true" signature="3316:3343" ph="SELECT ${$co... " />
-            <marker date="1526751576303" expanded="true" signature="3316:3344" ph="SELECT ${$co... " />
-            <marker date="1526751576303" expanded="true" signature="3316:3370" ph="SELECT ${$co... " />
-            <marker date="1526751576303" expanded="true" signature="3316:3557" ph="SELECT ${$co... DUAL" />
-            <marker date="1526751576303" expanded="true" signature="3413:3529" ph="SELECT conta... ContactPerUser" />
+            <marker date="1526752016171" expanded="true" signature="6191:6735" ph="SELECT u.`*`... User" />
+            <marker date="1526752016171" expanded="true" signature="8361:8433" ph="UPDATE User... " />
+            <marker date="1526752016171" expanded="true" signature="8361:8434" ph="UPDATE User... " />
+            <marker date="1526752016171" expanded="true" signature="8361:8459" ph="UPDATE User... " />
+            <marker date="1526752016171" expanded="true" signature="8361:8460" ph="UPDATE User... " />
+            <marker date="1526752016171" expanded="true" signature="8361:8464" ph="UPDATE User... " />
+            <marker date="1526752016171" expanded="true" signature="9990:10033" ph="SELECT * FRO... User" />
           </folding>
         </state>
       </provider>
