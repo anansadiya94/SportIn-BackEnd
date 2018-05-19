@@ -119,7 +119,12 @@ class AnnouncementController extends Controller
                 SET active = 0
                 WHERE announcementId = $announcementId;");
                 $statement->execute();
-                return new JsonResponse($statement->fetchAll());
+                $result = $helpers->json(
+                    array(
+                        "status" => "OK",
+                        "code" => "200",
+                        "data" => "User has been deactivated correctly"
+                    ));
             }else{
                 //ER-0006: not a valid token
                 return $helpers->json(
