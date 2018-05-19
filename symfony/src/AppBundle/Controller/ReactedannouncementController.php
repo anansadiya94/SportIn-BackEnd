@@ -163,7 +163,7 @@ class ReactedannouncementController extends Controller
 
 
     //POST /reactedannouncement
-    // {"userId" : 9,"announcementId" : 3}
+    // {"announcementId" : 3}
     public function reactedannouncementAction(Request $request){
 
         // obtener el servicio que me permitirá convertir a JSON
@@ -175,8 +175,7 @@ class ReactedannouncementController extends Controller
         
         if($user_token != null){
             $user_auth = $jwt_auth->checkToken($user_token);
-            if(is_object($user_auth) &&
-                ($user_auth->getUserId() == json_decode($json_params)->{"userId"}) ){
+            if(is_object($user_auth)){
 
 
                 //$userId = json_decode($json_params)->{"userId"};
