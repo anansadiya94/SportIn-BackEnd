@@ -35,7 +35,8 @@ class AnnouncementController extends Controller
         INNER JOIN PlayerPosition pp ON pp.playerPositionId = a.playerPositionId
         INNER JOIN Role r ON r.roleId = a.searchedRoleId
         INNER JOIN Population po ON u.populationId = po.populationId
-        WHERE a.announcementId = $id;");
+        WHERE a.announcementId = $id
+        AND a.active = 1;");
         $statement->execute();
         return new JsonResponse($statement->fetchAll());
 
