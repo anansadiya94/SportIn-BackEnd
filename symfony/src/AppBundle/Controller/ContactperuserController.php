@@ -57,7 +57,7 @@ class ContactperuserController extends Controller
 
     }
     //POST /contact
-    // {"userId" : 1,"contact_userId" : 2}
+    // {"contact_userId" : 2}
     public function contactAction(Request $request){
 
         // obtener el servicio que me permitirá convertir a JSON
@@ -73,19 +73,19 @@ class ContactperuserController extends Controller
                 ($user_auth->getUserId() == json_decode($json_params)->{"userId"}) ){
 
 
-            $userId = json_decode($json_params)->{"userId"};
+            //$userId = json_decode($json_params)->{"userId"};
             $contact_userId = json_decode($json_params)->{"contact_userId"};
             $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
             $connection = $em->getConnection();
 
             $statement = $connection->prepare("INSERT INTO ContactPerUser(userId, contact_userId) 
-            SELECT $userId, $contact_userId FROM DUAL WHERE NOT EXISTS 
+            SELECT ".$user_auth->getUserId().", $contact_userId FROM DUAL WHERE NOT EXISTS 
             (SELECT userId,contact_userId FROM ContactPerUser c 
             WHERE c.contact_userId=$contact_userId AND c.userId=".$user_auth->getUserId().")");
             $statement->execute();
 
             $statement2 = $connection->prepare("INSERT INTO ContactPerUser(userId, contact_userId) 
-            SELECT $contact_userId,$userId  FROM DUAL WHERE NOT EXISTS 
+            SELECT ".$contact_userId.",".$user_auth->getUserId()."  FROM DUAL WHERE NOT EXISTS 
             (SELECT contact_userId,userId FROM ContactPerUser c 
             WHERE c.userId=$contact_userId AND c.contact_userId=".$user_auth->getUserId().")");
             $statement2->execute();

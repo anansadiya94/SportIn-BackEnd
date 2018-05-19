@@ -193,20 +193,19 @@ class UserController extends Controller
         $helpers = $this->get("app.helpers");
         $jwt_auth = $this->get("app.jwt_auth");
         // obtener los datos de la petición
-        $json_params = $request->get("json", null);
+        //$json_params = $request->get("json", null);
         $user_token = $request->get("token", null);
         
         if($user_token != null){
             $user_auth = $jwt_auth->checkToken($user_token);
-            if(is_object($user_auth) &&
-                ($user_auth->getUserId() == json_decode($json_params)->{"userId"}) ){
+            if(is_object($user_auth)){
             $active = 0;
-            $userId = json_decode($json_params)->{"userId"};
+            //$userId = json_decode($json_params)->{"userId"};
             $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
             $connection = $em->getConnection();
             $statement = $connection->prepare("UPDATE User 
             SET active = $active
-            WHERE userId = $userId;");
+            WHERE userId = ".$user_auth->getUserId().";");
             $statement->execute();
 
             $result = $helpers->json(
