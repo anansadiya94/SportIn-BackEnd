@@ -153,7 +153,7 @@ class UserController extends Controller
                 $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
                 $connection = $em->getConnection();
                 $statement = $connection->prepare("SELECT u.`*` , r.name as 'roleName', c.name as 'countryName', 
-                c.NOC, p.name as 'populationName', p.province, pp.name as 'playerPositionName', cl.name as 'ClubName' 
+                c.NOC, p.name as 'populationName', p.province, pp.name as 'playerPositionName', cl.name as 'ClubName', pp.photo as 'photoPosition' 
                 FROM User u INNER JOIN Role r ON r.roleId = u.roleId INNER JOIN Country c ON c.countryId = u.countryId 
                 INNER JOIN Population p ON p.populationId = u.populationId 
                 INNER JOIN PlayerPosition pp ON pp.playerPositionId = u.playerPositionId 

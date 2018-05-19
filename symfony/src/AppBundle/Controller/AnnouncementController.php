@@ -81,10 +81,9 @@ class AnnouncementController extends Controller
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
         $statement = $connection->prepare("SELECT a.`*`,u.`*`, c.name as 
-        'categoryName', pp.name as 'PlayerPositionName', r.name as 'RoleName' FROM Announcement a 
+        'categoryName', r.name as 'RoleName' FROM Announcement a 
         INNER JOIN User u ON a.userId=u.userId
         INNER JOIN Category c ON a.categoryId= c.categoryId
-        INNER JOIN PlayerPosition pp ON pp.playerPositionId = a.playerPositionId
         INNER JOIN Role r ON r.roleId = a.searchedRoleId
         WHERE a.active = 1
         ORDER BY a.publicationDate DESC;");
@@ -123,7 +122,7 @@ class AnnouncementController extends Controller
                     array(
                         "status" => "OK",
                         "code" => "200",
-                        "data" => "User has been deactivated correctly"
+                        "data" => "Announcement deActivated correctly"
                     ));
             }else{
                 //ER-0006: not a valid token
