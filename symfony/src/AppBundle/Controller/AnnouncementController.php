@@ -42,6 +42,8 @@ class AnnouncementController extends Controller
 
     }
 
+
+
      //GET /announcementPerRole/roleid
      public function showRoleAnnouncementsAction($roleid){
         $helpers = $this->get("app.helpers");
@@ -84,10 +86,62 @@ class AnnouncementController extends Controller
         INNER JOIN Category c ON a.categoryId= c.categoryId
         INNER JOIN PlayerPosition pp ON pp.playerPositionId = a.playerPositionId
         INNER JOIN Role r ON r.roleId = a.searchedRoleId
+        WHERE a.active = 1
         ORDER BY a.publicationDate DESC;");
         $statement->execute();
         return new JsonResponse($statement->fetchAll());
 
+    }
+
+    //POST /modifyannouncement
+    // {"announcementId": 4}
+    public function modifyAnnouncementAction(Request $request){
+
+        // obtener el servicio que me permitirá convertir a JSON
+        $helpers = $this->get("app.helpers");
+        $jwt_auth = $this->get("app.jwt_auth");
+        // obtener los datos de la petición
+        $json_params = $request->get("json", null);
+        $user_token = $request->get("token", null);
+        //var_dump($user_token);
+        //die();
+
+        $announcementId = json_decode($json_params)->{"announcementId"};
+        if($user_token != null){
+            $user_auth = $jwt_auth->checkToken($user_token);
+            //var_dump(($user_auth));
+            //die();
+            if(is_object($user_auth)){
+
+                $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+                $connection = $em->getConnection();
+                $statement = $connection->prepare("UPDATE Announcement 
+                SET active = 0
+                WHERE announcementId = $announcementId;");
+                $statement->execute();
+                return new JsonResponse($statement->fetchAll());
+            }else{
+                //ER-0006: not a valid token
+                return $helpers->json(
+                    array(
+                        "status" => "error",
+                        "code" => "ER-0006",
+                        "data" => "Received token not valid!"
+                    ));
+                die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
+
+        return $result;
     }
 
 

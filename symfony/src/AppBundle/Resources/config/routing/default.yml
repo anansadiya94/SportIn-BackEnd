@@ -158,3 +158,8 @@ default_user_repeatedmail:
   path: /repeatedEmail/{email}
   defaults: { _controller: "AppBundle:User:repeatedEmail", email : null}
   methods: GET
+
+default_announcement_modifyAnnouncement:
+  path: /modifyannouncement
+  defaults: { _controller: "AppBundle:Announcement:modifyAnnouncement"}
+  methods: POST
