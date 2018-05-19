@@ -154,13 +154,22 @@ class AnnouncementController extends Controller
         $helpers = $this->get("app.helpers");
         $jwt_auth = $this->get("app.jwt_auth");
 
+        $result = "null";
         if($user_token != null){
             $user_auth = $jwt_auth->checkToken($user_token);
             if(is_object($user_auth)){
 
+                /*
                 $result = $this->getDoctrine()->getRepository("BackendBundle:Announcement")->findBy(
                     array("userid" => $user_auth->getUserId())
                 );
+                */
+                $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+                $connection = $em->getConnection();
+                $statement = $connection->prepare("SELECT * FROM Announcement WHERE userId =".$user_auth->getUserId()." AND active = 1;");
+                $statement->execute();
+                return new JsonResponse($statement->fetchAll());
+
             }else{
                 //ER-0006: not a valid token
                     return $helpers->json(
