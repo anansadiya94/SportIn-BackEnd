@@ -74,7 +74,7 @@ class ReactedannouncementController extends Controller
             if (is_object($user)) {
                 $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
                 $connection = $em->getConnection();
-                $statement = $connection->prepare("SELECT ra.`*`, c.name as 'countryName', 
+                $statement = $connection->prepare("SELECT ra.`*`, u.`*`, c.name as 'countryName', 
                 c.NOC, p.name as 'populationName', p.province, pp.name as 'playerPositionName', cl.name as 'ClubName', pp.photo as 'photoPosition'FROM ReactedAnnouncement ra
                 INNER JOIN Announcement ON ra.announcementId=Announcement.announcementId
                 INNER JOIN User u ON ra.userId=u.userId
