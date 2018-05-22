@@ -29,15 +29,17 @@ class JwtAuth
 
         if(is_object($user)){
             $singin = true;
+
+            if ($user->getActive() == 0){
+                return
+                        array(
+                            "status" => "deActivated",
+                            "code" => "200",
+                            "data" => "deactivated user");
+            }
         }
         
-        if ($user->getActive() == 0){
-            return
-                    array(
-                        "status" => "deActivated",
-                        "code" => "200",
-                        "data" => "deactivated user");
-        }
+        
         
         if($singin){
             $token = array(

@@ -33,7 +33,8 @@ class ReactedannouncementController extends Controller
 
                 $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
                 $connection = $em->getConnection();
-                $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
+                $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement 
+                INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
                 INNER JOIN User ON Announcement.userId=User.userId
                 WHERE ReactedAnnouncement.interested = $interested
                 AND ReactedAnnouncement.userId = ".$user->getUserId());
@@ -73,9 +74,15 @@ class ReactedannouncementController extends Controller
             if (is_object($user)) {
                 $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
                 $connection = $em->getConnection();
-                $statement = $connection->prepare("SELECT * FROM ReactedAnnouncement INNER JOIN Announcement ON ReactedAnnouncement.announcementId=Announcement.announcementId
-                INNER JOIN User ON ReactedAnnouncement.userId=User.userId
-                WHERE ReactedAnnouncement.interested = 0
+                $statement = $connection->prepare("SELECT ra.`*`, c.name as 'countryName', 
+                c.NOC, p.name as 'populationName', p.province, pp.name as 'playerPositionName', cl.name as 'ClubName', pp.photo as 'photoPosition'FROM ReactedAnnouncement ra
+                INNER JOIN Announcement ON ra.announcementId=Announcement.announcementId
+                INNER JOIN User u ON ra.userId=u.userId
+                INNER JOIN Country c ON c.countryId = u.countryId 
+                INNER JOIN Population p ON p.populationId = u.populationId 
+                INNER JOIN PlayerPosition pp ON pp.playerPositionId = u.playerPositionId 
+                INNER JOIN Club cl ON cl.clubId = u.clubId
+                WHERE ra.interested = 0
                 AND Announcement.userId =".$user->getUserId());
                 $statement->execute();
                 return new JsonResponse($statement->fetchAll());
