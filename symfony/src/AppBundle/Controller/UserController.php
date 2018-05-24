@@ -286,7 +286,7 @@ class UserController extends Controller
         $helpers = $this->get("app.helpers");
         $jwt_auth = $this->get("app.jwt_auth");
         // obtener los datos de la petición
-        //$json_params = $request->get("json", null);
+        $json_params = $request->get("json", null);
         $user_token = $request->get("token", null);
 
         $bio = json_decode($json_params)->{"bio"};
@@ -341,7 +341,7 @@ class UserController extends Controller
         $helpers = $this->get("app.helpers");
         $jwt_auth = $this->get("app.jwt_auth");
         // obtener los datos de la petición
-        //$json_params = $request->get("json", null);
+        $json_params = $request->get("json", null);
         $user_token = $request->get("token", null);
 
         $historial = json_decode($json_params)->{"historial"};
