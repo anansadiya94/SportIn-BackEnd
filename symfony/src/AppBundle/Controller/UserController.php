@@ -298,7 +298,7 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
             $connection = $em->getConnection();
             $statement = $connection->prepare("UPDATE User 
-            SET bio = $bio
+            SET bio = '$bio'
             WHERE userId = ".$user_auth->getUserId().";");
             $statement->execute();
 
@@ -353,7 +353,7 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
             $connection = $em->getConnection();
             $statement = $connection->prepare("UPDATE User 
-            SET bio = $historial
+            SET historial = '$historial'
             WHERE userId = ".$user_auth->getUserId().";");
             $statement->execute();
 
