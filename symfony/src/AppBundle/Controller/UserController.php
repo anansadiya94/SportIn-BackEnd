@@ -278,5 +278,114 @@ class UserController extends Controller
     }
 
 
+    //POST /editbiography
+    // {"bio" : "dsdfasdfsdf"}
+    public function editBiographyAction(Request $request){
+
+        // obtener el servicio que me permitirá convertir a JSON
+        $helpers = $this->get("app.helpers");
+        $jwt_auth = $this->get("app.jwt_auth");
+        // obtener los datos de la petición
+        //$json_params = $request->get("json", null);
+        $user_token = $request->get("token", null);
+
+        $bio = json_decode($json_params)->{"bio"};
+        
+        if($user_token != null){
+            $user_auth = $jwt_auth->checkToken($user_token);
+            if(is_object($user_auth)){
+            //$userId = json_decode($json_params)->{"userId"};
+            $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+            $connection = $em->getConnection();
+            $statement = $connection->prepare("UPDATE User 
+            SET bio = $bio
+            WHERE userId = ".$user_auth->getUserId().";");
+            $statement->execute();
+
+            $result = $helpers->json(
+                array(
+                    "status" => "OK",
+                    "code" => "200",
+                    "data" => "bio updated correctly"
+                ));
+            
+             }else{
+                //ER-0006: not a valid token
+                return $helpers->json(
+                    array(
+                        "status" => "error",
+                        "code" => "ER-0006",
+                        "data" => "Received token not valid!"
+                    ));
+                die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
+    return $result;
+
+    }
+
+    //POST /edithistorial
+    // {"historial" : "dsdfasdfsdf"}
+    public function editHistorialAction(Request $request){
+
+        // obtener el servicio que me permitirá convertir a JSON
+        $helpers = $this->get("app.helpers");
+        $jwt_auth = $this->get("app.jwt_auth");
+        // obtener los datos de la petición
+        //$json_params = $request->get("json", null);
+        $user_token = $request->get("token", null);
+
+        $historial = json_decode($json_params)->{"historial"};
+        
+        if($user_token != null){
+            $user_auth = $jwt_auth->checkToken($user_token);
+            if(is_object($user_auth)){
+            //$userId = json_decode($json_params)->{"userId"};
+            $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
+            $connection = $em->getConnection();
+            $statement = $connection->prepare("UPDATE User 
+            SET bio = $historial
+            WHERE userId = ".$user_auth->getUserId().";");
+            $statement->execute();
+
+            $result = $helpers->json(
+                array(
+                    "status" => "OK",
+                    "code" => "200",
+                    "data" => "historial updated correctly"
+                ));
+            
+             }else{
+                //ER-0006: not a valid token
+                return $helpers->json(
+                    array(
+                        "status" => "error",
+                        "code" => "ER-0006",
+                        "data" => "Received token not valid!"
+                    ));
+                die();
+            }
+        }else{
+            //ER-0005: token not specified
+            return $helpers->json(
+                array(
+                    "status" => "error",
+                    "code" => "ER-0005",
+                    "data" => "token not specified"
+                ));
+            die();
+        }
+    return $result;
+
+    }
 
 }

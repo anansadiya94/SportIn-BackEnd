@@ -163,3 +163,13 @@ default_announcement_modifyAnnouncement:
   path: /modifyannouncement
   defaults: { _controller: "AppBundle:Announcement:modifyAnnouncement"}
   methods: POST
+
+default_announcement_modifyAnnouncement:
+  path: /editbiography
+  defaults: { _controller: "AppBundle:User:editBiography"}
+  methods: POST
+
+default_announcement_modifyAnnouncement:
+  path: /edithistorial
+  defaults: { _controller: "AppBundle:User:editHistorial"}
+  methods: POST
