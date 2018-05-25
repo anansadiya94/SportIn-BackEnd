@@ -81,11 +81,15 @@ class AnnouncementController extends Controller
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
         $statement = $connection->prepare("SELECT a.`*`,u.`*`, c.name as 
-        'categoryName', r.name as 'RoleName', pp.name as 'playerPositionName', pp.photo as 'photoPosition' FROM Announcement a 
+        'categoryName', r.name as 'RoleName', pp.name as 'playerPositionName', pp.photo as 'photoPosition',
+        p.name as 'populationName', co.name as 'countryName'
+        FROM Announcement a 
         INNER JOIN User u ON a.userId=u.userId
         INNER JOIN Category c ON a.categoryId= c.categoryId
-        INNER JOIN Role r ON r.roleId = a.searchedRoleId
+        INNER JOIN Role r ON r.roleId = u.roleId
         INNER JOIN PlayerPosition pp ON u.playerPositionId=pp.playerPositionId  
+        INNER JOIN Country co ON co.countryId=u.countryId
+        INNER JOIN Population p ON p.populationId=u.populationId
         WHERE a.active = 1
         ORDER BY a.publicationDate DESC;");
         $statement->execute();
