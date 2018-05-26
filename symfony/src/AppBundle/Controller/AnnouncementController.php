@@ -82,7 +82,7 @@ class AnnouncementController extends Controller
         $connection = $em->getConnection();
         $statement = $connection->prepare("SELECT a.`*`,u.`*`, c.name as 
         'categoryName', r.name as 'RoleName', pp.name as 'playerPositionName', pp.photo as 'photoPosition',
-        p.name as 'populationName', co.name as 'countryName'
+        p.name as 'populationName', co.name as 'countryName', cl.name as 'clubName'
         FROM Announcement a 
         INNER JOIN User u ON a.userId=u.userId
         INNER JOIN Category c ON a.categoryId= c.categoryId
@@ -90,6 +90,7 @@ class AnnouncementController extends Controller
         INNER JOIN PlayerPosition pp ON u.playerPositionId=pp.playerPositionId  
         INNER JOIN Country co ON co.countryId=u.countryId
         INNER JOIN Population p ON p.populationId=u.populationId
+        INNER JOIN Club cl ON cl.clubId=u.clubId
         WHERE a.active = 1
         ORDER BY a.publicationDate DESC;");
         $statement->execute();
