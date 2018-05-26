@@ -76,7 +76,7 @@ class ReactedannouncementController extends Controller
                 $connection = $em->getConnection();
                 $statement = $connection->prepare("SELECT ra.`*`, u.`*`, a.`*`, c.name as 'countryName', 
                 c.NOC, p.name as 'populationName', p.province, pp.name as 'playerPositionName', cl.name as 'ClubName', pp.photo as 'photoPosition'FROM ReactedAnnouncement ra
-                INNER JOIN Announcement a ON ra.announcementId=Announcement.announcementId
+                INNER JOIN Announcement a ON ra.announcementId=a.announcementId
                 INNER JOIN User u ON ra.userId=u.userId
                 INNER JOIN Country c ON c.countryId = u.countryId 
                 INNER JOIN Population p ON p.populationId = u.populationId 
