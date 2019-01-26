@@ -2,11 +2,11 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    database_host:     18.221.192.57
+    database_host:     18.219.110.158
     database_port:     ~
     database_name:     SportInDB
     database_user:     root
-    database_password:  root
+    database_password:  W0dHw8yHB2Y3laYL
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
