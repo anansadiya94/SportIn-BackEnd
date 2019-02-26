@@ -3,7 +3,7 @@
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
     database_host:     18.219.110.158
-    database_port:     ~
+    database_port:     3006
     database_name:     SportInDB
     database_user:     root
     database_password:  sadi260794
