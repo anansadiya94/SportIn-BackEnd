@@ -4,7 +4,7 @@
 parameters:
     database_host:     18.219.110.158
     database_port:     3306
-    database_name:     SportInDB
+    database_name:     SportIn
     database_user:     root
     database_password:  sadi260794
     # You should uncomment this if you want use pdo_sqlite
