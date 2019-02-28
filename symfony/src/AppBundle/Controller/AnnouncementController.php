@@ -80,7 +80,7 @@ class AnnouncementController extends Controller
         $helpers = $this->get("app.helpers");
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT a.`*`,u.`*`, c.name as 
+        $statement = $connection->prepare("SELECT a, u, c.name as 
         'categoryName', r.name as 'RoleName', pp.name as 'playerPositionName', pp.photo as 'photoPosition',
         p.name as 'populationName', co.name as 'countryName', cl.name as 'clubName'
         FROM Announcement a 
