@@ -28,7 +28,7 @@ class AnnouncementController extends Controller
 
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection(); //arreglado po.name
-        $statement = $connection->prepare("SELECT a.`*`,u.`*`, c.name as 
+        $statement = $connection->prepare("SELECT a.*,u.*, c.name as 
         'categoryName', pp.name as 'PlayerPositionName', r.name as 'RoleName', po.name as 'PopulationName' FROM Announcement a 
         INNER JOIN User u ON a.userId=u.userId
         INNER JOIN Category c ON a.categoryId= c.categoryId
@@ -54,7 +54,7 @@ class AnnouncementController extends Controller
 
         $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT a.`*`,u.`*`, c.name as 
+        $statement = $connection->prepare("SELECT a.*,u.*, c.name as 
         'categoryName', pp.name as 'PlayerPositionName', r.name as 'RoleName' FROM Announcement a 
         INNER JOIN User u ON a.userId=u.userId
         INNER JOIN Category c ON a.categoryId= c.categoryId
