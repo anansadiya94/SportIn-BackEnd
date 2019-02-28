@@ -152,7 +152,7 @@ class UserController extends Controller
             if(is_object($user)){
                 $em = $this->getDoctrine()->getManager(); // ...or getEntityManager() prior to Symfony 2.1
                 $connection = $em->getConnection();
-                $query = "SELECT u.`*` , r.name as 'roleName', c.name as 'countryName', 
+                $query = "SELECT u.* , r.name as 'roleName', c.name as 'countryName', 
                 c.NOC, p.name as 'populationName', p.province, pp.name as 'playerPositionName', cl.name as 'ClubName', pp.photo as 'photoPosition' 
                 FROM User u 
                 LEFT JOIN Role r ON r.roleId = u.roleId 
